@@ -1,15 +1,11 @@
-
--- key
+-- key bind
 local capslockLua  = require('capslock')
 local functionLua = require('function')
 
+-- watcher
 local wifiWatcher = require('wifi')
--- local reloadWatcher = require('reload')
 
-local visualStudioCode = require('visual_studio_code')
-
--- text
-
+-- text expander
 ht = hs.loadSpoon("HammerText")
 ht.keywords = {
     ["$$"] = os.date("%Y-%m-%d"),
