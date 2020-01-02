@@ -1,4 +1,5 @@
-local const = hs.loadSpoon('const')
+local const = require('modules.const')
+
 
 local capslock= {"cmd", "option", "ctrl"}
 local capslockShift = {"cmd", "option", "ctrl", "shift"}
@@ -38,9 +39,21 @@ keybindDown(capslock, ';', 'cmd', 'right')
 keybindDown(capslockShift, ';', {"cmd", "shift"}, 'right')
 keybindDown(capslock, 'n', {}, 'pageup')
 keybindDown(capslock, 'm', {}, 'pagedown')
-
 keybindDown(capslock, ']', 'cmd', ']')
 keybindDown(capslock, '[', 'cmd', '[')
+keybindDown(capslock, '1', {}, 'F1')
+keybindDown(capslock, '2', {}, 'F2')
+
+
+function keyScript(mod, key, script)  
+  hs.hotkey.bind(mod, key, function()    
+    hs.osascript.applescript(script)   
+    -- hs.osascript.applescript("tell application \"System Events\" to key code 123 using control down")        
+    -- hs.osascript.applescript("tell application \"Mission Control\" to launch")    
+  end)
+end
+
+keyScript(capslock, '3', 'tell application "Mission Control" to launch')
 
 
 function keyEvent(mod, key, strokeMod, strokeKey)
@@ -74,9 +87,10 @@ function launchApp(mod, key, app)
   end)
 end
 
-launchApp(capslock, 'g', 'Finder')
-launchApp(capslock, 't', 'iTerm')
+launchApp(capslock, 'g', const.app.finder)
+launchApp(capslock, 't', const.app.iTerm)
 launchApp(capslockShift, 'c', const.app.visualStudioCode)
+launchApp(capslockShift, 's', const.app.slack)
 
 
 -- 한영변환
@@ -116,3 +130,10 @@ hs.hotkey.bind(capslock, "6", function()
   end  
 end)
 
+
+
+local ClipboardTool = hs.loadSpoon("ClipboardTool")
+ClipboardTool:start()
+hs.hotkey.bind(capslock, 'p', function() 
+    ClipboardTool:toggleClipboard()
+end)
