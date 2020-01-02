@@ -1,176 +1,118 @@
+local const = hs.loadSpoon('const')
+
 local capslock= {"cmd", "option", "ctrl"}
--- local capslock= {"f16"}
 local capslockShift = {"cmd", "option", "ctrl", "shift"}
--- local capslockShift = {"f16", "shift"}
 
 -- reload
 hs.hotkey.bind(capslock, 'r', function() 
-  hs.reload()
+  hs.reload()  
+end)
+hs.alert.show("HS reloaded")
+
+hs.hotkey.bind(capslock, 'y', function() 
+  hs.eventtap.event.newKeyEvent(nil, hs.keycodes.map.capslock, true):post()
 end)
 
-hs.hotkey.bind(capslock, 'Y', function() 
-  hs.eventtap.event.newKeyEvent(nil, hs.keycodes.map.capslock, false):post()
-end)
+function keybindUp(mod, key, strokeMod, strokeKey)
+  hs.hotkey.bind(mod, key, nil, function()
+    hs.eventtap.keyStroke(strokeMod, strokeKey)
+  end)
+end
 
-hs.hotkey.bind(capslock, 'c', nil,  function()
-  hs.eventtap.keyStroke("cmd", "c")
-end)
+keybindUp(capslock, 'c', 'cmd', 'c')
+keybindUp(capslock, 'v', 'cmd', 'v')
+keybindUp(capslock, 'z', 'cmd', 'z')
+keybindUp(capslock, 'x', 'cmd', 'x')
+keybindUp(capslock, 's', 'cmd', 's')
+keybindUp(capslock, 'f', 'cmd', 'f')
 
-hs.hotkey.bind(capslock, 'v', nil, function()
-  hs.eventtap.keyStroke("cmd", "v")
-end)
+function keybindDown(mod, key, strokeMod, strokeKey)
+  hs.hotkey.bind(mod, key, function()
+    hs.eventtap.keyStroke(strokeMod, strokeKey)
+  end)
+end
 
-hs.hotkey.bind(capslock, 'z', nil, function()
-  hs.eventtap.keyStroke("cmd", "z")
-end)
+keybindDown(capslock, 'h', 'cmd', 'left')
+keybindDown(capslockShift, 'h', {"cmd", "shift"}, 'left')
+keybindDown(capslock, ';', 'cmd', 'right')
+keybindDown(capslockShift, ';', {"cmd", "shift"}, 'right')
+keybindDown(capslock, 'n', {}, 'pageup')
+keybindDown(capslock, 'm', {}, 'pagedown')
 
--- 잘라내기
-hs.hotkey.bind(capslock, 'x', nil, function()
-  hs.eventtap.keyStroke("cmd", "x")
-end)
-
--- save
-hs.hotkey.bind(capslock, 's', nil, function()
-  hs.eventtap.keyStroke("cmd", "s")
-end)
-
--- find
-hs.hotkey.bind(capslock, 'f', nil, function()
-  hs.eventtap.keyStroke("cmd", "f")
-end)
+keybindDown(capslock, ']', 'cmd', ']')
+keybindDown(capslock, '[', 'cmd', '[')
 
 
--- left
-hs.hotkey.bind(capslock, 'j', function()
-  hs.eventtap.event.newKeyEvent({}, "left", true):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "left", false):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "left", true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-end)
+function keyEvent(mod, key, strokeMod, strokeKey)
+  hs.hotkey.bind(mod, key, function()
+    hs.eventtap.event.newKeyEvent(strokeMod, strokeKey, true):post()
+  end, function()
+    hs.eventtap.event.newKeyEvent(strokeMod, strokeKey, false):post()
+  end, function()
+    hs.eventtap.event.newKeyEvent(strokeMod, strokeKey, true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
+  end)
+end
 
-hs.hotkey.bind(capslockShift, 'j', function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "left", true):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "left", false):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "left", true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-end)
+keyEvent(capslock, 'j', {}, 'left')
+keyEvent(capslockShift, 'j', {'shift'}, 'left')
 
--- right
-hs.hotkey.bind(capslock, 'l', function()
-  hs.eventtap.event.newKeyEvent({}, "right", true):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "right", false):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "right", true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-end)
+keyEvent(capslock, 'l', {}, 'right')
+keyEvent(capslockShift, 'l', {'shift'}, 'right')
 
-hs.hotkey.bind(capslockShift, 'l', function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "right", true):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "right", false):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "right", true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-end)
+keyEvent(capslock, 'i', {}, 'up')
+keyEvent(capslockShift, 'i', {'shift'}, 'up')
 
--- up
-hs.hotkey.bind(capslock, 'i', function()
-  hs.eventtap.event.newKeyEvent({}, "up", true):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "up", false):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "up", true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-end)
+keyEvent(capslock, 'k', {}, 'down')
+keyEvent(capslockShift, 'k', {'shift'}, 'down')
 
-hs.hotkey.bind(capslockShift, 'i', function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "up", true):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "up", false):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "up", true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-end)
+keyEvent(capslock, 'u', {}, 'delete')
+keyEvent(capslock, 'o', {}, 'forwarddelete')
 
--- down
-hs.hotkey.bind(capslock, 'k', function()
-  hs.eventtap.event.newKeyEvent({}, "down", true):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "down", false):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "down", true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-end)
+function launchApp(mod, key, app)
+  hs.hotkey.bind(mod, key, function()
+    hs.application.launchOrFocus(app)
+  end)
+end
 
-hs.hotkey.bind(capslockShift, 'k', function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "down", true):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "down", false):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({"shift"}, "down", true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-end)
+launchApp(capslock, 'g', 'Finder')
+launchApp(capslock, 't', 'iTerm')
+launchApp(capslockShift, 'c', const.app.visualStudioCode)
 
--- delete
-hs.hotkey.bind(capslock, 'u', function()
-  hs.eventtap.event.newKeyEvent({}, "delete", true):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "delete", false):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "delete", true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-end)
 
--- forwarddelete
-hs.hotkey.bind(capslock, 'o', function()
-  hs.eventtap.event.newKeyEvent({}, "forwarddelete", true):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "forwarddelete", false):post()
-end, function()
-  hs.eventtap.event.newKeyEvent({}, "forwarddelete", true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-end)
+-- 한영변환
+local inputSource = {
+  english = "com.apple.keylayout.ABC",
+  korean = "com.apple.inputmethod.Korean.2SetKorean",
+}
 
--- home
-hs.hotkey.bind(capslock, "h", function()
-  hs.eventtap.keyStroke({"cmd"}, "left")
-end)
+local changeInput = function()
+  local current = hs.keycodes.currentSourceID()
+  local nextInput = nil
 
-hs.hotkey.bind(capslockShift, "h", function()
-  hs.eventtap.keyStroke({"cmd", "shift"}, "left")
-end)
-
--- end
-hs.hotkey.bind(capslock, ";", function()
-  hs.eventtap.keyStroke({"cmd"}, "right")
-end)
-
-hs.hotkey.bind(capslockShift, ";", function()
-  hs.eventtap.keyStroke({"cmd", "shift"}, "right")
-end)
-
--- page up
-hs.hotkey.bind(capslock, "n", function()
-  hs.eventtap.keyStroke({}, "pageup")
-end)
-
--- page down
-hs.hotkey.bind(capslock, "m", function()
-  hs.eventtap.keyStroke({}, "pagedown")
-end)
-
--- launch finder
-hs.hotkey.bind(capslock, "g", function()
-  hs.application.launchOrFocus('Finder')
-end)
-
--- launch terminal
-hs.hotkey.bind(capslock, "t", function()
-  hs.application.launchOrFocus('iTerm')
-end)
-
--- launch code
-hs.hotkey.bind(capslockShift, "c", function()
-  local frontmostApplication = hs.application.frontmostApplication()  
-  if frontmostApplication and frontmostApplication:name() == "Code" then    
-    print('in code ha') 
+  if current == inputSource.english then
+      nextInput = inputSource.korean
   else
-    hs.application.launchOrFocus('Visual Studio Code')
+      nextInput = inputSource.english
+  end
+  hs.keycodes.currentSourceID(nextInput)
+end
+
+hs.hotkey.bind(capslock, 'space', changeInput)
+
+-- intelligence
+hs.hotkey.bind(capslock, ".", function()
+  local frontmostApplication = hs.application.frontmostApplication()  
+  if frontmostApplication and frontmostApplication:name() == const.app.androidStudio then    
+    hs.eventtap.keyStroke({'alt'}, "return")  
+  end  
+end)
+
+
+hs.hotkey.bind(capslock, "6", function()
+  local frontmostApplication = hs.application.frontmostApplication()  
+  if frontmostApplication and frontmostApplication:name() == "Android Studio" then    
+    -- rename
+    hs.eventtap.keyStroke({}, "F6")  
   end  
 end)
 

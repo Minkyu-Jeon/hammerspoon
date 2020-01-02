@@ -10,6 +10,9 @@ ht = hs.loadSpoon("HammerText")
 ht.keywords = {
     ["$$"] = os.date("%Y-%m-%d"),
     ["..addr"] = "My address",
+    
 }
 ht:start()
+
+
 
