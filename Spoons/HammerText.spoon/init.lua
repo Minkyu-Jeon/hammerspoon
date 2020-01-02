@@ -89,22 +89,46 @@ function expander()
 
         -- finally, if "word" is a hotstring
         local output = obj.keywords[word]
-        if type(output) == "function" then -- expand if function
-          local _, o = pcall(output)
-          if not _ then
-            obj.logger.ef("~~ expansion for '" .. what .. "' gave an error of " .. o)
-            -- could also set o to nil here so that the expansion doesn't occur below, but I think
-            -- seeing the error as the replacement will be a little more obvious that a print to the
-            -- console which I may or may not have open at the time...
-            -- maybe show an alert with hs.alert instead?
-          end
-          output = o
-        end
         if output then
-            for i = 1, utf8.len(word), 1 do hs.eventtap.keyStroke({}, "delete", 0) end -- delete the abbreviation
-            hs.eventtap.keyStrokes(output) -- expand the word
+           len = output['len']
+           func = output['func']
+           text = output['text']
+      
+           if len == nil then
+             len = utf8.len(word)
+           end
+           for i = 1, len + 1, 1 do hs.eventtap.keyStroke({}, "delete", 0) end 
+           
+          if func then
+            local _, o = pcall(output)
+            if not _ then
+              obj.logger.ef("~~ expansion for '" .. what .. "' gave an error of " .. o)
+            end
+            text = o
+          end
+
+          if text then
+            hs.eventtap.keyStrokes(text) -- expand the word
             word = "" -- clear the buffer
+          end
         end
+
+        -- if type(output) == "function" then -- expand if function
+        --   local _, o = pcall(output)
+        --   if not _ then
+        --     obj.logger.ef("~~ expansion for '" .. what .. "' gave an error of " .. o)
+        --     -- could also set o to nil here so that the expansion doesn't occur below, but I think
+        --     -- seeing the error as the replacement will be a little more obvious that a print to the
+        --     -- console which I may or may not have open at the time...
+        --     -- maybe show an alert with hs.alert instead?
+        --   end
+        --   output = o
+        -- end
+        -- if output then
+        --     for i = 1, utf8.len(word), 1 do hs.eventtap.keyStroke({}, "delete", 0) end -- delete the abbreviation
+        --     hs.eventtap.keyStrokes(output) -- expand the word
+        --     word = "" -- clear the buffer
+        -- end
 
         return false -- pass the event on to the application
     end):start() -- start the eventtap

@@ -188,6 +188,7 @@ end
 ---
 
 function obj:show()
+    self.sheetView:
     local capp = hs.application.frontmostApplication()
     local cscreen = hs.screen.mainScreen()
     local cres = cscreen:fullFrame()

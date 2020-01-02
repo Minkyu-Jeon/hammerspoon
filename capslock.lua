@@ -1,8 +1,7 @@
 local const = require('modules.const')
 
-
-local capslock= {"cmd", "option", "ctrl"}
-local capslockShift = {"cmd", "option", "ctrl", "shift"}
+local capslock= const.key.capslock
+local capslockShift = const.key.capslockShift
 
 -- reload
 hs.hotkey.bind(capslock, 'r', function() 
@@ -39,11 +38,29 @@ keybindDown(capslock, ';', 'cmd', 'right')
 keybindDown(capslockShift, ';', {"cmd", "shift"}, 'right')
 keybindDown(capslock, 'n', {}, 'pageup')
 keybindDown(capslock, 'm', {}, 'pagedown')
-keybindDown(capslock, ']', 'cmd', ']')
-keybindDown(capslock, '[', 'cmd', '[')
 keybindDown(capslock, '1', {}, 'F1')
 keybindDown(capslock, '2', {}, 'F2')
 
+hs.hotkey.bind(capslock, "]", nil, function()
+  local frontmostApplication = hs.application.frontmostApplication()    
+
+  if frontmostApplication and frontmostApplication:name() == 'Code' then        
+    hs.eventtap.keyStroke('ctrl', "-")  
+  else    
+    hs.eventtap.keyStroke('cmd', "]")  
+  end  
+end)
+      
+hs.hotkey.bind(capslock, "[", nil, function()
+  local frontmostApplication = hs.application.frontmostApplication()  
+  
+  if frontmostApplication and frontmostApplication:name() == 'Code' then      
+    hs.eventtap.keyStroke({'ctrl', 'shift'}, "-")  
+  else    
+    hs.eventtap.keyStroke('cmd', "[")
+  end  
+end)
+  
 
 function keyScript(mod, key, script)  
   hs.hotkey.bind(mod, key, function()    
@@ -82,7 +99,7 @@ keyEvent(capslock, 'u', {}, 'delete')
 keyEvent(capslock, 'o', {}, 'forwarddelete')
 
 function launchApp(mod, key, app)
-  hs.hotkey.bind(mod, key, function()
+  hs.hotkey.bind(mod, key, function()    
     hs.application.launchOrFocus(app)
   end)
 end
@@ -91,6 +108,15 @@ launchApp(capslock, 'g', const.app.finder)
 launchApp(capslock, 't', const.app.iTerm)
 launchApp(capslockShift, 'c', const.app.visualStudioCode)
 launchApp(capslockShift, 's', const.app.slack)
+launchApp(capslockShift, 'w', const.app.chrome)
+
+
+local aclock = hs.loadSpoon('AClock')
+
+hs.hotkey.bind(capslockShift, "t", function()
+  aclock:toggleShow()
+end)
+
 
 
 -- 한영변환
@@ -132,8 +158,60 @@ end)
 
 
 
+
+-- default windowfilter, no thumbnails
+
+hs.hotkey.bind(capslockShift, 'o', function()
+  expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=false}) 
+  expose:toggleShow()
+end)
+
+
 local ClipboardTool = hs.loadSpoon("ClipboardTool")
 ClipboardTool:start()
 hs.hotkey.bind(capslock, 'p', function() 
     ClipboardTool:toggleClipboard()
 end)
+                
+
+
+function move_window(direction)
+  return function()
+      local win      = hs.window.focusedWindow()
+      local app      = win:application()
+      local app_name = app:name()
+      local f        = win:frame()
+      local screen   = win:screen()
+      local max      = screen:frame()
+      if direction == "left" then
+          f.x = max.x
+          f.w = (max.w / 2)
+      elseif direction == "right" then
+          f.x = (max.x + (max.w / 2))
+          f.w = (max.w / 2)
+      elseif direction == "up" then
+          f.x = max.x
+          f.w = max.w
+      elseif direction == "down" then
+          f.x = (max.x + (max.w / 8))
+          f.w = (max.w * 3 / 4)
+      end
+      f.y = max.y
+      f.h = max.h
+      win:setFrame(f, 0.0)
+  end
+end
+
+hs.hotkey.bind(capslock, "Left", move_window("left"))
+hs.hotkey.bind(capslock, "Right", move_window("right"))
+hs.hotkey.bind(capslock, "Up", move_window("up"))
+hs.hotkey.bind(capslock, "Down", move_window("down"))
+
+
+
+-- local ksheet = hs.loadSpoon('KSheet')
+-- hs.hotkey.bind(capslock, 'k', function()
+--   isSheetOpend = !isSheetOpend
+--   if isSheetOpend then
+--   ksheet:show()
+-- end)
