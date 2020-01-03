@@ -2,39 +2,43 @@
 require('capslock')
 require('command')
 require('function')
+require('text')
 
 -- watcher
 local wifiWatcher = require('wifi')
 
--- text expander
-ht = hs.loadSpoon("HammerText")
-ht.keywords = {
-    ["$$"] = { ["text"] = os.date("%Y-%m-%d") },
-    ["@@"] = os.date("%Y-%m-%d"),
-    ["..addr"] = "My address",
-    [" ne "] = " != ",
-    ["--="] = "→",
-    [";."] = "·",
-    [";1"] = "I",
-    [";2"] = "II",
-    [";3"] = "III",
-    [";4"] = "IV",
-    [";5"] = "Ⅴ",
-    [";6"] = "VI",
-    [";7"] = "VII",
-    [";8"] = "VIII",
-    [";9"] = "IX",
-    [";10"] = "X",
-    ["1["] = {
-        ["func"] = function()            
-            hs.eventtap.keyStrokes("![](%CurrentClipboard%)")
-        end
-    },
-    ["ㅎㅏㅁㄱㅔ"] = { ['len'] = 2, ['text'] = "함께" },
-    ["ㄴㅡㄱㅣㅁ"] = { ['len'] = 2, ['text'] = "느낌" },
-}
+local const = require('modules.const')
+local capslock= const.key.capslock
+local capslockShift = const.key.capslockShift
 
-ht:start()
+
+local ClipboardTool = hs.loadSpoon("ClipboardTool")
+ClipboardTool:start()
+hs.hotkey.bind(capslock, 'p', function() 
+    ClipboardTool:toggleClipboard()
+end)
+
+local aclock = hs.loadSpoon('AClock')
+hs.hotkey.bind(capslockShift, "t", function()
+  aclock:toggleShow()
+end)          
+
+
+hs.hotkey.bind(capslockShift, 'o', function()
+    expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 
+    expose:toggleShow()
+  end)
+  
+
+-- local ksheet = hs.loadSpoon('KSheet')
+-- hs.hotkey.bind(capslock, 'k', function()
+--   isSheetOpend = !isSheetOpend
+--   if isSheetOpend then
+--   ksheet:show()
+-- end)
+
+
+
 
 
 

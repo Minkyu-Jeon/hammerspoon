@@ -9,7 +9,9 @@ obj.app.slack = 'Slack'
 obj.app.chrome = 'Google Chrome'
 
 obj.key = {} 
-obj.key.capslock= {"cmd", "option", "ctrl"}
-obj.key.capslockShift = {"cmd", "option", "ctrl", "shift"}
+obj.key.capslock= {"option", "ctrl"}
+obj.key.capslockCmd= {"cmd", "option", "ctrl"}
+obj.key.capslockShift = {"option", "ctrl", "shift"}
+obj.key.capslockCmdShift = {'cmd', "option", "ctrl", "shift"}
 
 return obj
