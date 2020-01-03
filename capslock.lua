@@ -18,21 +18,37 @@ hs.hotkey.bind(capslock, 'y', function()
   hs.eventtap.event.newKeyEvent(nil, hs.keycodes.map.capslock, true):post()
 end)
 
+app:launch(capslock, 'g', const.app.finder)
+app:launch(capslock, 't', const.app.iTerm)
+app:launch(capslockShift, 'c', const.app.visualStudioCode)
+app:launch(capslockShift, 's', const.app.slack)
+app:launch(capslockShift, 'w', const.app.chrome)
+
+key:bindUp(capslock, 'a', 'cmd', 'a')
 key:bindUp(capslock, 'c', 'cmd', 'c')
 key:bindUp(capslock, 'v', 'cmd', 'v')
 key:bindUp(capslock, 'z', 'cmd', 'z')
 key:bindUp(capslock, 'x', 'cmd', 'x')
 key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
+key:bindDown(capslockShift, 'v', function() 
+  clipboard = pasteboard.getContents()
+  string.match("f123", "%D")     
+  str = "qwe\nasd\rzxc"
+  lines = {}
+  for s in str:gmatch("[^\r\n]+") do
+    table.insert(lines, s)
+  end
+end) 
 
 key:bindDown(capslock, 'h', 'cmd', 'left')
 key:bindDown(capslockShift, 'h', {"cmd", "shift"}, 'left')
 key:bindDown(capslock, ';', 'cmd', 'right')
 key:bindDown(capslockShift, ';', {"cmd", "shift"}, 'right')
-key:bindDown(capslock, 'n', {}, 'pageup')
-key:bindDown(capslockShift, 'n', {"shift"}, 'pageup')
-key:bindDown(capslock, 'm', {}, 'pagedown')
-key:bindDown(capslockShift, 'm', {"shift"}, 'pagedown')
+key:bindDown(capslock, 'm', {}, 'pageup')
+key:bindDown(capslockShift, 'm', {"shift"}, 'pageup')
+key:bindDown(capslock, ',', {}, 'pagedown')
+key:bindDown(capslockShift, ',', {"shift"}, 'pagedown')
 
 key:bindDown(capslock, '1', {}, 'F1')
 key:bindDown(capslock, '2', {}, 'F2')
@@ -68,11 +84,21 @@ key:event(capslockCmdShift, 'k', {'option', 'shift'}, 'down')
 key:event(capslock, 'u', {}, 'delete')
 key:event(capslock, 'o', {}, 'forwarddelete')
 
-app:launch(capslock, 'g', const.app.finder)
-app:launch(capslock, 't', const.app.iTerm)
-app:launch(capslockShift, 'c', const.app.visualStudioCode)
-app:launch(capslockShift, 's', const.app.slack)
-app:launch(capslockShift, 'w', const.app.chrome)
+key:event(capslock, 'q', {}, 'delete')
+key:event(capslock, 'e', {}, 'forwarddelete')
+
+
+
+
+key:bindDown(capslock, 'b', capslock, 'b', {
+  ['Code'] = { nil, "F12"}, -- follow
+})
+
+key:bindDown(capslock, 'delete', function() 
+  hs.eventtap.keyStroke('cmd', 'right')
+  hs.eventtap.keyStroke({'shift', 'cmd'}, 'left')
+  hs.eventtap.keyStroke(nil, 'delete')
+end) 
 
 key:bindDown(capslock, 'space', nil, 'F13')  -- 한영전환
 
@@ -99,3 +125,4 @@ hs.hotkey.bind(capslock, "Left", window:move("left"))
 hs.hotkey.bind(capslock, "Right", window:move("right"))
 hs.hotkey.bind(capslock, "Up", window:move("up"))
 hs.hotkey.bind(capslock, "Down", window:move("down"))
+

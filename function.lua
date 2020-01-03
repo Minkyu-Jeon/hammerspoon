@@ -50,6 +50,7 @@ key:bindDown(nil, 'F3', nil, 'F3', {
 
 key:bindDown(nil, 'F4', nil, 'F4', {
   ['Chrome'] = {nil, 'pagedown'},
+  ['Code'] = {nil, 'F12'},
 })
 
 key:bindDown(nil, 'F5', nil, 'F5', {

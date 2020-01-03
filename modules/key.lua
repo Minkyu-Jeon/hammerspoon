@@ -1,27 +1,40 @@
 
 local obj = {}
 
+
+function runApps(apps, func)
+  if func ~= nil and type(func) == 'function' then
+    local _, o = pcall(func)
+    if not _ then
+      obj.logger.ef("~~ expansion for '" .. 'what' .. "' gave an error of " .. o)
+    end
+    return true
+  end
+
+  if apps then
+    local frontmostApplication = hs.application.frontmostApplication()            
+    local name = frontmostApplication:name()
+    local keycodes = apps[name]
+    print(name)    
+
+    if keycodes then
+      if keycodes[2] then
+        hs.eventtap.keyStroke(keycodes[1], keycodes[2])
+      else
+        hs.eventtap.keyStrokes(keycodes[1])
+      end      
+      return true
+    end        
+  end
+  return false
+end
+
+
 function obj:bindDown(mod, key, strokeMod, strokeKey, apps)  
   hs.hotkey.bind(mod, key, function()        
-    found = false
+    found = runApps(apps, strokeMod)   
 
-    if apps then
-      local frontmostApplication = hs.application.frontmostApplication()            
-      local name = frontmostApplication:name()
-      local keycodes = apps[name]
-      print(name)    
-
-      if keycodes then
-        if keycodes[2] then
-          hs.eventtap.keyStroke(keycodes[1], keycodes[2])
-        else
-          hs.eventtap.keyStrokes(keycodes[1])
-        end
-        found = true
-      end    
-    end
-
-    if found == false then     
+    if found == false then      
       if mod == strokeMod and key == strokeKey then    
         hs.eventtap.event.newKeyEvent(strokeMod, strokeKey, true):post()
         hs.eventtap.event.newKeyEvent(strokeMod, strokeKey, false):post()
@@ -33,22 +46,9 @@ function obj:bindDown(mod, key, strokeMod, strokeKey, apps)
 end
 
 
-
-
 function obj:bindUp(mod, key, strokeMod, strokeKey, apps)  
   hs.hotkey.bind(mod, key, nil, function()    
-    found = false
-
-    if apps then
-      local frontmostApplication = hs.application.frontmostApplication()            
-      local name = frontmostApplication:name()
-      local keycodes = apps[name]         
-      print(name) 
-      if keycodes then        
-        hs.eventtap.keyStroke(keycodes[1], keycodes[2])
-        found = true
-      end    
-    end
+    found = runApps(apps)   
 
     if found == false then
       if mod == strokeMod and key == strokeKey then                
