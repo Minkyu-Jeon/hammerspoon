@@ -133,7 +133,7 @@ end)
 -- default windowfilter, no thumbnails
 
 hs.hotkey.bind(capslockShift, 'o', function()
-  expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=false}) 
+  expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 
   expose:toggleShow()
 end)
 
