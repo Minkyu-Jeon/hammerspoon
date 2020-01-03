@@ -1,4 +1,5 @@
 local const = require('modules.const')
+local key = require('modules.key')
 
 local capslock= const.key.capslock
 local capslockShift = const.key.capslockShift
@@ -41,25 +42,13 @@ keybindDown(capslock, 'm', {}, 'pagedown')
 keybindDown(capslock, '1', {}, 'F1')
 keybindDown(capslock, '2', {}, 'F2')
 
-hs.hotkey.bind(capslock, "]", nil, function()
-  local frontmostApplication = hs.application.frontmostApplication()    
-
-  if frontmostApplication and frontmostApplication:name() == 'Code' then        
-    hs.eventtap.keyStroke('ctrl', "-")  
-  else    
-    hs.eventtap.keyStroke('cmd', "]")  
-  end  
-end)
       
-hs.hotkey.bind(capslock, "[", nil, function()
-  local frontmostApplication = hs.application.frontmostApplication()  
-  
-  if frontmostApplication and frontmostApplication:name() == 'Code' then      
-    hs.eventtap.keyStroke({'ctrl', 'shift'}, "-")  
-  else    
-    hs.eventtap.keyStroke('cmd', "[")
-  end  
-end)
+key:bindUp(capslock, '[', 'cmd', '[', {
+  ['Code'] = {{'ctrl', 'shift'}, '-'}
+})
+key:bindUp(capslock, ']', 'cmd', ']', {
+  ['Code'] = {{'ctrl'}, '-'}
+})
   
 
 function keyScript(mod, key, script)  
@@ -82,6 +71,8 @@ function keyEvent(mod, key, strokeMod, strokeKey)
     hs.eventtap.event.newKeyEvent(strokeMod, strokeKey, true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
   end)
 end
+
+keyEvent(capslock, 'space', {}, 'F13')
 
 keyEvent(capslock, 'j', {}, 'left')
 keyEvent(capslockShift, 'j', {'shift'}, 'left')
@@ -118,26 +109,6 @@ hs.hotkey.bind(capslockShift, "t", function()
 end)
 
 
-
--- 한영변환
-local inputSource = {
-  english = "com.apple.keylayout.ABC",
-  korean = "com.apple.inputmethod.Korean.2SetKorean",
-}
-
-local changeInput = function()
-  local current = hs.keycodes.currentSourceID()
-  local nextInput = nil
-
-  if current == inputSource.english then
-      nextInput = inputSource.korean
-  else
-      nextInput = inputSource.english
-  end
-  hs.keycodes.currentSourceID(nextInput)
-end
-
-hs.hotkey.bind(capslock, 'space', changeInput)
 
 -- intelligence
 hs.hotkey.bind(capslock, ".", function()
