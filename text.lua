@@ -20,8 +20,8 @@ end
 -- text expander
 ht = hs.loadSpoon("HammerText")
 ht.keywords = {
-    ["$$"] = { ["text"] = os.date("%Y-%m-%d") },
-    ["@@"] = { ['text'] = "$$" },
+    ["$$"] = { os.date("%Y-%m-%d") },
+    ["@@"] = { "$$" },
     ["..addr"] = "My address",
     [" ne "] = { " != " },
     ["--="] = { "→" },
@@ -50,18 +50,12 @@ ht.keywords = {
     ['/fr'] = { nil, function()
       local text = "<fragment-block></fragment-block>"
       hs.eventtap.keyStrokes(text)
-      left(17)
+      left(17)      
       end 
-    },
-    ['sms '] = {'는 ', function() change() end, 4},
-    ['fmf '] = {'를 ', function() change() end, 4},
+    },    
     ['ㄱㅔㅅㄷ'] = {'겠ㄷ', nil, 2},
-    [' ㄷㅗㄴㅡㄴ'] = {' 또는', nil, 5},
     ['ㅇㅣㅅㅇ'] = {'있ㅇ', nil, 2},
     ['ㅇㅗㅏㅅㄷ'] = {'왔ㄷ', nil, 2},
 }
 
-
-
 ht:start()
-

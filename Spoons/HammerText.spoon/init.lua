@@ -77,7 +77,7 @@ function expander()
 
         -- if one of these "navigational" keys is pressed
         if keyCode == keyMap["return"]
-        -- or keyCode == keyMap["space"]
+        or keyCode == keyMap["space"]
         or keyCode == keyMap["up"]
         or keyCode == keyMap["down"]
         or keyCode == keyMap["left"]
@@ -97,21 +97,25 @@ function expander()
            if len == nil then
              len = utf8.len(word)
            end
-           for i = 1, len, 1 do hs.eventtap.keyStroke({}, "delete", 0) end 
+           for i = 1, len, 1 do hs.eventtap.keyStroke({}, "delete", 0.01) end 
            
-          if func then            
+          if func then                    
             local _, o = pcall(func)
             if not _ then
+              print("error" .. o)
               obj.logger.ef("~~ expansion for '" .. 'what' .. "' gave an error of " .. o)
             end
             -- text = o
+            print('end of func')
           end
 
           if text then
-            hs.eventtap.keyStrokes(text) -- expand the word           
-          end
+            
+            hs.eventtap.keyStrokes(text) -- expand the word
+          end         
 
           word = "" -- clear the buffer
+          print('clear the buffer:' .. word )
         end
 
         -- if type(output) == "function" then -- expand if function

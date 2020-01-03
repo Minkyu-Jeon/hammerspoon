@@ -14,6 +14,7 @@ hs.hotkey.bind(capslock, 'r', function()
 end)
 hs.alert.show("HS reloaded")
 
+-- TODO: 캡스락 키 제어
 hs.hotkey.bind(capslock, 'y', function() 
   hs.eventtap.event.newKeyEvent(nil, hs.keycodes.map.capslock, true):post()
 end)
@@ -31,6 +32,8 @@ key:bindUp(capslock, 'z', 'cmd', 'z')
 key:bindUp(capslock, 'x', 'cmd', 'x')
 key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
+
+-- TODO: 클립보드에서 앞 공백제거 후 붙여넣기
 key:bindDown(capslockShift, 'v', function() 
   clipboard = pasteboard.getContents()
   string.match("f123", "%D")     
