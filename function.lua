@@ -1,53 +1,12 @@
 
 local const = require('modules.const')
+local key = require('modules.key')
 
 local capslock= const.key.capslock
 local capslockShift = const.key.capslockShift
 
-local inputSource = {
-  english = "com.apple.keylayout.ABC",
-  korean = "com.apple.inputmethod.Korean.2SetKorean",
-}
-
--- 한영변환
--- local changeInput = function()
---   local current = hs.keycodes.currentSourceID()
---   local nextInput = nil
-
---   if current == inputSource.english then
---       nextInput = inputSource.korean
---   else
---       nextInput = inputSource.english
---   end
-  
---   local result = hs.keycodes.currentSourceID(nextInput)
---   if result == true then
---     hs.alert.show(nextInput)
---   end
--- end
-
--- hs.hotkey.bind(nil, 'f13', changeInput)
-
-
--- change layout
--- hs.hotkey.bind({}, "f13", function()
---   -- hs.eventtap.keyStroke({"ctrl", "option"}, "space")
---   local lay = hs.keycodes.currentLayout()
---   print(lay)
---   if lay == "ABC" then
---     -- hs.keycodes.setLayout("2-Set Korean")
---     -- hs.keycodes.currentSourceID(inputSource.korean)
---     hs.keycodes.setMethod("2-Set Korean")
---   else
---     -- hs.keycodes.currentSourceID(inputSource.english)
---     hs.keycodes.setLayout("ABC")
---   end
--- end)
-
-
 function volumeChange(isIncrement)
-  local volume = hs.audiodevice.current().volume
-  print(volume)  
+  local volume = hs.audiodevice.current().volume  
   -- When the volume gets near zero, change it in smaller increments. Otherwise even the first increment
   -- above zero may be too loud.
   -- NOTE(phil): I noticed that using a decimal smaller than 0.4 will sometimes result in the volume remaining
@@ -74,10 +33,45 @@ function volumeChange(isIncrement)
     newVolume = 0
   end
 
--- hs.alert.show(tostring(newVolume))
   hs.alert.show(tonumber(string.format("%.1f", newVolume)))
   hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
 end
+
+-----------------------------------------
+-- Defalut function keys
+-----------------------------------------
+key:bindDown(nil, 'F2', nil, 'F2', {
+  ['PyCharm'] = {'shift', 'F6'},
+})
+
+key:bindDown(nil, 'F3', nil, 'F3', {
+  ['Chrome'] = {nil, 'pageup'},
+})
+
+key:bindDown(nil, 'F4', nil, 'F4', {
+  ['Chrome'] = {nil, 'pagedown'},
+})
+
+key:bindDown(nil, 'F5', nil, 'F5', {
+  ['PyCharm'] = {'ctrl', 'd'}, -- debug run
+  ['Chrome'] = {'cmd', 'r'},
+})
+
+key:bindDown(nil, 'F6', nil, 'F6', {
+  ['PyCharm'] = {'ctrl', 'r'}, -- run
+})
+
+key:bindDown(nil, 'F9', nil, 'F9', {
+  ['PyCharm'] = {{'option', 'cmd'}, 'r'},
+})
+
+
+-----------------------------------------
+-- Capslock function keys
+-----------------------------------------
+key:bindDown(capslock, 'F6', capslock, 'F6', {
+  ['PyCharm'] = {'shift', 'F6'}
+})
 
 hs.hotkey.bind(capslock, "f10", function()  
   hs.audiodevice.defaultOutputDevice():setVolume(0)
@@ -92,11 +86,4 @@ hs.hotkey.bind(capslock, "f12", function()
 end)
 
 
-hs.hotkey.bind(capslock, 'f6', function()
-  local frontmostApplication = hs.application.frontmostApplication()  
-  if frontmostApplication and frontmostApplication:name() == "PyCharm" then        
-    hs.eventtap.keyStroke({"shift"}, "F6")  
-  else
-    hs.eventtap.keyStroke(mod, key)  
-  end
-end)
+

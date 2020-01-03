@@ -1,8 +1,12 @@
 local const = require('modules.const')
 local key = require('modules.key')
+local window = require('modules.window')
+local app = require('modules.app')
 
-local capslock= const.key.capslock
+local capslock = const.key.capslock
+local capslockCmd = const.key.capslockCmd
 local capslockShift = const.key.capslockShift
+local capslockCmdShift = const.key.capslockCmdShift
 
 -- reload
 hs.hotkey.bind(capslock, 'r', function() 
@@ -14,175 +18,84 @@ hs.hotkey.bind(capslock, 'y', function()
   hs.eventtap.event.newKeyEvent(nil, hs.keycodes.map.capslock, true):post()
 end)
 
-function keybindUp(mod, key, strokeMod, strokeKey)
-  hs.hotkey.bind(mod, key, nil, function()
-    hs.eventtap.keyStroke(strokeMod, strokeKey)
-  end)
-end
+key:bindUp(capslock, 'c', 'cmd', 'c')
+key:bindUp(capslock, 'v', 'cmd', 'v')
+key:bindUp(capslock, 'z', 'cmd', 'z')
+key:bindUp(capslock, 'x', 'cmd', 'x')
+key:bindUp(capslock, 's', 'cmd', 's')
+key:bindUp(capslock, 'f', 'cmd', 'f')
 
-keybindUp(capslock, 'c', 'cmd', 'c')
-keybindUp(capslock, 'v', 'cmd', 'v')
-keybindUp(capslock, 'z', 'cmd', 'z')
-keybindUp(capslock, 'x', 'cmd', 'x')
-keybindUp(capslock, 's', 'cmd', 's')
-keybindUp(capslock, 'f', 'cmd', 'f')
+key:bindDown(capslock, 'h', 'cmd', 'left')
+key:bindDown(capslockShift, 'h', {"cmd", "shift"}, 'left')
+key:bindDown(capslock, ';', 'cmd', 'right')
+key:bindDown(capslockShift, ';', {"cmd", "shift"}, 'right')
+key:bindDown(capslock, 'n', {}, 'pageup')
+key:bindDown(capslockShift, 'n', {"shift"}, 'pageup')
+key:bindDown(capslock, 'm', {}, 'pagedown')
+key:bindDown(capslockShift, 'm', {"shift"}, 'pagedown')
 
-function keybindDown(mod, key, strokeMod, strokeKey)
-  hs.hotkey.bind(mod, key, function()
-    hs.eventtap.keyStroke(strokeMod, strokeKey)
-  end)
-end
+key:bindDown(capslock, '1', {}, 'F1')
+key:bindDown(capslock, '2', {}, 'F2')
+key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
 
-keybindDown(capslock, 'h', 'cmd', 'left')
-keybindDown(capslockShift, 'h', {"cmd", "shift"}, 'left')
-keybindDown(capslock, ';', 'cmd', 'right')
-keybindDown(capslockShift, ';', {"cmd", "shift"}, 'right')
-keybindDown(capslock, 'n', {}, 'pageup')
-keybindDown(capslock, 'm', {}, 'pagedown')
-keybindDown(capslock, '1', {}, 'F1')
-keybindDown(capslock, '2', {}, 'F2')
-
-      
 key:bindUp(capslock, '[', 'cmd', '[', {
   ['Code'] = {{'ctrl', 'shift'}, '-'}
 })
 key:bindUp(capslock, ']', 'cmd', ']', {
   ['Code'] = {{'ctrl'}, '-'}
 })
-  
 
-function keyScript(mod, key, script)  
-  hs.hotkey.bind(mod, key, function()    
-    hs.osascript.applescript(script)   
-    -- hs.osascript.applescript("tell application \"System Events\" to key code 123 using control down")        
-    -- hs.osascript.applescript("tell application \"Mission Control\" to launch")    
-  end)
-end
+key:event(capslock, 'j', {}, 'left')
+key:event(capslockCmd, 'j', {'option'}, 'left')
+key:event(capslockShift, 'j', {'shift'}, 'left')
+key:event(capslockCmdShift, 'j', {'option', 'shift'}, 'left')
 
-keyScript(capslock, '3', 'tell application "Mission Control" to launch')
+key:event(capslock, 'l', {}, 'right')
+key:event(capslockCmd, 'l', {'option'}, 'right')
+key:event(capslockShift, 'l', {'shift'}, 'right')
+key:event(capslockCmdShift, 'l', {'option', 'shift'}, 'right')
 
+key:event(capslock, 'i', {}, 'up')
+key:event(capslockCmd, 'i', {'option'}, 'up')
+key:event(capslockShift, 'i', {'shift'}, 'up')
+key:event(capslockCmdShift, 'l', {'option', 'shift'}, 'up')
 
-function keyEvent(mod, key, strokeMod, strokeKey)
-  hs.hotkey.bind(mod, key, function()
-    hs.eventtap.event.newKeyEvent(strokeMod, strokeKey, true):post()
-  end, function()
-    hs.eventtap.event.newKeyEvent(strokeMod, strokeKey, false):post()
-  end, function()
-    hs.eventtap.event.newKeyEvent(strokeMod, strokeKey, true):setProperty(hs.eventtap.event.properties.keyboardEventAutorepeat, 1):post()
-  end)
-end
+key:event(capslock, 'k', {}, 'down')
+key:event(capslockCmd, 'k', {'option'}, 'down')
+key:event(capslockShift, 'k', {'shift'}, 'down')
+key:event(capslockCmdShift, 'k', {'option', 'shift'}, 'down')
 
-keyEvent(capslock, 'space', {}, 'F13')
+key:event(capslock, 'u', {}, 'delete')
+key:event(capslock, 'o', {}, 'forwarddelete')
 
-keyEvent(capslock, 'j', {}, 'left')
-keyEvent(capslockShift, 'j', {'shift'}, 'left')
+app:launch(capslock, 'g', const.app.finder)
+app:launch(capslock, 't', const.app.iTerm)
+app:launch(capslockShift, 'c', const.app.visualStudioCode)
+app:launch(capslockShift, 's', const.app.slack)
+app:launch(capslockShift, 'w', const.app.chrome)
 
-keyEvent(capslock, 'l', {}, 'right')
-keyEvent(capslockShift, 'l', {'shift'}, 'right')
+key:bindDown(capslock, 'space', nil, 'F13')  -- 한영전환
 
-keyEvent(capslock, 'i', {}, 'up')
-keyEvent(capslockShift, 'i', {'shift'}, 'up')
+key:bindDown(capslock, '.', capslock, '.', {
+  ['Pycharm'] = {"option", "return"},
+  ['Android Studio'] = {"option", 'return'},
+  ['Chrome'] = {'---->'},
+  ['Code'] = {"cmd", "."},
+})
 
-keyEvent(capslock, 'k', {}, 'down')
-keyEvent(capslockShift, 'k', {'shift'}, 'down')
+key:bindDown(capslock, '/', capslock, '/', {
+  ['Chrome'] = {'---->>'},
+})
 
-keyEvent(capslock, 'u', {}, 'delete')
-keyEvent(capslock, 'o', {}, 'forwarddelete')
+key:bindDown(capslock, '4', capslock, '4', {
+  ['Code'] = { '$$ $$' },
+})
 
-function launchApp(mod, key, app)
-  hs.hotkey.bind(mod, key, function()    
-    hs.application.launchOrFocus(app)
-  end)
-end
-
-launchApp(capslock, 'g', const.app.finder)
-launchApp(capslock, 't', const.app.iTerm)
-launchApp(capslockShift, 'c', const.app.visualStudioCode)
-launchApp(capslockShift, 's', const.app.slack)
-launchApp(capslockShift, 'w', const.app.chrome)
-
-
-local aclock = hs.loadSpoon('AClock')
-
-hs.hotkey.bind(capslockShift, "t", function()
-  aclock:toggleShow()
-end)
-
-
-
--- intelligence
-hs.hotkey.bind(capslock, ".", function()
-  local frontmostApplication = hs.application.frontmostApplication()  
-  if frontmostApplication and frontmostApplication:name() == const.app.androidStudio then    
-    hs.eventtap.keyStroke({'alt'}, "return")  
-  end  
-end)
-
-
-hs.hotkey.bind(capslock, "6", function()
-  local frontmostApplication = hs.application.frontmostApplication()  
-  if frontmostApplication and frontmostApplication:name() == "Android Studio" then    
-    -- rename
-    hs.eventtap.keyStroke({}, "F6")  
-  end  
-end)
-
-
-
-
--- default windowfilter, no thumbnails
-
-hs.hotkey.bind(capslockShift, 'o', function()
-  expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 
-  expose:toggleShow()
-end)
-
-
-local ClipboardTool = hs.loadSpoon("ClipboardTool")
-ClipboardTool:start()
-hs.hotkey.bind(capslock, 'p', function() 
-    ClipboardTool:toggleClipboard()
-end)
-                
-
-
-function move_window(direction)
-  return function()
-      local win      = hs.window.focusedWindow()
-      local app      = win:application()
-      local app_name = app:name()
-      local f        = win:frame()
-      local screen   = win:screen()
-      local max      = screen:frame()
-      if direction == "left" then
-          f.x = max.x
-          f.w = (max.w / 2)
-      elseif direction == "right" then
-          f.x = (max.x + (max.w / 2))
-          f.w = (max.w / 2)
-      elseif direction == "up" then
-          f.x = max.x
-          f.w = max.w
-      elseif direction == "down" then
-          f.x = (max.x + (max.w / 8))
-          f.w = (max.w * 3 / 4)
-      end
-      f.y = max.y
-      f.h = max.h
-      win:setFrame(f, 0.0)
-  end
-end
-
-hs.hotkey.bind(capslock, "Left", move_window("left"))
-hs.hotkey.bind(capslock, "Right", move_window("right"))
-hs.hotkey.bind(capslock, "Up", move_window("up"))
-hs.hotkey.bind(capslock, "Down", move_window("down"))
-
-
-
--- local ksheet = hs.loadSpoon('KSheet')
--- hs.hotkey.bind(capslock, 'k', function()
---   isSheetOpend = !isSheetOpend
---   if isSheetOpend then
---   ksheet:show()
--- end)
+key:bindDown(capslock, '6', capslock, '6', {
+  ['Android Studio'] = { nil, 'F6'}
+})
+    
+hs.hotkey.bind(capslock, "Left", window:move("left"))
+hs.hotkey.bind(capslock, "Right", window:move("right"))
+hs.hotkey.bind(capslock, "Up", window:move("up"))
+hs.hotkey.bind(capslock, "Down", window:move("down"))
