@@ -83,7 +83,19 @@ hs.hotkey.bind(capslock, "f12", function()
 end)
 
 
-hs.hotkey.bind(capslock, 'f6', function()
+hs.hotkey.bind(nil, 'F5', function()
+  local frontmostApplication = hs.application.frontmostApplication()  
+  print(frontmostApplication)
+
+  if frontmostApplication and frontmostApplication:name() == "Chrome" then        
+    hs.eventtap.keyStroke({"cmd"}, "r")  
+  else
+    hs.eventtap.keyStroke(mod, key)  
+  end
+end)
+
+
+hs.hotkey.bind(capslock, 'F6', function()
   local frontmostApplication = hs.application.frontmostApplication()  
   if frontmostApplication and frontmostApplication:name() == "PyCharm" then        
     hs.eventtap.keyStroke({"shift"}, "F6")  
