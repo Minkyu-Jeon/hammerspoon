@@ -2,7 +2,7 @@
 local obj = {}
 
 
-function runApps(apps, func)
+function runByApps(apps, func)
   if func ~= nil and type(func) == 'function' then
     local _, o = pcall(func)
     if not _ then
@@ -13,7 +13,7 @@ function runApps(apps, func)
 
   if apps then
     local frontmostApplication = hs.application.frontmostApplication()            
-    local name = frontmostApplication:name()
+    local name = frontmostApplication:name()    
     local keycodes = apps[name]     
 
     if keycodes then
@@ -30,8 +30,8 @@ end
 
 
 function obj:bindDown(mod, key, strokeMod, strokeKey, apps)  
-  hs.hotkey.bind(mod, key, function()        
-    found = runApps(apps, strokeMod)   
+  hs.hotkey.bind(mod, key, function()            
+    found = runByApps(apps, strokeMod)   
 
     if found == false then      
       if mod == strokeMod and key == strokeKey then    
@@ -47,7 +47,7 @@ end
 
 function obj:bindUp(mod, key, strokeMod, strokeKey, apps)  
   hs.hotkey.bind(mod, key, nil, function()    
-    found = runApps(apps)   
+    found = runByApps(apps)   
 
     if found == false then
       if mod == strokeMod and key == strokeKey then                

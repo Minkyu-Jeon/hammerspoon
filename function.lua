@@ -40,8 +40,11 @@ end
 -----------------------------------------
 -- Defalut function keys
 -----------------------------------------
+
+
 key:bindDown(nil, 'F2', nil, 'F2', {
   ['PyCharm'] = {'shift', 'F6'},
+  ['Code'] = {'cmd', 'F2'},
 })
 
 key:bindDown(nil, 'F3', nil, 'F3', {
@@ -51,6 +54,7 @@ key:bindDown(nil, 'F3', nil, 'F3', {
 key:bindDown(nil, 'F4', nil, 'F4', {
   ['Chrome'] = {nil, 'pagedown'},
   ['Code'] = {nil, 'F12'},
+  ['PyCharm'] = {'cmd', 'b'},
 })
 
 key:bindDown(nil, 'F5', nil, 'F5', {
@@ -85,3 +89,6 @@ end)
 hs.hotkey.bind(capslock, "f12", function()
   volumeChange(true)
 end)
+
+key:bindDown(nil, 'end', 'cmd', 'right', {})
+key:bindDown(nil, 'home', 'cmd', 'left', {})

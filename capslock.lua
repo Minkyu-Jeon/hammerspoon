@@ -21,9 +21,9 @@ end)
 
 app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
+app:launch(capslock, 'w', const.app.chrome)
 app:launch(capslockShift, 'c', const.app.visualStudioCode)
 app:launch(capslockShift, 's', const.app.slack)
-app:launch(capslockShift, 'w', const.app.chrome)
 
 key:bindUp(capslock, 'a', 'cmd', 'a')
 key:bindUp(capslock, 'c', 'cmd', 'c')
@@ -95,6 +95,7 @@ key:event(capslock, 'e', {}, 'forwarddelete')
 
 key:bindDown(capslock, 'b', capslock, 'b', {
   ['Code'] = { nil, "F12"}, -- follow
+  ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
 })
 
 key:bindDown(capslock, 'delete', function() 
@@ -105,8 +106,8 @@ end)
 
 key:bindDown(capslock, 'space', nil, 'F13')  -- 한영전환
 
-key:bindDown(capslock, '.', capslock, '.', {
-  ['Pycharm'] = {"option", "return"},
+key:bindUp(capslock, '.', capslock, '.', {
+  ['PyCharm'] = {"option", "return"},
   ['Android Studio'] = {"option", 'return'},
   ['Chrome'] = {'---->'},
   ['Code'] = {"cmd", "."},
@@ -116,6 +117,15 @@ key:bindDown(capslock, '/', capslock, '/', {
   ['Chrome'] = {'---->>'},
 })
 
+key:bindDown(capslock, '0', capslock, '0', {
+  ['PyCharm'] = {'cmd', 'F3'},  -- show bookmark list
+})
+
+
+key:bindDown(capslock, '2', capslock, '2', {
+  ['Code'] = {'cmd', 'F2'},
+})
+
 key:bindDown(capslock, '4', capslock, '4', {
   ['Code'] = { '$$ $$' },
 })
@@ -123,6 +133,15 @@ key:bindDown(capslock, '4', capslock, '4', {
 key:bindDown(capslock, '6', capslock, '6', {
   ['Android Studio'] = { nil, 'F6'}
 })
+
+key:bindDown(capslock, '-', capslock, '-', {
+  ['PyCharm'] = {'shift', 'F2'},  -- show bookmark list
+})
+
+key:bindDown(capslock, '=', capslock, '=', {
+  ['PyCharm'] = {nil, 'F2'},  -- show bookmark list
+})
+
     
 hs.hotkey.bind(capslock, "Left", window:move("left"))
 hs.hotkey.bind(capslock, "Right", window:move("right"))
