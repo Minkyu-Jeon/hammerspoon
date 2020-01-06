@@ -3,6 +3,7 @@ require('capslock')
 require('command')
 require('function')
 require('text')
+require('symbol')
 
 -- watcher
 local wifiWatcher = require('wifi')

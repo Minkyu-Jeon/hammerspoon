@@ -21,9 +21,10 @@ end)
 
 app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
-app:launch(capslockShift, 'c', const.app.visualStudioCode)
-app:launch(capslockShift, 's', const.app.slack)
-app:launch(capslockShift, 'w', const.app.chrome)
+app:launch(capslockShift, 'a', 'Android Studio')
+app:launch(capslockShift, 'c', 'Visual Studio Code')
+app:launch(capslockShift, 's', 'Slack')
+app:launch(capslockShift, 'w', 'Google Chrome')
 
 key:bindUp(capslock, 'a', 'cmd', 'a')
 key:bindUp(capslock, 'c', 'cmd', 'c')

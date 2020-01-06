@@ -35,7 +35,7 @@ ht.keywords = {
     [";7"] = { "VII" },
     [";8"] = { "VIII" },
     [";9"] = { "IX" },
-    [";10"] = { "X" },
+    [";10"] = { "X" },    
     ["1["] = { nil, function()     
         local clip = hs.pasteboard.getContents()    
         local text = "![](" .. clip .. ")"
@@ -59,3 +59,4 @@ ht.keywords = {
 }
 
 ht:start()
+
