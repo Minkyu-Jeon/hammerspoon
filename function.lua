@@ -91,4 +91,6 @@ hs.hotkey.bind(capslock, "f12", function()
 end)
 
 key:bindDown(nil, 'end', 'cmd', 'right', {})
+key:bindDown('shift', 'end', {'cmd', 'shift'}, 'right', {})
 key:bindDown(nil, 'home', 'cmd', 'left', {})
+key:bindDown('shift', 'home', {'cmd', 'shift'}, 'left', {})
