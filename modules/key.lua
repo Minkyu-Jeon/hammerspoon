@@ -47,7 +47,7 @@ end
 
 function obj:bindUp(mod, key, strokeMod, strokeKey, apps)  
   hs.hotkey.bind(mod, key, nil, function()    
-    found = runByApps(apps)   
+    found = runByApps(apps, strokeMod)   
 
     if found == false then
       if mod == strokeMod and key == strokeKey then                

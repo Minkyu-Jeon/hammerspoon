@@ -12,11 +12,10 @@ local const = require('modules.const')
 local capslock= const.key.capslock
 local capslockShift = const.key.capslockShift
 
-
 local ClipboardTool = hs.loadSpoon("ClipboardTool")
 ClipboardTool:start()
 hs.hotkey.bind(capslock, 'p', function() 
-    ClipboardTool:toggleClipboard()
+  ClipboardTool:toggleClipboard()
 end)
 
 local aclock = hs.loadSpoon('AClock')
@@ -24,27 +23,10 @@ hs.hotkey.bind(capslockShift, "t", function()
   aclock:toggleShow()
 end)          
 
-
-hs.hotkey.bind(capslockShift, 'o', function()
-    expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 
-    expose:toggleShow()
-  end)
-  
-
--- local ksheet = hs.loadSpoon('KSheet')
--- hs.hotkey.bind(capslock, 'k', function()
---   isSheetOpend = !isSheetOpend
---   if isSheetOpend then
---   ksheet:show()
--- end)
-
-
-
-
-
-
-
-
+hs.hotkey.bind(capslockShift, 'p', function()
+  expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 
+  expose:toggleShow()
+end)
 
 -- Make the alerts look nicer.
 hs.alert.defaultStyle.strokeColor =  {white = 1, alpha = 0}

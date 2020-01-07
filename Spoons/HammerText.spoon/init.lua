@@ -54,8 +54,8 @@ function expander()
     local keyWatcher
 
     -- create an "event listener" function that will run whenever the event happens
-    keyWatcher = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(ev)
-        local keyCode = ev:getKeyCode()
+    keyWatcher = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(ev)           
+        local keyCode = ev:getKeyCode()        
         local char = ev:getCharacters()
 
         -- if "delete" key is pressed
@@ -86,6 +86,10 @@ function expander()
         end
 
         obj.logger.df("Word to check if hotstring:", word)
+
+
+        --for i = 1, max, 1 do
+        --end
 
         -- finally, if "word" is a hotstring
         local output = obj.keywords[word]
