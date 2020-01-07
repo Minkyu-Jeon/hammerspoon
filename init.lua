@@ -1,17 +1,23 @@
+
+local const = require('modules.const')
+local capslock= const.key.capslock
+local capslockCmd = const.key.capslockCmd
+local capslockShift = const.key.capslockShift
+
 -- key bind
 require('capslock')
 require('command')
 require('function')
 require('text')
 require('symbol')
+require('modules.inputsource_aurora')
+require('modules.caffein'):init(capslockCmd, 'p')
 
 -- watcher
 local wifiWatcher = require('wifi')
 
-local const = require('modules.const')
-local capslock= const.key.capslock
-local capslockShift = const.key.capslockShift
 
+-- Spoons
 local ClipboardTool = hs.loadSpoon("ClipboardTool")
 ClipboardTool:start()
 hs.hotkey.bind(capslock, 'p', function() 
@@ -24,6 +30,11 @@ hs.hotkey.bind(capslockShift, "t", function()
 end)          
 
 hs.hotkey.bind(capslockShift, 'p', function()
+  expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 
+  expose:toggleShow()
+end)
+
+hs.hotkey.bind(capslock, '\'', function()
   expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 
   expose:toggleShow()
 end)

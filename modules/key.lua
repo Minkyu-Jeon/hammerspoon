@@ -6,7 +6,8 @@ function runByApps(apps, func)
   if func ~= nil and type(func) == 'function' then
     local _, o = pcall(func)
     if not _ then
-      obj.logger.ef("~~ expansion for '" .. 'what' .. "' gave an error of " .. o)
+      -- obj.logger.ef("~~ expansion for '" .. 'what' .. "' gave an error of " .. o)
+      print(o)
     end
     return true
   end

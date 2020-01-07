@@ -94,3 +94,18 @@ key:bindDown(nil, 'end', 'cmd', 'right', {})
 key:bindDown('shift', 'end', {'cmd', 'shift'}, 'right', {})
 key:bindDown(nil, 'home', 'cmd', 'left', {})
 key:bindDown('shift', 'home', {'cmd', 'shift'}, 'left', {})
+
+
+
+
+
+view = hs.webview.new({x = 10, y = 10, w = 150, h = 100})
+view:windowStyle("closable")
+view:windowStyle("titled")
+view:windowStyle("resizable")
+view:url('file:///' .. os.getenv("HOME") .. '/test/menu.html')
+
+hs.hotkey.bind("shift", "f4", function()
+  local email = 'test@email.com'
+  hs.messages.SMS(email, "Test iMessage")
+end)

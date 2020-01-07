@@ -35,15 +35,51 @@ key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
 
 -- TODO: 클립보드에서 앞 공백제거 후 붙여넣기
-key:bindDown(capslockShift, 'v', function() 
-  clipboard = pasteboard.getContents()
-  string.match("f123", "%D")     
-  str = "qwe\nasd\rzxc"
-  lines = {}
-  for s in str:gmatch("[^\r\n]+") do
-    table.insert(lines, s)
+key:bindUp(capslockShift, 'v', function() 
+  clipboard = hs.pasteboard.getContents()
+  
+  minLen = string.len(clipboard)
+  isFirst = true
+  exceptFirst = false
+
+  for t in clipboard:gmatch("[^\r\n]+") do
+    w, s = string.match(t, "(%s*)(.*)")
+    wLen = string.len(w)
+    sLen = string.len(s)
+
+    if sLen ~= 0 then
+      if isFirst == true then
+        isFirst = false
+        if wLen == 0 then
+          exceptFirst = true        
+        elseif wLen < minLen then
+            minLen = wLen
+        end     
+      else
+        if wLen < minLen then
+          minLen = wLen
+        end    
+      end
+    end
   end
+
+  newText = ""
+  isFirst = true
+  for t in clipboard:gmatch("[^\r\n]+") do
+    if isFirst == true and exceptFirst == true then
+      newText = t .. '\r'
+      isFirst = false
+    else
+      r = string.sub(t, minLen + 1, string.len(t))
+      print(":" .. r .. ":")
+      newText = newText .. r ..'\r'
+    end
+  end
+    
+  hs.pasteboard.setContents(newText)
+  hs.eventtap.keyStroke('cmd', 'v')
 end) 
+
 
 key:bindDown(capslock, 'h', 'cmd', 'left')
 key:bindDown(capslockShift, 'h', {"cmd", "shift"}, 'left')
