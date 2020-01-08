@@ -11,11 +11,20 @@ function todo(days)
   dateAfterNumberOfDays = date:formatAddDays(days)
   local text = "<todo due:" .. dateAfterNumberOfDays .. "></todo>"
   hs.eventtap.keyStrokes(text)
+  left(7)
+end
+
+function code(lang)  
+  local text = "```" .. lang .. "\r\r```"
+  hs.pasteboard.setContents(text)
+  hs.eventtap.keyStroke('cmd', 'v')
+  hs.eventtap.keyStroke(nil, 'up')
 end
 
 function change()
   hs.eventtap.keyStroke(nil, 'F13') 
 end
+
 
 -- text expander
 ht = hs.loadSpoon("HammerText")
@@ -44,15 +53,16 @@ ht.keywords = {
     },
     ["ㅎㅏㅁㄱㅔ"] = { "함께", nil, 2 },
     ["ㄴㅡㄱㅣㅁ"] = { "느낌", nil, 2 },    
-    ['/tot'] = { nil, function() todo(1) left(7) end },
-    ['/tow'] = { nil, function() todo(7) left(7) end },
-    ['/tom'] = { nil, function() todo(30) left(7) end },
+    ['/tot'] = { nil, function() todo(1) end },
+    ['/tow'] = { nil, function() todo(7) end },
+    ['/tom'] = { nil, function() todo(30) end },
     ['/fr'] = { nil, function()
       local text = "<fragment-block></fragment-block>"
       hs.eventtap.keyStrokes(text)
       left(17)      
       end 
     },    
+    ['`js'] = { nil, function() code('javascript') end },
     ['ㄱㅔㅅㄷ'] = {'겠ㄷ', nil, 2},
     ['ㅇㅣㅅㅇ'] = {'있ㅇ', nil, 2},
     ['ㅇㅗㅏㅅㄷ'] = {'왔ㄷ', nil, 2},

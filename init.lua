@@ -4,17 +4,16 @@ local capslock= const.key.capslock
 local capslockCmd = const.key.capslockCmd
 local capslockShift = const.key.capslockShift
 
--- key bind
+
+require('modules.inputsource_aurora')
+require('modules.caffein'):init(capslockShift, 'p')
+
 require('capslock')
 require('command')
 require('function')
-require('text')
 require('symbol')
-require('modules.inputsource_aurora')
-require('modules.caffein'):init(capslockCmd, 'p')
-
--- watcher
-local wifiWatcher = require('wifi')
+require('wifi')
+require('text')
 
 
 -- Spoons
@@ -28,11 +27,6 @@ local aclock = hs.loadSpoon('AClock')
 hs.hotkey.bind(capslockShift, "t", function()
   aclock:toggleShow()
 end)          
-
-hs.hotkey.bind(capslockShift, 'p', function()
-  expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 
-  expose:toggleShow()
-end)
 
 hs.hotkey.bind(capslock, '\'', function()
   expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 

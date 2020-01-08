@@ -34,7 +34,7 @@ key:bindUp(capslock, 'x', 'cmd', 'x')
 key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
 
--- TODO: 클립보드에서 앞 공백제거 후 붙여넣기
+-- 클립보드에서 앞 공백제거 후 붙여넣기
 key:bindUp(capslockShift, 'v', function() 
   clipboard = hs.pasteboard.getContents()
   
@@ -75,8 +75,9 @@ key:bindUp(capslockShift, 'v', function()
       newText = newText .. r ..'\r'
     end
   end
-    
-  hs.pasteboard.setContents(newText)
+  
+  result = string.sub(newText, 1, string.len(newText))
+  hs.pasteboard.setContents(result)
   hs.eventtap.keyStroke('cmd', 'v')
 end) 
 
@@ -126,8 +127,6 @@ key:event(capslock, 'o', {}, 'forwarddelete')
 
 key:event(capslock, 'q', {}, 'delete')
 key:event(capslock, 'e', {}, 'forwarddelete')
-
-
 
 
 key:bindDown(capslock, 'b', capslock, 'b', {

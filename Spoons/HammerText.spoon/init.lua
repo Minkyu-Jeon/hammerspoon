@@ -25,6 +25,8 @@
       In that case you have to type one of the "buffer-clearing" keys that are included in the "navigational keys" conditional (which is very often the case).
 --]]
 
+-- https://github.com/cweagans/dotfiles/commit/84da84d672bb2158b95fa28e5dd840dd21d3bb1c
+
 local obj = {}
 obj.__index = obj
 
@@ -47,6 +49,44 @@ obj.keywords = {
   ["..addr"] = "My address",
 }
 
+obj.maxLen = 17
+
+
+function trigger(word)
+  -- finally, if "word" is a hotstring
+  local output = obj.keywords[word]
+  if output then
+     text = output[1]
+     func = output[2]
+     len = output[3]         
+     
+     print("in trigger")
+
+     if len == nil then
+       len = utf8.len(word)
+     end
+     for i = 1, len, 1 do hs.eventtap.keyStroke({}, "delete", 0.01) end 
+     
+    if func then                    
+      local _, o = pcall(func)
+      if not _ then
+        print("error" .. o)
+        obj.logger.ef("~~ expansion for '" .. 'what' .. "' gave an error of " .. o)
+      end
+      -- text = o
+      print('end of func')
+    end
+
+    if text then      
+      hs.eventtap.keyStrokes(text) -- expand the word
+    end         
+
+    word = "" -- clear the buffer
+    print('clear the buffer:' .. word )
+    return true
+  end
+  return false
+end
 
 function expander()
     local word = ""
@@ -54,7 +94,7 @@ function expander()
     local keyWatcher
 
     -- create an "event listener" function that will run whenever the event happens
-    keyWatcher = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(ev)           
+    keyWatcher = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(ev)                 
         local keyCode = ev:getKeyCode()        
         local char = ev:getCharacters()
 
@@ -75,6 +115,7 @@ function expander()
         word = word .. char
         obj.logger.df("Word after appending:", word)
 
+
         -- if one of these "navigational" keys is pressed
         if keyCode == keyMap["return"]
         or keyCode == keyMap["space"]
@@ -87,57 +128,19 @@ function expander()
 
         obj.logger.df("Word to check if hotstring:", word)
 
-
-        --for i = 1, max, 1 do
-        --end
-
-        -- finally, if "word" is a hotstring
-        local output = obj.keywords[word]
-        if output then
-           text = output[1]
-           func = output[2]
-           len = output[3]           
-      
-           if len == nil then
-             len = utf8.len(word)
-           end
-           for i = 1, len, 1 do hs.eventtap.keyStroke({}, "delete", 0.01) end 
-           
-          if func then                    
-            local _, o = pcall(func)
-            if not _ then
-              print("error" .. o)
-              obj.logger.ef("~~ expansion for '" .. 'what' .. "' gave an error of " .. o)
-            end
-            -- text = o
-            print('end of func')
-          end
-
-          if text then
-            
-            hs.eventtap.keyStrokes(text) -- expand the word
-          end         
-
-          word = "" -- clear the buffer
-          print('clear the buffer:' .. word )
+        wordLen = string.len(word)
+        if wordLen > obj.maxLen then
+          word = string.sub(word, wordLen-obj.maxLen, wordLen)
         end
 
-        -- if type(output) == "function" then -- expand if function
-        --   local _, o = pcall(output)
-        --   if not _ then
-        --     obj.logger.ef("~~ expansion for '" .. what .. "' gave an error of " .. o)
-        --     -- could also set o to nil here so that the expansion doesn't occur below, but I think
-        --     -- seeing the error as the replacement will be a little more obvious that a print to the
-        --     -- console which I may or may not have open at the time...
-        --     -- maybe show an alert with hs.alert instead?
-        --   end
-        --   output = o
-        -- end
-        -- if output then
-        --     for i = 1, utf8.len(word), 1 do hs.eventtap.keyStroke({}, "delete", 0) end -- delete the abbreviation
-        --     hs.eventtap.keyStrokes(output) -- expand the word
-        --     word = "" -- clear the buffer
-        -- end
+        wordLen = string.len(word)
+        result = false
+        for i = 1, wordLen, 1 do
+          if result == false then
+            part = string.sub(word, wordLen-i + 1, wordLen)                               
+            result = trigger(part)
+          end
+        end
 
         return false -- pass the event on to the application
     end):start() -- start the eventtap
