@@ -45,8 +45,8 @@ obj.logger = hs.logger.new('HammerText')
 --- Map of keywords to strings or functions that return a string
 --- to be replaced.
 obj.keywords = {
-  ["..name"] = "My name",
-  ["..addr"] = "My address",
+  ["..name"] = {"My name"},
+  ["..addr"] = {"My address"},
 }
 
 obj.maxLen = 17
@@ -65,16 +65,15 @@ function trigger(word)
      if len == nil then
        len = utf8.len(word)
      end
-     for i = 1, len, 1 do hs.eventtap.keyStroke({}, "delete", 0.01) end 
+     for i = 1, len, 1 do hs.eventtap.keyStroke({}, "delete", 0) end 
      
     if func then                    
       local _, o = pcall(func)
       if not _ then
         print("error" .. o)
-        obj.logger.ef("~~ expansion for '" .. 'what' .. "' gave an error of " .. o)
+        -- obj.logger.ef("~~ expansion for '" .. 'what' .. "' gave an error of " .. o)
       end
       -- text = o
-      print('end of func')
     end
 
     if text then      
@@ -82,7 +81,6 @@ function trigger(word)
     end         
 
     word = "" -- clear the buffer
-    print('clear the buffer:' .. word )
     return true
   end
   return false

@@ -21,6 +21,23 @@ function code(lang)
   hs.eventtap.keyStroke(nil, 'up')
 end
 
+function str(type)
+  -- 마지막 글자가 자음 하나이면, 따로 처리한다.
+  local len = string.len(type)
+  local word = string.sub(type, 0, len-3)
+  local last = string.sub(type, len-2, len)
+
+  hs.eventtap.keyStrokes(word)
+
+  if last == 'ㄷ' then 
+    hs.eventtap.keyStroke(nil, 'e')
+  elseif last == 'ㅇ' then 
+      hs.eventtap.keyStroke(nil, 'd')
+  else
+    hs.eventtap.keyStrokes(last)
+  end
+end
+
 function change()
   hs.eventtap.keyStroke(nil, 'F13') 
 end
@@ -64,9 +81,14 @@ ht.keywords = {
     },    
     ['`js'] = { nil, function() code('javascript') end },
     ['ㄱㅔㅅㄷ'] = {'겠ㄷ', nil, 2},
-    ['ㅇㅣㅅㅇ'] = {'있ㅇ', nil, 2},
+    ['ㅇㅣㅅㅇ'] = { nil, function() str('있ㅇ') end, 2},
+    ['ㅇㅣㅅㄷ'] = { nil, function() str('있ㄷ') end, 2},
     ['ㅇㅗㅏㅅㄷ'] = {'왔ㄷ', nil, 2},
+    ['ㅐㅏㄱ'] = { 'OKR', nil, 3 },
 }
 
 ht:start()
+
+
+
 

@@ -24,7 +24,7 @@ hs.hotkey.bind(capslock, 'p', function()
 end)
 
 local aclock = hs.loadSpoon('AClock')
-hs.hotkey.bind(capslockShift, "t", function()
+hs.hotkey.bind(capslock, "0", function()
   aclock:toggleShow()
 end)          
 

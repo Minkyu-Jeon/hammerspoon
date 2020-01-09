@@ -160,6 +160,8 @@ key:bindDown(capslock, '0', capslock, '0', {
 
 key:bindDown(capslock, '2', capslock, '2', {
   ['Code'] = {'cmd', 'F2'},
+  ['PyCharm'] = {nil, 'F2'},  
+  ['Chrome'] = {nil, 'return'},  
 })
 
 key:bindDown(capslock, '4', capslock, '4', {
@@ -172,10 +174,12 @@ key:bindDown(capslock, '6', capslock, '6', {
 
 key:bindDown(capslock, '-', capslock, '-', {
   ['PyCharm'] = {'shift', 'F2'},  -- show bookmark list
+  ['Chrome'] = {{'ctrl', 'shift'}, 'tab'},
 })
 
 key:bindDown(capslock, '=', capslock, '=', {
   ['PyCharm'] = {nil, 'F2'},  -- show bookmark list
+  ['Chrome'] = {{'ctrl'}, 'tab'},
 })
 
     
