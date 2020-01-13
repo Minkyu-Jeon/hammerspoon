@@ -168,8 +168,13 @@ key:bindDown(capslock, '0', capslock, '0', {
 
 key:bindDown(capslock, '2', capslock, '2', {
   ['Code'] = {'cmd', 'F2'},
-  ['PyCharm'] = {nil, 'F2'},  
+  ['PyCharm'] = {'shift', 'F6'},  
   ['Chrome'] = {nil, 'return'},  
+})
+
+key:bindDown(capslock, '3', capslock, '3', {  
+  ['PyCharm'] = {nil, 'F2'},  
+  
 })
 
 key:bindDown(capslock, '4', capslock, '4', {
