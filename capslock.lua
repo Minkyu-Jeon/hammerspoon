@@ -174,7 +174,6 @@ key:bindDown(capslock, '2', capslock, '2', {
 
 key:bindDown(capslock, '3', capslock, '3', {  
   ['PyCharm'] = {nil, 'F2'},  
-  
 })
 
 key:bindDown(capslock, '4', capslock, '4', {

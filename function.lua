@@ -78,6 +78,14 @@ key:bindDown(capslock, 'F6', capslock, 'F6', {
   ['PyCharm'] = {'shift', 'F6'}
 })
 
+hs.hotkey.bind('cmd', "F10", nil, function()  
+  for i=1, 10 do -- 기본 증가치는 1이 된다
+    hs.eventtap.keyStroke(nil, "end")      
+    hs.eventtap.keyStroke(nil, ",")      
+    hs.eventtap.keyStroke(nil, "down")     
+  end 
+end)
+
 hs.hotkey.bind(capslock, "f10", function()  
   hs.audiodevice.defaultOutputDevice():setVolume(0)
 end)
