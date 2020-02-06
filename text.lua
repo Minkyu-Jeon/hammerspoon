@@ -51,7 +51,6 @@ ht.keywords = {
     ["@@"] = { "$$" },
     ["..addr"] = "My address",
     [" ne "] = { " != " },
-    ["--="] = { "→" },
     [";."] = { "·" },
     [";1"] = { "I" },
     [";2"] = { "II" },
@@ -75,15 +74,16 @@ ht.keywords = {
     ['/tow'] = { nil, function() todo(7) end },
     ['/tom'] = { nil, function() todo(30) end },
     ['/fr'] = { nil, function()
-      local text = "<fragment-block></fragment-block>"
+      local text = "<fragment-block></fragment-block>"o
       hs.eventtap.keyStrokes(text)
       left(17)      
       end 
     },    
     ['`js'] = { nil, function() code('javascript') end },
     ['`ㅓㄴ'] = { nil, function() code('javascript') end },
-    ['`py'] = { nil, function() code('python') end },
+    ['`py'] = { nil, function() code('python') end},
     ['`ㅔㅛ'] = { nil, function() code('python') end },
+    -- 한글
     ['ㄱㅔㅅㄷ'] = {'겠ㄷ', nil, 2},
     ['ㅇㅣㅅㅇ'] = { nil, function() str('있ㅇ') end, 2},
     ['ㅇㅣㅅㄷ'] = { nil, function() str('있ㄷ') end, 2},

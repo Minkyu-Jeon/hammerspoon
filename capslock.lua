@@ -21,7 +21,8 @@ end)
 
 app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
-app:launch(capslock, 'w', 'Google Chrome')
+app:launch(capslock, 'w', 'Notion')
+app:launch(capslockShift, 'w', 'Google Chrome')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
 app:launch(capslockShift, 's', 'Slack')
@@ -65,13 +66,18 @@ key:bindUp(capslockShift, 'v', function()
 
   newText = ""
   isFirst = true
-  for t in clipboard:gmatch("[^\r\n]+") do
+  for t in clipboard:gmatch("[^\n]*") do  
     if isFirst == true and exceptFirst == true then
       newText = t .. '\r'
       isFirst = false
-    else
-      r = string.sub(t, minLen + 1, string.len(t))
-      print(":" .. r .. ":")
+    else      
+      -- if t:match("%S") ~= nil then        
+      if string.find(t,"^%s*$") then        
+        r = t  
+      else
+        r = string.sub(t, minLen + 1, string.len(t))        
+      end
+      
       newText = newText .. r ..'\r'
     end
   end
@@ -79,6 +85,7 @@ key:bindUp(capslockShift, 'v', function()
   result = string.sub(newText, 1, string.len(newText))
   hs.pasteboard.setContents(result)
   hs.eventtap.keyStroke('cmd', 'v')
+  hs.eventtap.keyStroke(nil, 'forwarddelete')
 end) 
 
 
@@ -140,6 +147,10 @@ key:event(capslock, 'e', {}, 'forwarddelete')
 key:bindDown(capslock, 'b', capslock, 'b', {
   ['Code'] = { nil, "F12"}, -- follow
   ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
+})
+
+key:bindDown(capslockShift, 'b', capslockShift, 'b', {  
+  ['PyCharm'] = {'cmd', 'F3'},  -- toggle bookmark
 })
 
 key:bindDown(capslock, 'delete', function() 

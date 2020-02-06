@@ -14,7 +14,7 @@ require('function')
 require('symbol')
 require('wifi')
 require('text')
-
+require('altMode')
 
 -- Spoons
 local ClipboardTool = hs.loadSpoon("ClipboardTool")
