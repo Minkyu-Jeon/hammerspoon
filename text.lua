@@ -32,6 +32,8 @@ function str(type)
 
   if last == 'ㄷ' then 
     hs.eventtap.keyStroke(nil, 'e')
+  elseif last == 'ㄴ' then 
+    hs.eventtap.keyStroke(nil, 's')
   elseif last == 'ㅇ' then 
       hs.eventtap.keyStroke(nil, 'd')
   else
@@ -74,7 +76,7 @@ ht.keywords = {
     ['/tow'] = { nil, function() todo(7) end },
     ['/tom'] = { nil, function() todo(30) end },
     ['/fr'] = { nil, function()
-      local text = "<fragment-block></fragment-block>"o
+      local text = "<fragment-block></fragment-block>"
       hs.eventtap.keyStrokes(text)
       left(17)      
       end 
@@ -85,6 +87,7 @@ ht.keywords = {
     ['`ㅔㅛ'] = { nil, function() code('python') end },
     -- 한글
     ['ㄱㅔㅅㄷ'] = {'겠ㄷ', nil, 2},
+    ['ㅇㅣㅅㄴ'] = { nil, function() str('있ㄴ') end, 2},
     ['ㅇㅣㅅㅇ'] = { nil, function() str('있ㅇ') end, 2},
     ['ㅇㅣㅅㄷ'] = { nil, function() str('있ㄷ') end, 2},
     ['ㅇㅗㅏㅅㄷ'] = {'왔ㄷ', nil, 2},

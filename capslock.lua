@@ -68,7 +68,7 @@ key:bindUp(capslockShift, 'v', function()
   isFirst = true
   for t in clipboard:gmatch("[^\n]*") do  
     if isFirst == true and exceptFirst == true then
-      newText = t .. '\r'
+      newText = t .. '\n'
       isFirst = false
     else      
       -- if t:match("%S") ~= nil then        
@@ -78,7 +78,7 @@ key:bindUp(capslockShift, 'v', function()
         r = string.sub(t, minLen + 1, string.len(t))        
       end
       
-      newText = newText .. r ..'\r'
+      newText = newText .. r ..'\n'
     end
   end
   
