@@ -16,10 +16,11 @@ end
 
 function code(lang)  
   local text = "```" .. lang .. "\r\r```"
-  hs.pasteboard.setContents(text)
+  hs.pasteboard.setContents(text)  
   hs.eventtap.keyStroke('cmd', 'v')
   hs.eventtap.keyStroke(nil, 'up')
 end
+
 
 function str(type)
   -- 마지막 글자가 자음 하나이면, 따로 처리한다.
@@ -31,6 +32,8 @@ function str(type)
 
   if last == 'ㄷ' then 
     hs.eventtap.keyStroke(nil, 'e')
+  elseif last == 'ㄴ' then 
+    hs.eventtap.keyStroke(nil, 's')
   elseif last == 'ㅇ' then 
       hs.eventtap.keyStroke(nil, 'd')
   else
@@ -50,7 +53,6 @@ ht.keywords = {
     ["@@"] = { "$$" },
     ["..addr"] = "My address",
     [" ne "] = { " != " },
-    ["--="] = { "→" },
     [";."] = { "·" },
     [";1"] = { "I" },
     [";2"] = { "II" },
@@ -80,11 +82,23 @@ ht.keywords = {
       end 
     },    
     ['`js'] = { nil, function() code('javascript') end },
+    ['`ㅓㄴ'] = { nil, function() code('javascript') end },
+    ['`py'] = { nil, function() code('python') end},
+    ['`ㅔㅛ'] = { nil, function() code('python') end },
+    -- 한글
     ['ㄱㅔㅅㄷ'] = {'겠ㄷ', nil, 2},
+    ['ㅇㅣㅅㄴ'] = { nil, function() str('있ㄴ') end, 2},
     ['ㅇㅣㅅㅇ'] = { nil, function() str('있ㅇ') end, 2},
     ['ㅇㅣㅅㄷ'] = { nil, function() str('있ㄷ') end, 2},
     ['ㅇㅗㅏㅅㄷ'] = {'왔ㄷ', nil, 2},
+    -- 한 -> 영
     ['ㅐㅏㄱ'] = { 'OKR', nil, 3 },
+    ['ㅁㅔㅑ'] = { 'API', nil, 2 },
+    -- Symbol
+    ['--='] = { '→' },
+    ['0--'] = { '←' },
+    ['0-='] = { '↔️' },
+
 }
 
 ht:start()

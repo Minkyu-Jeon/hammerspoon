@@ -14,7 +14,7 @@ require('function')
 require('symbol')
 require('wifi')
 require('text')
-
+require('altMode')
 
 -- Spoons
 local ClipboardTool = hs.loadSpoon("ClipboardTool")
@@ -40,6 +40,18 @@ hs.alert.defaultStyle.radius =  10
 
 
 
+function applicationWatcher(appName, eventType, appObject)
+  if (eventType == hs.application.watcher.activated) then
+      if (appName == "Finder") then
+        print(appName)
+          -- Bring all Finder windows forward when one gets activated
+          -- appObject:selectMenuItem({"Window", "Bring All to Front"})
+          appObject:selectMenuItem({"윈도우", "모두 앞으로 가져오기"})
+      end
+  end
+end
+appWatcher = hs.application.watcher.new(applicationWatcher)
+appWatcher:start()
 
 -- Make the console dark
 --hs.console.darkMode(false)

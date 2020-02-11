@@ -66,20 +66,26 @@ key:bindUp(capslockShift, 'v', function()
 
   newText = ""
   isFirst = true
-  for t in clipboard:gmatch("[^\r\n]+") do
+  for t in clipboard:gmatch("[^\n]*") do  
     if isFirst == true and exceptFirst == true then
-      newText = t .. '\r'
+      newText = t .. '\n'
       isFirst = false
-    else
-      r = string.sub(t, minLen + 1, string.len(t))
-      print(":" .. r .. ":")
-      newText = newText .. r ..'\r'
+    else      
+      -- if t:match("%S") ~= nil then        
+      if string.find(t,"^%s*$") then        
+        r = t  
+      else
+        r = string.sub(t, minLen + 1, string.len(t))        
+      end
+      
+      newText = newText .. r ..'\n'
     end
   end
   
   result = string.sub(newText, 1, string.len(newText))
   hs.pasteboard.setContents(result)
   hs.eventtap.keyStroke('cmd', 'v')
+  hs.eventtap.keyStroke(nil, 'forwarddelete')
 end) 
 
 
@@ -124,7 +130,15 @@ key:event(capslockShift, 'k', {'shift'}, 'down')
 key:event(capslockCmdShift, 'k', {'option', 'shift'}, 'down')
 
 key:event(capslock, 'u', {}, 'delete')
+key:bindUp(capslockCmd, 'u', function()   
+  hs.eventtap.keyStroke({'shift', 'option'}, 'left')
+  hs.eventtap.keyStroke(nil, 'delete')
+end)
 key:event(capslock, 'o', {}, 'forwarddelete')
+key:bindUp(capslockCmd, 'o', function()   
+  hs.eventtap.keyStroke({'shift', 'option'}, 'right')
+  hs.eventtap.keyStroke(nil, 'delete')
+end)
 
 key:event(capslock, 'q', {}, 'delete')
 key:event(capslock, 'e', {}, 'forwarddelete')
@@ -133,6 +147,10 @@ key:event(capslock, 'e', {}, 'forwarddelete')
 key:bindDown(capslock, 'b', capslock, 'b', {
   ['Code'] = { nil, "F12"}, -- follow
   ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
+})
+
+key:bindDown(capslockShift, 'b', capslockShift, 'b', {  
+  ['PyCharm'] = {'cmd', 'F3'},  -- toggle bookmark
 })
 
 key:bindDown(capslock, 'delete', function() 
@@ -161,8 +179,12 @@ key:bindDown(capslock, '0', capslock, '0', {
 
 key:bindDown(capslock, '2', capslock, '2', {
   ['Code'] = {'cmd', 'F2'},
-  ['PyCharm'] = {nil, 'F2'},  
+  ['PyCharm'] = {'shift', 'F6'},  
   ['Chrome'] = {nil, 'return'},  
+})
+
+key:bindDown(capslock, '3', capslock, '3', {  
+  ['PyCharm'] = {nil, 'F2'},  
 })
 
 key:bindDown(capslock, '4', capslock, '4', {

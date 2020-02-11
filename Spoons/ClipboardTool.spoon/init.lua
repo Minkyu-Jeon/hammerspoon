@@ -355,14 +355,14 @@ function obj:checkAndStorePasteboard()
             self.logger.df("Images not yet supported - ignoring image contents in clipboard")
          elseif current_clipboard ~= nil then
            local size = #current_clipboard
-           if obj.max_size and size > obj.max_entry_size then
-             local answer = hs.dialog.blockAlert("Clipboard", "The maximum size of " .. obj.max_entry_size .. " was exceeded.", "Copy partially", "Copy all", "NSCriticalAlertStyle")
-              print("answer: " .. answer)
-              if answer == "Copy partially" then
-                current_clipboard = self:reduceSize(current_clipboard)
-                size = #current_clipboard
-                end
-            end
+         --   if obj.max_size and size > obj.max_entry_size then
+         --     local answer = hs.dialog.blockAlert("Clipboard", "The maximum size of " .. obj.max_entry_size .. " was exceeded.", "Copy partially", "Copy all", "NSCriticalAlertStyle")
+         --      print("answer: " .. answer)
+         --      if answer == "Copy partially" then
+         --        current_clipboard = self:reduceSize(current_clipboard)
+         --        size = #current_clipboard
+         --        end
+         --    end
             hs.alert.show("Copied " .. size .. " chars")
             self.logger.df("Adding %s to clipboard history", current_clipboard)
             self:pasteboardToClipboard(current_clipboard)
