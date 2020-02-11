@@ -15,9 +15,3 @@ key:bindUp('shift', '[', function()
   hs.eventtap.keyStrokes('{}')
   hs.eventtap.keyStroke(nil, 'left')
 end)
-
-key:bindUp('shift', ',', function()
-  hs.eventtap.keyStrokes('<>')
-  hs.eventtap.keyStroke(nil, 'left')
-end)
-

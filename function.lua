@@ -75,18 +75,23 @@ key:bindDown(nil, 'F9', nil, 'F9', {
 -- Capslock function keys
 -----------------------------------------
 key:bindDown(capslock, 'F6', capslock, 'F6', {
-  ['PyCharm'] = {'shift', 'F6'}
+  ['PyCharm'] = {'shift', 'F6'},
+  ['Android Studio'] = {'shift', 'F6'},
 })
 
-hs.hotkey.bind(capslock, "f10", function()  
+key:bindDown(capslock, "F9", capslock, 'F6', {
+  ['Android Studio'] = {{'option', 'cmd'}, 'r'},
+})
+
+hs.hotkey.bind(capslock, "F10", function()  
   hs.audiodevice.defaultOutputDevice():setVolume(0)
 end)
 
-hs.hotkey.bind(capslock, "f11", function()
+hs.hotkey.bind(capslock, "F11", function()
   volumeChange(false)
 end)
 
-hs.hotkey.bind(capslock, "f12", function()
+hs.hotkey.bind(capslock, "F12", function()
   volumeChange(true)
 end)
 

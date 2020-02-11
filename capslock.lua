@@ -21,7 +21,8 @@ end)
 
 app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
-app:launch(capslock, 'w', 'Google Chrome')
+app:launch(capslock, 'w', 'Notion')
+app:launch(capslockShift, 'w', 'Google Chrome')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
 app:launch(capslockShift, 's', 'Slack')
@@ -168,8 +169,8 @@ key:bindDown(capslock, '4', capslock, '4', {
   ['Code'] = { '$$ $$' },
 })
 
-key:bindDown(capslock, '6', capslock, '6', {
-  ['Android Studio'] = { nil, 'F6'}
+key:bindDown(capslock, '6', capslock, '6', {  
+  ['Android Studio'] = {'shift', 'F6'},
 })
 
 key:bindDown(capslock, '-', capslock, '-', {
