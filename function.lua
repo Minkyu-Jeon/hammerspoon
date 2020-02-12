@@ -83,7 +83,7 @@ key:bindDown(capslock, "F9", capslock, 'F6', {
   ['Android Studio'] = {{'option', 'cmd'}, 'r'},
 })
 
-hs.hotkey.bind(capslock, "F10", function()  
+
 -- hs.hotkey.bind('cmd', "F10", nil, function()  
 --   for i=1, 10 do -- 기본 증가치는 1이 된다
 --     hs.eventtap.keyStroke(nil, "end")      
@@ -92,7 +92,7 @@ hs.hotkey.bind(capslock, "F10", function()
 --   end 
 -- end)
 
-hs.hotkey.bind(capslock, "f10", function()  
+hs.hotkey.bind(capslock, "F10", function()  
   hs.audiodevice.defaultOutputDevice():setVolume(0)
 end)
 
@@ -110,9 +110,6 @@ key:bindDown(nil, 'home', 'cmd', 'left', {})
 key:bindDown('shift', 'home', {'cmd', 'shift'}, 'left', {})
 
 
-
-
-
 view = hs.webview.new({x = 10, y = 10, w = 150, h = 100})
 view:windowStyle("closable")
 view:windowStyle("titled")
@@ -123,3 +120,6 @@ hs.hotkey.bind("shift", "f4", function()
   local email = 'test@email.com'
   hs.messages.SMS(email, "Test iMessage")
 end)
+
+
+
