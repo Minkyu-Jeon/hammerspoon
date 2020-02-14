@@ -191,8 +191,8 @@ key:bindDown(capslock, '4', capslock, '4', {
   ['Code'] = { '$$ $$' },
 })
 
-key:bindDown(capslock, '6', capslock, '6', {
-  ['Android Studio'] = { nil, 'F6'}
+key:bindDown(capslock, '6', capslock, '6', {  
+  ['Android Studio'] = {'shift', 'F6'},
 })
 
 key:bindDown(capslock, '-', capslock, '-', {

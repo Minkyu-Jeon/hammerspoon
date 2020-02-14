@@ -13,9 +13,11 @@ function runByApps(apps, func)
   end
 
   if apps then
-    local frontmostApplication = hs.application.frontmostApplication()            
+    local frontmostApplication = hs.application.frontmostApplication()     
     local name = frontmostApplication:name()    
     local keycodes = apps[name]     
+
+    print(name)
 
     if keycodes then
       if keycodes[2] then

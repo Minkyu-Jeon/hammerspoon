@@ -76,26 +76,32 @@ key:bindDown(nil, 'F9', nil, 'F9', {
 -- Capslock function keys
 -----------------------------------------
 key:bindDown(capslock, 'F6', capslock, 'F6', {
-  ['PyCharm'] = {'shift', 'F6'}
+  ['PyCharm'] = {'shift', 'F6'},
+  ['Android Studio'] = {'shift', 'F6'},
 })
 
-hs.hotkey.bind('cmd', "F10", nil, function()  
-  for i=1, 10 do -- 기본 증가치는 1이 된다
-    hs.eventtap.keyStroke(nil, "end")      
-    hs.eventtap.keyStroke(nil, ",")      
-    hs.eventtap.keyStroke(nil, "down")     
-  end 
-end)
+key:bindDown(capslock, "F9", capslock, 'F6', {
+  ['Android Studio'] = {{'option', 'cmd'}, 'r'},
+})
 
-hs.hotkey.bind(capslock, "f10", function()  
+
+-- hs.hotkey.bind('cmd', "F10", nil, function()  
+--   for i=1, 10 do -- 기본 증가치는 1이 된다
+--     hs.eventtap.keyStroke(nil, "end")      
+--     hs.eventtap.keyStroke(nil, ",")      
+--     hs.eventtap.keyStroke(nil, "down")     
+--   end 
+-- end)
+
+hs.hotkey.bind(capslock, "F10", function()  
   hs.audiodevice.defaultOutputDevice():setVolume(0)
 end)
 
-hs.hotkey.bind(capslock, "f11", function()
+hs.hotkey.bind(capslock, "F11", function()
   volumeChange(false)
 end)
 
-hs.hotkey.bind(capslock, "f12", function()
+hs.hotkey.bind(capslock, "F12", function()
   volumeChange(true)
 end)
 
@@ -103,9 +109,6 @@ key:bindDown(nil, 'end', 'cmd', 'right', {})
 key:bindDown('shift', 'end', {'cmd', 'shift'}, 'right', {})
 key:bindDown(nil, 'home', 'cmd', 'left', {})
 key:bindDown('shift', 'home', {'cmd', 'shift'}, 'left', {})
-
-
-
 
 
 view = hs.webview.new({x = 10, y = 10, w = 150, h = 100})
@@ -118,3 +121,6 @@ hs.hotkey.bind("shift", "f4", function()
   local email = 'test@email.com'
   hs.messages.SMS(email, "Test iMessage")
 end)
+
+
+
