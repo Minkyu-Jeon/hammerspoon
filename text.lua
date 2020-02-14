@@ -15,10 +15,11 @@ function todo(days)
 end
 
 function code(lang)  
-  local text = "```" .. lang .. "\r\r```"
+  local text = "```" .. lang .. "\n\n```"
   hs.pasteboard.setContents(text)  
   hs.eventtap.keyStroke('cmd', 'v')
-  hs.eventtap.keyStroke(nil, 'up')
+  -- hs.eventtap.keyStroke({}, 'up')
+  -- hs.eventtap.keyStroke({}, 'up')
 end
 
 
@@ -83,8 +84,12 @@ ht.keywords = {
     },    
     ['`js'] = { nil, function() code('javascript') end },
     ['`ㅓㄴ'] = { nil, function() code('javascript') end },
-    ['`py'] = { nil, function() code('python') end},
+    ['`py'] = { nil, function() code('python') end },
     ['`ㅔㅛ'] = { nil, function() code('python') end },
+    ['`sh'] = { nil, function() code('shell') end },
+    ['`ㄴㅗ'] = { nil, function() code('shell') end },
+    ['`sq'] = { nil, function() code('sql') end },
+    ['`ㄴㅂ'] = { nil, function() code('sql') end },
     -- 한글
     ['ㄱㅔㅅㄷ'] = {'겠ㄷ', nil, 2},
     ['ㅇㅣㅅㄴ'] = { nil, function() str('있ㄴ') end, 2},
