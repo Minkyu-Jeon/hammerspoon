@@ -71,12 +71,12 @@ ht.keywords = {
         hs.eventtap.keyStrokes(text)
       end
     },
-    ["ㅎㅏㅁㄱㅔ"] = { "함께", nil, 2 },
-    ["ㄴㅡㄱㅣㅁ"] = { "느낌", nil, 2 },    
+    ["ㅎㅏㅁㄱㅔ"] = { "함께", nil, 3 },
+    ["ㄴㅡㄱㅣ"] = { "느끼", nil, 3 },    
     ['/tot'] = { nil, function() todo(1) end },
     ['/tow'] = { nil, function() todo(7) end },
     ['/tom'] = { nil, function() todo(30) end },
-    ['/fr'] = { nil, function()
+    ['/fb'] = { nil, function()
       local text = "<fragment-block></fragment-block>"
       hs.eventtap.keyStrokes(text)
       left(17)      
