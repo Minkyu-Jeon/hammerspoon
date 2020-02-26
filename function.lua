@@ -69,6 +69,7 @@ key:bindDown(nil, 'F6', nil, 'F6', {
 
 key:bindDown(nil, 'F9', nil, 'F9', {
   ['PyCharm'] = {{'option', 'cmd'}, 'r'},
+  ['Android Studio'] = {{'option', 'cmd'}, 'r'},
 })
 
 
