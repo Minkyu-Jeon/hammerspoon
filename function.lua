@@ -68,6 +68,7 @@ key:bindDown(nil, 'F6', nil, 'F6', {
 
 key:bindDown(nil, 'F9', nil, 'F9', {
   ['PyCharm'] = {{'option', 'cmd'}, 'r'},
+  ['Android Studio'] = {{'option', 'cmd'}, 'r'},
 })
 
 
@@ -79,7 +80,7 @@ key:bindDown(capslock, 'F6', capslock, 'F6', {
   ['Android Studio'] = {'shift', 'F6'},
 })
 
-key:bindDown(capslock, "F9", capslock, 'F6', {
+key:bindDown(capslock, "F9", capslock, 'F9', {
   ['Android Studio'] = {{'option', 'cmd'}, 'r'},
 })
 
