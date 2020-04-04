@@ -55,6 +55,7 @@ key:bindDown(nil, 'F4', nil, 'F4', {
   ['Chrome'] = {nil, 'pagedown'},
   ['Code'] = {nil, 'F12'},
   ['PyCharm'] = {'cmd', 'b'},
+  ['Android Studio'] = {'cmd', 'b'},
 })
 
 key:bindDown(nil, 'F5', nil, 'F5', {

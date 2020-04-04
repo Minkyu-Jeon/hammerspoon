@@ -15,10 +15,11 @@ function todo(days)
 end
 
 function code(lang)  
-  local text = "```" .. lang .. "\r\r```"
+  local text = "```" .. lang .. "\n\n```"
   hs.pasteboard.setContents(text)  
   hs.eventtap.keyStroke('cmd', 'v')
-  hs.eventtap.keyStroke(nil, 'up')
+  -- hs.eventtap.keyStroke({}, 'up')
+  -- hs.eventtap.keyStroke({}, 'up')
 end
 
 
@@ -70,12 +71,12 @@ ht.keywords = {
         hs.eventtap.keyStrokes(text)
       end
     },
-    ["ㅎㅏㅁㄱㅔ"] = { "함께", nil, 2 },
-    ["ㄴㅡㄱㅣㅁ"] = { "느낌", nil, 2 },    
+    ["ㅎㅏㅁㄱㅔ"] = { "함께", nil, 3 },
+    ["ㄴㅡㄱㅣ"] = { "느끼", nil, 3 },    
     ['/tot'] = { nil, function() todo(1) end },
     ['/tow'] = { nil, function() todo(7) end },
     ['/tom'] = { nil, function() todo(30) end },
-    ['/fr'] = { nil, function()
+    ['/fb'] = { nil, function()
       local text = "<fragment-block></fragment-block>"
       hs.eventtap.keyStrokes(text)
       left(17)      
@@ -83,8 +84,12 @@ ht.keywords = {
     },    
     ['`js'] = { nil, function() code('javascript') end },
     ['`ㅓㄴ'] = { nil, function() code('javascript') end },
-    ['`py'] = { nil, function() code('python') end},
+    ['`py'] = { nil, function() code('python') end },
     ['`ㅔㅛ'] = { nil, function() code('python') end },
+    ['`sh'] = { nil, function() code('shell') end },
+    ['`ㄴㅗ'] = { nil, function() code('shell') end },
+    ['`sq'] = { nil, function() code('sql') end },
+    ['`ㄴㅂ'] = { nil, function() code('sql') end },
     -- 한글
     ['ㄱㅔㅅㄷ'] = {'겠ㄷ', nil, 2},
     ['ㅇㅣㅅㄴ'] = { nil, function() str('있ㄴ') end, 2},
@@ -94,6 +99,7 @@ ht.keywords = {
     -- 한 -> 영
     ['ㅐㅏㄱ'] = { 'OKR', nil, 3 },
     ['ㅁㅔㅑ'] = { 'API', nil, 2 },
+    ['ㅕㄱㅣ'] = { 'URL', nil, 3 },
     -- Symbol
     ['--='] = { '→' },
     ['0--'] = { '←' },

@@ -21,7 +21,7 @@ end)
 
 app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
-app:launch(capslock, 'w', 'Notion')
+app:launch(capslock, 'w', 'Evernote')
 app:launch(capslockShift, 'w', 'Google Chrome')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
@@ -147,10 +147,12 @@ key:event(capslock, 'e', {}, 'forwarddelete')
 key:bindDown(capslock, 'b', capslock, 'b', {
   ['Code'] = { nil, "F12"}, -- follow
   ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
+  ['Android Studio'] = {nil, 'F3'},  -- toggle bookmark
 })
 
 key:bindDown(capslockShift, 'b', capslockShift, 'b', {  
   ['PyCharm'] = {'cmd', 'F3'},  -- toggle bookmark
+  ['Android Studio'] = {'cmd', 'F3'},  -- toggle bookmark
 })
 
 key:bindDown(capslock, 'delete', function() 
@@ -161,20 +163,24 @@ end)
 
 key:bindDown(capslock, 'space', nil, 'F13')  -- 한영전환
 
+
+key:bindUp(capslock, ',', capslock, ',', {
+  ['Evernote'] = {"←"}
+})
+
+
 key:bindUp(capslock, '.', capslock, '.', {
   ['PyCharm'] = {"option", "return"},
   ['Android Studio'] = {"option", 'return'},
   ['Chrome'] = {'---->'},
   ['Code'] = {"cmd", "."},
+  ['Evernote'] = {"→"}
 })
 
 key:bindDown(capslock, '/', capslock, '/', {
   ['Chrome'] = {'---->>'},
 })
 
-key:bindDown(capslock, '0', capslock, '0', {
-  ['PyCharm'] = {'cmd', 'F3'},  -- show bookmark list
-})
 
 
 key:bindDown(capslock, '2', capslock, '2', {
@@ -185,6 +191,7 @@ key:bindDown(capslock, '2', capslock, '2', {
 
 key:bindDown(capslock, '3', capslock, '3', {  
   ['PyCharm'] = {nil, 'F2'},  
+  ['Android Studio'] = {nil, 'F2'},  
 })
 
 key:bindDown(capslock, '4', capslock, '4', {
@@ -194,6 +201,16 @@ key:bindDown(capslock, '4', capslock, '4', {
 key:bindDown(capslock, '6', capslock, '6', {  
   ['Android Studio'] = {'shift', 'F6'},
 })
+
+key:bindDown(capslock, '9', capslock, '9', {  
+  ['Chrome'] = {'←'},  
+})
+
+key:bindDown(capslock, '0', capslock, '0', {
+  ['PyCharm'] = {'cmd', 'F3'},  -- show bookmark list
+  ['Chrome'] = {'→'},
+})
+
 
 key:bindDown(capslock, '-', capslock, '-', {
   ['PyCharm'] = {'shift', 'F2'},  -- show bookmark list
