@@ -98,7 +98,9 @@ key:bindDown(capslockShift, 'm', {"shift"}, 'pageup')
 key:bindDown(capslock, ',', {}, 'pagedown')
 key:bindDown(capslockShift, ',', {"shift"}, 'pagedown')
 
-key:bindDown(capslock, '1', {}, 'F1')
+key:bindUp(capslock, '1', {}, 'F1', {
+  ['Evernote'] = {{'option', 'cmd'}, '1'}
+})
 key:bindDown(capslock, '2', {}, 'F2')
 key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
 
@@ -168,7 +170,6 @@ key:bindUp(capslock, ',', capslock, ',', {
   ['Evernote'] = {"←"}
 })
 
-
 key:bindUp(capslock, '.', capslock, '.', {
   ['PyCharm'] = {"option", "return"},
   ['Android Studio'] = {"option", 'return'},
@@ -180,8 +181,6 @@ key:bindUp(capslock, '.', capslock, '.', {
 key:bindDown(capslock, '/', capslock, '/', {
   ['Chrome'] = {'---->>'},
 })
-
-
 
 key:bindDown(capslock, '2', capslock, '2', {
   ['Code'] = {'cmd', 'F2'},
@@ -200,6 +199,7 @@ key:bindDown(capslock, '4', capslock, '4', {
 
 key:bindDown(capslock, '6', capslock, '6', {  
   ['Android Studio'] = {'shift', 'F6'},
+  ['PyCharm'] = {'shift', 'F6'},
 })
 
 key:bindDown(capslock, '9', capslock, '9', {  

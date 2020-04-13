@@ -28,10 +28,10 @@ hs.hotkey.bind(capslockShift, "0", function()
   aclock:toggleShow()
 end)          
 
-hs.hotkey.bind(capslock, '\'', function()
-  expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 
-  expose:toggleShow()
-end)
+-- hs.hotkey.bind(capslock, '\'', function()
+--   expose = hs.expose.new(nil,{showThumbnails=true, includeOtherSpaces=true}) 
+--   expose:toggleShow()
+-- end)
 
 -- Make the alerts look nicer.
 hs.alert.defaultStyle.strokeColor =  {white = 1, alpha = 0}
