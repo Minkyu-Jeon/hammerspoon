@@ -19,8 +19,11 @@ function runByApps(apps, func)
 
     print(name)
 
+    
     if keycodes then
-      if keycodes[2] then
+      if type(keycodes) == 'function' then
+        local _, o = pcall(keycodes)
+      elseif keycodes[2] then
         hs.eventtap.keyStroke(keycodes[1], keycodes[2])
       else
         hs.eventtap.keyStrokes(keycodes[1])

@@ -182,10 +182,19 @@ key:bindDown(capslock, '/', capslock, '/', {
   ['Chrome'] = {'---->>'},
 })
 
+-- function dateFunc()
+--   local date = os.date("%Y-%m-%d") 
+--   hs.eventtap.keyStrokes(date)
+-- end
+
 key:bindDown(capslock, '2', capslock, '2', {
   ['Code'] = {'cmd', 'F2'},
   ['PyCharm'] = {'shift', 'F6'},  
-  ['Chrome'] = {nil, 'return'},  
+  ['Chrome'] = function()
+    local date = os.date("%Y-%m-%d") 
+    hs.eventtap.keyStrokes(date)    
+  end,  
+  ['XD'] = {dateFunc},  
 })
 
 key:bindDown(capslock, '3', capslock, '3', {  
