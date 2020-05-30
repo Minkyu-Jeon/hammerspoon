@@ -10,6 +10,9 @@ end
 function todo(days)
   dateAfterNumberOfDays = date:formatAddDays(days)
   local text = "<todo due:" .. dateAfterNumberOfDays .. "></todo>"
+  if days == 0 then
+    text = "<todo></todo>"
+  end
   hs.eventtap.keyStrokes(text)
   left(7)
 end
@@ -73,6 +76,7 @@ ht.keywords = {
     },
     ["ㅎㅏㅁㄱㅔ"] = { "함께", nil, 3 },
     ["ㄴㅡㄱㅣ"] = { "느끼", nil, 3 },    
+    ['/tt'] = { nil, function() todo(0) end },
     ['/tot'] = { nil, function() todo(1) end },
     ['/tow'] = { nil, function() todo(7) end },
     ['/tom'] = { nil, function() todo(30) end },
@@ -104,7 +108,23 @@ ht.keywords = {
     ['--='] = { '→' },
     ['0--'] = { '←' },
     ['0-='] = { '↔️' },
-
+    -- Alphabet    
+    [';ㅁ'] = { 'A' },
+    [';ㅇ'] = { 'D' },
+    [';ㅎ'] = { 'G' },
+    -- esperanto
+    [';C'] = { 'Ĉ'},
+    [';c'] = { 'ĉ'},
+    [';G'] = { 'Ĝ'},
+    [';g'] = { 'ĝ'},
+    [';H'] = { 'Ĥ'},
+    [';h'] = { 'ĥ'},
+    [';J'] = { 'Ĵ'},
+    [';j'] = { 'ĵ'},
+    [';S'] = { 'Ŝ'},
+    [';s'] = { 'ŝ'},
+    [';U'] = { 'Ŭ'},
+    [';u'] = { 'ŭ'},
 }
 
 ht:start()
