@@ -21,11 +21,15 @@ end)
 
 app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
-app:launch(capslock, 'w', 'Evernote')
+app:launch(capslock, 'e', 'Evernote')
+app:launch(capslock, 'w', 'Trello')
+app:launch(capslock, 'n', 'Notion')
 app:launch(capslockShift, 'w', 'Google Chrome')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
 app:launch(capslockShift, 's', 'Slack')
+app:launch(capslockCmd, 'p', 'Postman')
+app:launch(capslockCmd, '0', 'Postico')
 
 key:bindUp(capslock, 'a', 'cmd', 'a')
 key:bindUp(capslock, 'c', 'cmd', 'c')
@@ -34,6 +38,7 @@ key:bindUp(capslock, 'z', 'cmd', 'z')
 key:bindUp(capslock, 'x', 'cmd', 'x')
 key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
+
 
 -- 클립보드에서 앞 공백제거 후 붙여넣기
 key:bindUp(capslockShift, 'v', function() 
@@ -182,10 +187,10 @@ key:bindDown(capslock, '/', capslock, '/', {
   ['Chrome'] = {'---->>'},
 })
 
--- function dateFunc()
---   local date = os.date("%Y-%m-%d") 
---   hs.eventtap.keyStrokes(date)
--- end
+function dateFunc()
+  local date = os.date("%Y-%m-%d") 
+  hs.eventtap.keyStrokes(date)
+end
 
 key:bindDown(capslock, '2', capslock, '2', {
   ['Code'] = {'cmd', 'F2'},
@@ -194,7 +199,8 @@ key:bindDown(capslock, '2', capslock, '2', {
     local date = os.date("%Y-%m-%d") 
     hs.eventtap.keyStrokes(date)    
   end,  
-  ['XD'] = {dateFunc},  
+  ['Notion'] = dateFunc, 
+  ['XD'] = dateFunc,  
 })
 
 key:bindDown(capslock, '3', capslock, '3', {  

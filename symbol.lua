@@ -1,9 +1,11 @@
 local key = require('modules.key')
 
 
-key:bindUp({'shift'}, "9", function()    
-  -- hs.eventtap.keyStroke(nil, 'F19')  
-  hs.eventtap.keyStrokes('()')
+key:bindUp({'shift'}, "9", function()   
+  hs.eventtap.keyStroke(nil, 'F19')    
+  hs.eventtap.keyStrokes('(')
+  hs.eventtap.keyStrokes(')')
+  -- hs.eventtap.keyStrokes('()')
   hs.eventtap.keyStroke(nil, 'left')  
 end) 
 
