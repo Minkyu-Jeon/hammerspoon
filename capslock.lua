@@ -21,7 +21,7 @@ end)
 
 app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
-app:launch(capslock, 'e', 'Evernote')
+app:launch(capslockShift, 'e', 'Evernote')
 app:launch(capslock, 'w', 'Trello')
 app:launch(capslock, 'n', 'Notion')
 app:launch(capslockShift, 'w', 'Google Chrome')
@@ -171,9 +171,9 @@ end)
 key:bindDown(capslock, 'space', nil, 'F13')  -- 한영전환
 
 
-key:bindUp(capslock, ',', capslock, ',', {
-  ['Evernote'] = {"←"}
-})
+-- key:bindUp(capslock, ',', capslock, ',', {
+--   ['Evernote'] = {"←"}
+-- })
 
 key:bindUp(capslock, '.', capslock, '.', {
   ['PyCharm'] = {"option", "return"},
