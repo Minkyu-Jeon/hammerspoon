@@ -97,6 +97,7 @@ ht.keywords = {
     -- 한글
     ['ㄱㅔㅅㄷ'] = {'겠ㄷ', nil, 2},
     ['ㅇㅣㅅㄴ'] = { nil, function() str('있ㄴ') end, 2},
+    ['ㅇㅣㅅㅅ'] = { nil, function() str('있ㅅ') end, 2},
     ['ㅇㅣㅅㅇ'] = { nil, function() str('있ㅇ') end, 2},
     ['ㅇㅣㅅㄷ'] = { nil, function() str('있ㄷ') end, 2},
     ['ㅇㅗㅏㅅㄷ'] = {'왔ㄷ', nil, 2},
@@ -128,7 +129,10 @@ ht.keywords = {
     ['sx'] = { 'ŝ'},
     ['Ux'] = { 'Ŭ'},
     ['ux'] = { 'ŭ'},
+    -- notion
+    ['/ㅅㅁ'] = { '/table' },
 }
+
 
 ht:start()
 

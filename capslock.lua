@@ -22,8 +22,9 @@ end)
 app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
 app:launch(capslockShift, 'e', 'Evernote')
-app:launch(capslock, 'w', 'Trello')
-app:launch(capslock, 'n', 'Notion')
+-- app:launch(capslock, 'w', 'Trello')
+app:launch(capslock, 'w', 'Notion')
+-- app:launch(capslock, 'n', 'Notion')
 app:launch(capslockShift, 'w', 'Google Chrome')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
@@ -110,10 +111,11 @@ key:bindDown(capslock, '2', {}, 'F2')
 key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
 
 key:bindUp(capslock, '[', 'cmd', '[', {
-  ['Code'] = {{'ctrl', 'shift'}, '-'}
-})
-key:bindUp(capslock, ']', 'cmd', ']', {
   ['Code'] = {{'ctrl'}, '-'}
+})
+
+key:bindUp(capslock, ']', 'cmd', ']', {
+  ['Code'] = {{'ctrl', 'shift'}, '-'}
 })
 
 key:event(capslock, 'j', {}, 'left')
@@ -153,8 +155,14 @@ key:event(capslock, 'e', {}, 'forwarddelete')
 
 key:bindDown(capslock, 'b', capslock, 'b', {
   ['Code'] = { nil, "F12"}, -- follow
-  ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
+  -- ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
   ['Android Studio'] = {nil, 'F3'},  -- toggle bookmark
+})
+
+key:bindUp(capslock, 'b', capslock, 'b', {  
+  ['Code'] = { nil, "F12"},
+  ['PyCharm'] = {'cmd', 'b'},
+  ['Android Studio'] = {'cmd', 'b'},
 })
 
 key:bindDown(capslockShift, 'b', capslockShift, 'b', {  
@@ -193,12 +201,9 @@ function dateFunc()
 end
 
 key:bindDown(capslock, '2', capslock, '2', {
-  ['Code'] = {'cmd', 'F2'},
+  ['Code'] = {nil, 'F2'},
   ['PyCharm'] = {'shift', 'F6'},  
-  ['Chrome'] = function()
-    local date = os.date("%Y-%m-%d") 
-    hs.eventtap.keyStrokes(date)    
-  end,  
+  ['Chrome'] = dateFunc,  
   ['Notion'] = dateFunc, 
   ['XD'] = dateFunc,  
 })
