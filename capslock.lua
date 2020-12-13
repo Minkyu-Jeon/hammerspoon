@@ -191,8 +191,12 @@ key:bindUp(capslock, '.', capslock, '.', {
   ['Evernote'] = {"→"}
 })
 
+key:bindUp(capslockShift, '.', function()
+  hs.eventtap.keyStrokes('·')
+end)
+
 key:bindDown(capslock, '/', capslock, '/', {
-  ['Chrome'] = {'---->>'},
+  ['Google Chrome'] = {'---->>'},
 })
 
 function dateFunc()
@@ -200,10 +204,19 @@ function dateFunc()
   hs.eventtap.keyStrokes(date)
 end
 
+function dateFuncShort()
+  weekNames = { "일", "월", "화", "수", "목", "금", "토" }
+  cNow = os.date("*t")
+  wday = weekNames[cNow["wday"]]
+  local date = os.date("%m월 %d일")
+  date = "#### " .. date .. " " .. "(" .. wday .. ")"
+  hs.eventtap.keyStrokes(date)
+end
+
 key:bindDown(capslock, '2', capslock, '2', {
   ['Code'] = {nil, 'F2'},
   ['PyCharm'] = {'shift', 'F6'},  
-  ['Chrome'] = dateFunc,  
+  ['Google Chrome'] = dateFuncShort,  
   ['Notion'] = dateFunc, 
   ['XD'] = dateFunc,  
 })
