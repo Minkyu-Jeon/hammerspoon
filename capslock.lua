@@ -152,6 +152,11 @@ end)
 key:event(capslock, 'q', {}, 'delete')
 key:event(capslock, 'e', {}, 'forwarddelete')
 
+function blockquoteFunc()
+  bq = "<blockquote><cite></cite></blockquote>"
+  hs.eventtap.keyStrokes(bq)
+  left(26)
+end
 
 key:bindDown(capslock, 'b', capslock, 'b', {
   ['Code'] = { nil, "F12"}, -- follow
@@ -163,6 +168,18 @@ key:bindUp(capslock, 'b', capslock, 'b', {
   ['Code'] = { nil, "F12"},
   ['PyCharm'] = {'cmd', 'b'},
   ['Android Studio'] = {'cmd', 'b'},
+  ['Google Chrome'] = blockquoteFunc,
+})
+
+
+function codeFunc()
+  bq = "<code></code>"
+  hs.eventtap.keyStrokes(bq)  
+  left(7)
+end
+
+key:bindUp(capslock, 'd', capslock, 'd', {    
+  ['Google Chrome'] = codeFunc,
 })
 
 key:bindDown(capslockShift, 'b', capslockShift, 'b', {  
@@ -208,10 +225,29 @@ function dateFuncShort()
   weekNames = { "일", "월", "화", "수", "목", "금", "토" }
   cNow = os.date("*t")
   wday = weekNames[cNow["wday"]]
-  local date = os.date("%m월 %d일")
+  local date = os.date("%y년 %m월 %d일")
   date = "#### " .. date .. " " .. "(" .. wday .. ")"
   hs.eventtap.keyStrokes(date)
 end
+
+
+function left(times)
+  for i=1, times, 1 do
+    hs.eventtap.event.newKeyEvent(nil, "left", true):post()
+    hs.eventtap.event.newKeyEvent(nil, "left", false):post()
+  end
+end
+
+function todoFunc()
+  now=os.time()
+  days = 7  
+  numberOfDays = now + days * 24 * 3600
+  dateAfterNumberOfDays = os.date("%Y-%m-%d",numberOfDays)
+  todo = "- <todo due:" .. dateAfterNumberOfDays .. "></todo>"
+  hs.eventtap.keyStrokes(todo)
+  left(7)
+end
+
 
 key:bindDown(capslock, '2', capslock, '2', {
   ['Code'] = {nil, 'F2'},
@@ -223,7 +259,8 @@ key:bindDown(capslock, '2', capslock, '2', {
 
 key:bindDown(capslock, '3', capslock, '3', {  
   ['PyCharm'] = {nil, 'F2'},  
-  ['Android Studio'] = {nil, 'F2'},  
+  ['Android Studio'] = {nil, 'F2'}, 
+  ['Google Chrome'] = todoFunc,   
 })
 
 key:bindDown(capslock, '4', capslock, '4', {
