@@ -60,7 +60,7 @@ key:bindDown(nil, 'F4', nil, 'F4', {
 
 key:bindDown(nil, 'F5', nil, 'F5', {
   ['PyCharm'] = {'ctrl', 'd'}, -- debug run
-  ['Chrome'] = {'cmd', 'r'},
+  ['Google Chrome'] = {'cmd', 'r'},
   ['Code'] = {nil, 'F5'},
 })
 
