@@ -173,9 +173,16 @@ key:bindUp(capslock, 'b', capslock, 'b', {
 
 
 function codeFunc()
-  bq = "<code></code>"
-  hs.eventtap.keyStrokes(bq)  
-  left(7)
+  bq = [[<code>
+
+</code>]]
+  -- hs.eventtap.keyStrokes(bq)  
+  hs.pasteboard.writeObjects(bq)
+  hs.eventtap.keyStroke("cmd", "v")
+  -- keyRepeat('enter', 2)
+  -- left(7)
+  keyRepeat('up', 1)
+
 end
 
 key:bindUp(capslock, 'd', capslock, 'd', {    
@@ -230,6 +237,13 @@ function dateFuncShort()
   hs.eventtap.keyStrokes(date)
 end
 
+
+function keyRepeat(key, times)
+  for i=1, times, 1 do
+    hs.eventtap.event.newKeyEvent(nil, key, true):post()
+    hs.eventtap.event.newKeyEvent(nil, key, false):post()
+  end
+end
 
 function left(times)
   for i=1, times, 1 do
