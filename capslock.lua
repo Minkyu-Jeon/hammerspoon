@@ -21,7 +21,7 @@ end)
 
 app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
-app:launch(capslockShift, 'e', 'Evernote')
+-- app:launch(capslockShift, 'e', 'Evernote')
 -- app:launch(capslock, 'w', 'Trello')
 app:launch(capslock, 'w', 'Notion')
 -- app:launch(capslock, 'n', 'Notion')
@@ -177,11 +177,14 @@ function codeFunc()
 
 </code>]]
   -- hs.eventtap.keyStrokes(bq)  
+  cb = hs.pasteboard.getContents()
   hs.pasteboard.writeObjects(bq)
   hs.eventtap.keyStroke("cmd", "v")
   -- keyRepeat('enter', 2)
   -- left(7)
   keyRepeat('up', 1)
+
+  hs.pasteboard.writeObjects(cb)
 
 end
 
@@ -228,6 +231,11 @@ function dateFunc()
   hs.eventtap.keyStrokes(date)
 end
 
+function h3dateFunc()
+  local date = os.date("%Y-%m-%d") 
+  hs.eventtap.keyStrokes("### " .. date)
+end
+
 function dateFuncShort()
   weekNames = { "일", "월", "화", "수", "목", "금", "토" }
   cNow = os.date("*t")
@@ -257,7 +265,7 @@ function todoFunc()
   days = 7  
   numberOfDays = now + days * 24 * 3600
   dateAfterNumberOfDays = os.date("%Y-%m-%d",numberOfDays)
-  todo = "- <todo due:" .. dateAfterNumberOfDays .. "></todo>"
+  todo = "<todo due:" .. dateAfterNumberOfDays .. "></todo>"
   hs.eventtap.keyStrokes(todo)
   left(7)
 end
@@ -275,6 +283,7 @@ key:bindDown(capslock, '3', capslock, '3', {
   ['PyCharm'] = {nil, 'F2'},  
   ['Android Studio'] = {nil, 'F2'}, 
   ['Google Chrome'] = todoFunc,   
+  ['Notion'] = h3dateFunc, 
 })
 
 key:bindDown(capslock, '4', capslock, '4', {

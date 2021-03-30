@@ -42,14 +42,14 @@ end
 -----------------------------------------
 
 
-key:bindDown(nil, 'F2', nil, 'F2', {
-  ['PyCharm'] = {'shift', 'F6'},
-  ['Code'] = {'cmd', 'F2'},
-})
+-- key:bindDown(nil, 'F2', nil, 'F2', {
+--   ['PyCharm'] = {'shift', 'F6'},
+--   ['Code'] = {'cmd', 'F2'},
+-- })
 
-key:bindDown(nil, 'F3', nil, 'F3', {
-  ['Chrome'] = {nil, 'pageup'},
-})
+-- key:bindDown(nil, 'F3', nil, 'F3', {
+--   ['Chrome'] = {nil, 'pageup'},
+-- })
 
 key:bindDown(nil, 'F4', nil, 'F4', {
   ['Chrome'] = {nil, 'pagedown'},
