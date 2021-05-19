@@ -21,11 +21,16 @@ end)
 
 app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
-app:launch(capslock, 'w', 'Evernote')
+-- app:launch(capslockShift, 'e', 'Evernote')
+-- app:launch(capslock, 'w', 'Trello')
+app:launch(capslock, 'w', 'Notion')
+-- app:launch(capslock, 'n', 'Notion')
 app:launch(capslockShift, 'w', 'Google Chrome')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
 app:launch(capslockShift, 's', 'Slack')
+app:launch(capslockCmd, 'p', 'Postman')
+app:launch(capslockCmd, '0', 'Postico')
 
 key:bindUp(capslock, 'a', 'cmd', 'a')
 key:bindUp(capslock, 'c', 'cmd', 'c')
@@ -34,6 +39,7 @@ key:bindUp(capslock, 'z', 'cmd', 'z')
 key:bindUp(capslock, 'x', 'cmd', 'x')
 key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
+
 
 -- 클립보드에서 앞 공백제거 후 붙여넣기
 key:bindUp(capslockShift, 'v', function() 
@@ -105,10 +111,11 @@ key:bindDown(capslock, '2', {}, 'F2')
 key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
 
 key:bindUp(capslock, '[', 'cmd', '[', {
-  ['Code'] = {{'ctrl', 'shift'}, '-'}
-})
-key:bindUp(capslock, ']', 'cmd', ']', {
   ['Code'] = {{'ctrl'}, '-'}
+})
+
+key:bindUp(capslock, ']', 'cmd', ']', {
+  ['Code'] = {{'ctrl', 'shift'}, '-'}
 })
 
 key:event(capslock, 'j', {}, 'left')
@@ -145,11 +152,44 @@ end)
 key:event(capslock, 'q', {}, 'delete')
 key:event(capslock, 'e', {}, 'forwarddelete')
 
+function blockquoteFunc()
+  bq = "<blockquote><cite></cite></blockquote>"
+  hs.eventtap.keyStrokes(bq)
+  left(26)
+end
 
 key:bindDown(capslock, 'b', capslock, 'b', {
   ['Code'] = { nil, "F12"}, -- follow
-  ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
+  -- ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
   ['Android Studio'] = {nil, 'F3'},  -- toggle bookmark
+})
+
+key:bindUp(capslock, 'b', capslock, 'b', {  
+  ['Code'] = { nil, "F12"},
+  ['PyCharm'] = {'cmd', 'b'},
+  ['Android Studio'] = {'cmd', 'b'},
+  ['Google Chrome'] = blockquoteFunc,
+})
+
+
+function codeFunc()
+  bq = [[<code>
+
+</code>]]
+  -- hs.eventtap.keyStrokes(bq)  
+  cb = hs.pasteboard.getContents()
+  hs.pasteboard.writeObjects(bq)
+  hs.eventtap.keyStroke("cmd", "v")
+  -- keyRepeat('enter', 2)
+  -- left(7)
+  keyRepeat('up', 1)
+
+  hs.pasteboard.writeObjects(cb)
+
+end
+
+key:bindUp(capslock, 'd', capslock, 'd', {    
+  ['Google Chrome'] = codeFunc,
 })
 
 key:bindDown(capslockShift, 'b', capslockShift, 'b', {  
@@ -166,9 +206,9 @@ end)
 key:bindDown(capslock, 'space', nil, 'F13')  -- 한영전환
 
 
-key:bindUp(capslock, ',', capslock, ',', {
-  ['Evernote'] = {"←"}
-})
+-- key:bindUp(capslock, ',', capslock, ',', {
+--   ['Evernote'] = {"←"}
+-- })
 
 key:bindUp(capslock, '.', capslock, '.', {
   ['PyCharm'] = {"option", "return"},
@@ -178,28 +218,72 @@ key:bindUp(capslock, '.', capslock, '.', {
   ['Evernote'] = {"→"}
 })
 
+key:bindUp(capslockShift, '.', function()
+  hs.eventtap.keyStrokes('·')
+end)
+
 key:bindDown(capslock, '/', capslock, '/', {
-  ['Chrome'] = {'---->>'},
+  ['Google Chrome'] = {'---->>'},
 })
 
--- function dateFunc()
---   local date = os.date("%Y-%m-%d") 
---   hs.eventtap.keyStrokes(date)
--- end
+function dateFunc()
+  local date = os.date("%Y-%m-%d") 
+  hs.eventtap.keyStrokes(date)
+end
+
+function h3dateFunc()
+  local date = os.date("%Y-%m-%d") 
+  hs.eventtap.keyStrokes("### " .. date)
+end
+
+function dateFuncShort()
+  weekNames = { "일", "월", "화", "수", "목", "금", "토" }
+  cNow = os.date("*t")
+  wday = weekNames[cNow["wday"]]
+  local date = os.date("%y년 %m월 %d일")
+  date = "#### " .. date .. " " .. "(" .. wday .. ")"
+  hs.eventtap.keyStrokes(date)
+end
+
+
+function keyRepeat(key, times)
+  for i=1, times, 1 do
+    hs.eventtap.event.newKeyEvent(nil, key, true):post()
+    hs.eventtap.event.newKeyEvent(nil, key, false):post()
+  end
+end
+
+function left(times)
+  for i=1, times, 1 do
+    hs.eventtap.event.newKeyEvent(nil, "left", true):post()
+    hs.eventtap.event.newKeyEvent(nil, "left", false):post()
+  end
+end
+
+function todoFunc()
+  now=os.time()
+  days = 7  
+  numberOfDays = now + days * 24 * 3600
+  dateAfterNumberOfDays = os.date("%Y-%m-%d",numberOfDays)
+  todo = "<todo due:" .. dateAfterNumberOfDays .. "></todo>"
+  hs.eventtap.keyStrokes(todo)
+  left(7)
+end
+
 
 key:bindDown(capslock, '2', capslock, '2', {
-  ['Code'] = {'cmd', 'F2'},
+  ['Code'] = {nil, 'F2'},
   ['PyCharm'] = {'shift', 'F6'},  
-  ['Chrome'] = function()
-    local date = os.date("%Y-%m-%d") 
-    hs.eventtap.keyStrokes(date)    
-  end,  
-  ['XD'] = {dateFunc},  
+  ['Google Chrome'] = dateFuncShort,  
+  ['Notion'] = dateFunc, 
+  ['XD'] = dateFunc,  
 })
 
 key:bindDown(capslock, '3', capslock, '3', {  
   ['PyCharm'] = {nil, 'F2'},  
-  ['Android Studio'] = {nil, 'F2'},  
+  ['Android Studio'] = {nil, 'F2'}, 
+  ['Google Chrome'] = todoFunc,   
+  ['Notion'] = h3dateFunc, 
 })
 
 key:bindDown(capslock, '4', capslock, '4', {
