@@ -111,11 +111,11 @@ key:bindDown(capslock, '2', {}, 'F2')
 key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
 
 key:bindUp(capslock, '[', 'cmd', '[', {
-  ['Code'] = {{'ctrl'}, '-'}
+  -- ['Code'] = {{'ctrl'}, '-'}
 })
 
 key:bindUp(capslock, ']', 'cmd', ']', {
-  ['Code'] = {{'ctrl', 'shift'}, '-'}
+  -- ['Code'] = {{'ctrl', 'shift'}, '-'}
 })
 
 key:event(capslock, 'j', {}, 'left')
