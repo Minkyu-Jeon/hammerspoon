@@ -114,6 +114,7 @@ key:bindUp(capslock, '[', 'cmd', '[', {
 
 key:bindUp(capslock, ']', 'cmd', ']', {
     ['Code'] = {{'ctrl', 'shift'}, '-'}
+    -- ['Code'] = {{'ctrl'}, '-'}
 })
 
 key:event(capslock, 'j', {}, 'left')
