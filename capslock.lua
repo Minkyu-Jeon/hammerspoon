@@ -95,7 +95,9 @@ end)
 
 key:bindDown(capslock, 'h', 'cmd', 'left')
 key:bindDown(capslockShift, 'h', {"cmd", "shift"}, 'left')
-key:bindDown(capslock, ';', 'cmd', 'right')
+key:bindUp(capslock, ';', 'cmd', 'right', {
+    ['iTerm2'] = {{'cmd', 'shift'}, ';'}
+})
 key:bindDown(capslockShift, ';', {"cmd", "shift"}, 'right')
 key:bindDown(capslock, 'm', {}, 'pageup')
 key:bindDown(capslockShift, 'm', {"shift"}, 'pageup')
@@ -219,8 +221,9 @@ key:bindUp(capslockShift, '.', function()
     hs.eventtap.keyStrokes('·')
 end)
 
-key:bindDown(capslock, '/', capslock, '/', {
-    ['Google Chrome'] = {'---->>'}
+key:bindUp(capslock, '/', capslock, '/', {
+    ['Google Chrome'] = {'---->>'},
+    ['iTerm2'] = {{'cmd', 'option'}, '/'}
 })
 
 function dateFunc()
