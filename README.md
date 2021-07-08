@@ -1,5 +1,8 @@
 # hammerspoon
 
+Hotstring은 expanso 사용
+
+
 ## Text Expander
 
 -- https://github.com/cweagans/dotfiles/commit/84da84d672bb2158b95fa28e5dd840dd21d3bb1c
