@@ -11,6 +11,7 @@ local capslockCmdShift = const.key.capslockCmdShift
 -- reload
 hs.hotkey.bind(capslock, 'r', function()
     hs.reload()
+    hs.execute('espanso restart')
 end)
 hs.alert.show("HS reloaded")
 
@@ -110,12 +111,14 @@ key:bindUp(capslock, '1', {}, 'F1', {
 key:bindDown(capslock, '2', {}, 'F2')
 key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
 
+-- ['Code'] = {{'ctrl'}, '-'}
+
 key:bindUp(capslock, '[', 'cmd', '[', {
-    -- ['Code'] = {{'ctrl'}, '-'}
-    -- [obj.app.visualStudioCode] = {'cmd', '['}
+    [const.app.visualStudioCode] = {'ctrl', '-'}
 })
 
 key:bindUp(capslock, ']', 'cmd', ']', {
+    [const.app.visualStudioCode] = {{'ctrl', 'shift'}, '-'}
     -- ['Code'] = {{'ctrl', 'shift'}, '-'}
     -- ['Code'] = {{'ctrl'}, '-'}
 })
