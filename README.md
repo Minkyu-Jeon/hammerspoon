@@ -1,7 +1,8 @@
 # hammerspoon
 
-Hotstring은 expanso 사용
+홈페이지: https://www.hammerspoon.org/
 
+Hotstring은 expanso 사용
 
 ## Text Expander
 
