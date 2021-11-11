@@ -11,6 +11,7 @@ local capslockCmdShift = const.key.capslockCmdShift
 -- reload
 hs.hotkey.bind(capslock, 'r', function()
     hs.reload()
+    hs.execute('espanso restart')
 end)
 hs.alert.show("HS reloaded")
 
@@ -109,13 +110,20 @@ key:bindUp(capslock, '1', {}, 'F1', {
 })
 key:bindDown(capslock, '2', {}, 'F2')
 key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
+-- key:bindUp(capslock, '4', {'cmd', 'shift'}, '4')
+-- key:appleScript(capslock, '5', [[
+--     property N : 0
+--     set N to N + 1
+--     set picPath to ((POSIX path of (path to desktop)) & "Picture_" & N & ".png") as string
+--     do shell script "screencapture -tjpg " & quoted form of picPath
+--     ]])
 
 key:bindUp(capslock, '[', 'cmd', '[', {
-    -- ['Code'] = {{'ctrl'}, '-'}
-    -- [obj.app.visualStudioCode] = {'cmd', '['}
+    [const.app.visualStudioCode] = {'ctrl', '-'}
 })
 
 key:bindUp(capslock, ']', 'cmd', ']', {
+    [const.app.visualStudioCode] = {{'ctrl', 'shift'}, '-'}
     -- ['Code'] = {{'ctrl', 'shift'}, '-'}
     -- ['Code'] = {{'ctrl'}, '-'}
 })
@@ -139,6 +147,19 @@ key:event(capslock, 'k', {}, 'down')
 key:event(capslockCmd, 'k', {'option'}, 'down')
 key:event(capslockShift, 'k', {'shift'}, 'down')
 key:event(capslockCmdShift, 'k', {'option', 'shift'}, 'down')
+
+-- hs.hotkey.bind(capslockCmd, 'k', function()
+--     -- local screen = hs.mouse.getCurrentScreen()
+--     -- local nextScreen = screen:next()
+--     -- local rect = nextScreen:fullFrame()
+--     -- local center = hs.geometry.rectMidPoint(rect)
+--     -- print(center)
+--     local point = hs.mouse.absolutePosition()
+--     hs.mouse.setRelativePosition({
+--         x = point.x,
+--         y = point.y + 10
+--     })
+-- end)
 
 key:event(capslock, 'u', {}, 'delete')
 key:bindUp(capslockCmd, 'u', function()
