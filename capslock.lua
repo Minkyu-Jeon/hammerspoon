@@ -270,6 +270,8 @@ function todoFunc()
     left(7)
 end
 
+
+
 key:bindDown(capslock, '2', capslock, '2', {
     ['Code'] = {nil, 'F2'},
     ['PyCharm'] = {'shift', 'F6'},
@@ -278,7 +280,9 @@ key:bindDown(capslock, '2', capslock, '2', {
     ['XD'] = dateFunc
 })
 
+
 key:bindDown(capslock, '3', capslock, '3', {
+    [const.app.visualStudioCode] = h3dateFunc,    
     ['PyCharm'] = {nil, 'F2'},
     ['Android Studio'] = {nil, 'F2'},
     ['Google Chrome'] = todoFunc,
