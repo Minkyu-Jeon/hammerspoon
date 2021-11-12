@@ -53,8 +53,7 @@ key:bindDown(nil, 'F4', nil, 'F4', {
     ['Chrome'] = {nil, 'pagedown'},
     ['Code'] = {nil, 'F12'},
     ['PyCharm'] = {'cmd', 'b'},
-    ['Android Studio'] = {'cmd', 'b'},
-   
+    ['Android Studio'] = {'cmd', 'b'}
 })
 
 key:bindDown(nil, 'F5', nil, 'F5', {
@@ -67,6 +66,10 @@ key:bindDown(nil, 'F5', nil, 'F5', {
 key:bindDown(nil, 'F6', nil, 'F6', {
     ['PyCharm'] = {'ctrl', 'r'}, -- run
     ['iTerm2'] = {'ctrl', 'r'}
+})
+
+key:bindDown(nil, 'F7', nil, 'F7', {
+    ['iTerm2'] = {'ctrl', 's'}
 })
 
 key:bindDown(nil, 'F9', nil, 'F9', {
