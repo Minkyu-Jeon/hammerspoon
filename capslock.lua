@@ -25,6 +25,7 @@ app:launch(capslock, 't', const.app.iTerm)
 -- app:launch(capslockShift, 'e', 'Evernote')
 -- app:launch(capslock, 'w', 'Trello')
 app:launch(capslock, 'w', 'Notion')
+app:launch(capslock, 'e', 'Emacs')
 -- app:launch(capslock, 'n', 'Notion')
 app:launch(capslockShift, 'w', 'Google Chrome')
 app:launch(capslockShift, 'a', 'Android Studio')
@@ -173,7 +174,7 @@ key:bindUp(capslockCmd, 'o', function()
 end)
 
 key:event(capslock, 'q', {}, 'delete')
-key:event(capslock, 'e', {}, 'forwarddelete')
+key:event(capslockShift, 'e', {}, 'forwarddelete')
 
 function blockquoteFunc()
     bq = "<blockquote><cite></cite></blockquote>"
@@ -211,7 +212,8 @@ function codeFunc()
 end
 
 key:bindUp(capslock, 'd', capslock, 'd', {
-    ['Google Chrome'] = codeFunc
+    ['Google Chrome'] = codeFunc,
+    ['Firefox'] = codeFunc
 })
 
 key:bindDown(capslockShift, 'b', capslockShift, 'b', {

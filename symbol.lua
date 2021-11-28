@@ -22,6 +22,7 @@ end
 
 key:bindUp(nil, '[', nil, '[', {  
   ['Google Chrome'] = symbolDouble,  
+  ['Firefox'] = symbolDouble,  
 })
 
 key:bindUp('shift', '[', function()
