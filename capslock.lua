@@ -24,10 +24,10 @@ app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
 -- app:launch(capslockShift, 'e', 'Evernote')
 -- app:launch(capslock, 'w', 'Trello')
-app:launch(capslock, 'w', 'Notion')
+app:launch(capslockShift, 'w', 'Notion')
 app:launch(capslock, 'e', 'Emacs')
 -- app:launch(capslock, 'n', 'Notion')
-app:launch(capslockShift, 'w', 'Google Chrome')
+-- app:launch(capslockShift, 'w', 'Google Chrome')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
 app:launch(capslockShift, 's', 'Slack')
@@ -38,7 +38,9 @@ key:bindUp(capslock, 'a', 'cmd', 'a')
 key:bindUp(capslock, 'c', 'cmd', 'c')
 key:bindUp(capslock, 'v', 'cmd', 'v')
 key:bindUp(capslock, 'z', 'cmd', 'z')
-key:bindUp(capslock, 'x', 'cmd', 'x')
+key:bindUp(capslock, 'x', 'cmd', 'x', {
+    ['Emacs'] = {'cmd', 'delete'}
+})
 key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
 
@@ -188,6 +190,10 @@ key:bindDown(capslock, 'b', capslock, 'b', {
     ['Android Studio'] = {nil, 'F3'} -- toggle bookmark
 })
 
+key:bindUp(capslock, 'w', capslock, 'w', {
+    ['Emacs'] = {'ctrl', "w"}
+})
+
 key:bindUp(capslock, 'b', capslock, 'b', {
     ['Code'] = {nil, "F12"},
     ['PyCharm'] = {'cmd', 'b'},
@@ -293,8 +299,6 @@ function todoFunc()
     left(7)
 end
 
-
-
 key:bindDown(capslock, '2', capslock, '2', {
     ['Code'] = {nil, 'F2'},
     ['PyCharm'] = {'shift', 'F6'},
@@ -303,9 +307,8 @@ key:bindDown(capslock, '2', capslock, '2', {
     ['XD'] = dateFunc
 })
 
-
 key:bindDown(capslock, '3', capslock, '3', {
-    [const.app.visualStudioCode] = h3dateFunc,    
+    [const.app.visualStudioCode] = h3dateFunc,
     ['PyCharm'] = {nil, 'F2'},
     ['Android Studio'] = {nil, 'F2'},
     ['Google Chrome'] = todoFunc,
