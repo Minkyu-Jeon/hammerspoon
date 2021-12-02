@@ -11,6 +11,7 @@ require('command')
 require('function')
 require('symbol')
 require('wifi')
+require('escape')
 -- require('altMode')
 -- require('text')
 

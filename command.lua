@@ -1,70 +1,20 @@
-
 local key = require('modules.key')
 
-hs.hotkey.bind({'cmd'}, 'f13',  function()
-  hs.caffeinate.lockScreen()
+hs.hotkey.bind({'cmd'}, 'f13', function()
+    hs.caffeinate.lockScreen()
 end)
 
-
 key:bindUp('cmd', 'return', 'cmd', 'return', {
-  ['Chrome'] = {'ctrl', 'return'}, -- Save dokuwiki
+    ['Chrome'] = {'ctrl', 'return'} -- Save dokuwiki
 })
-
 
 key:bindUp({'shift', 'cmd'}, 'a', {'shift', 'cmd'}, 'a', {
-  ['Chrome'] = {{'shift', 'option'}, 'a'}, -- Change Dark Theme Shortcut
+    ['Chrome'] = {{'shift', 'option'}, 'a'} -- Change Dark Theme Shortcut
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+key:bindUp({'cmd'}, 'e', {'cmd'}, 'e', {
+    ['Code'] = {{'shift', 'cmd'}, 'e'} -- Change Dark Theme Shortcut
+})
 
 
 
