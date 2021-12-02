@@ -177,7 +177,7 @@ key:bindUp(capslockCmd, 'o', function()
 end)
 
 key:bindUp(capslock, 'q', {}, 'delete', {
-    ['Code'] = {capslock, 'tab'}
+    ['Code'] = {nil, 'escape'}
 })
 
 function blockquoteFunc()

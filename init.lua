@@ -12,7 +12,7 @@ require('function')
 require('symbol')
 require('wifi')
 require('escape')
--- require('altMode')
+require('altMode')
 -- require('text')
 
 -- Spoons
