@@ -11,7 +11,8 @@ require('command')
 require('function')
 require('symbol')
 require('wifi')
--- require('altMode')
+require('escape')
+require('altMode')
 -- require('text')
 
 -- Spoons

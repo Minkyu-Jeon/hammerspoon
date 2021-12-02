@@ -26,6 +26,8 @@ app:launch(capslock, 't', const.app.iTerm)
 -- app:launch(capslock, 'w', 'Trello')
 app:launch(capslockShift, 'w', 'Notion')
 app:launch(capslockShift, 'e', 'Emacs')
+key:event(capslock, 'e', {}, 'forwarddelete')
+-- app:launch(capslock, 'n', 'Notion')
 -- app:launch(capslockShift, 'w', 'Google Chrome')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
@@ -37,7 +39,9 @@ key:bindUp(capslock, 'a', 'cmd', 'a')
 key:bindUp(capslock, 'c', 'cmd', 'c')
 key:bindUp(capslock, 'v', 'cmd', 'v')
 key:bindUp(capslock, 'z', 'cmd', 'z')
-key:bindUp(capslock, 'x', 'cmd', 'x')
+key:bindUp(capslock, 'x', 'cmd', 'x', {
+    ['Emacs'] = {'cmd', 'delete'}
+})
 key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
 
@@ -172,8 +176,9 @@ key:bindUp(capslockCmd, 'o', function()
     hs.eventtap.keyStroke(nil, 'delete')
 end)
 
-key:event(capslock, 'q', {}, 'delete')
-key:event(capslock, 'e', {}, 'forwarddelete')
+key:bindUp(capslock, 'q', {}, 'delete', {
+    ['Code'] = {nil, 'escape'}
+})
 
 function blockquoteFunc()
     bq = "<blockquote><cite></cite></blockquote>"
@@ -185,6 +190,11 @@ key:bindDown(capslock, 'b', capslock, 'b', {
     ['Code'] = {nil, "F12"}, -- follow
     -- ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
     ['Android Studio'] = {nil, 'F3'} -- toggle bookmark
+})
+
+key:bindUp(capslock, 'w', capslock, 'w', {
+    ['Emacs'] = {'ctrl', "w"},
+    ['Code'] = {'ctrl', "w"}
 })
 
 key:bindUp(capslock, 'b', capslock, 'b', {
@@ -297,8 +307,6 @@ function todoFunc()
     left(7)
 end
 
-
-
 key:bindDown(capslock, '2', capslock, '2', {
     ['Code'] = {nil, 'F2'},
     ['PyCharm'] = {'shift', 'F6'},
@@ -307,9 +315,8 @@ key:bindDown(capslock, '2', capslock, '2', {
     ['XD'] = dateFunc
 })
 
-
 key:bindDown(capslock, '3', capslock, '3', {
-    [const.app.visualStudioCode] = h3dateFunc,    
+    [const.app.visualStudioCode] = h3dateFunc,
     ['PyCharm'] = {nil, 'F2'},
     ['Android Studio'] = {nil, 'F2'},
     ['Google Chrome'] = todoFunc,
@@ -336,12 +343,14 @@ key:bindDown(capslock, '0', capslock, '0', {
 
 key:bindUp(capslock, '-', capslock, '-', {
     ['PyCharm'] = {'shift', 'F2'}, -- show bookmark list
-    [const.app.chrome] = {{'ctrl', 'shift'}, 'tab'}
+    [const.app.chrome] = {{'ctrl', 'shift'}, 'tab'},
+    ['Notion'] = {'shift', 'tab'}
 })
 
 key:bindUp(capslock, '=', capslock, '=', {
     ['PyCharm'] = {nil, 'F2'}, -- show bookmark list
-    [const.app.chrome] = {'ctrl', 'tab'}
+    [const.app.chrome] = {'ctrl', 'tab'},
+    ['Notion'] = {nil, 'tab'}
 })
 
 hs.hotkey.bind(capslock, "Left", window:move("left"))

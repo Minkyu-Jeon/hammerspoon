@@ -4,6 +4,8 @@
 
 Hotstring은 expanso 사용
 
+- https://github.com/hetima/hammerspoon-foundation_remapping/blob/master/foundation_remapping.lua
+
 ## Text Expander
 
 -- https://github.com/cweagans/dotfiles/commit/84da84d672bb2158b95fa28e5dd840dd21d3bb1c
