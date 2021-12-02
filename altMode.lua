@@ -35,6 +35,15 @@ altMode:bind(nil, 'f', function()
     hs.eventtap.keyStroke(nil, 'right')
 end)
 
+altMode:bind(nil, 'c', function()
+    hs.eventtap.keyStroke(nil, 'pagedown')
+    -- hs.eventtap.event.newScrollEvent({0, -3}, {}, "pixel")
+end)
+
+altMode:bind(nil, 'v', function()
+    hs.eventtap.keyStroke(nil, 'pageup')
+end)
+
 -- altMode:bind({}, '1', function()
 --     hs.alert.show('test 1')
 -- end)
