@@ -1,0 +1,4 @@
+@startuml payment
+alice -> bob
+bob -> alice
+@enduml

@@ -338,12 +338,14 @@ key:bindDown(capslock, '0', capslock, '0', {
 
 key:bindUp(capslock, '-', capslock, '-', {
     ['PyCharm'] = {'shift', 'F2'}, -- show bookmark list
-    [const.app.chrome] = {{'ctrl', 'shift'}, 'tab'}
+    [const.app.chrome] = {{'ctrl', 'shift'}, 'tab'},
+    ['Notion'] = {'shift', 'tab'}
 })
 
 key:bindUp(capslock, '=', capslock, '=', {
     ['PyCharm'] = {nil, 'F2'}, -- show bookmark list
-    [const.app.chrome] = {'ctrl', 'tab'}
+    [const.app.chrome] = {'ctrl', 'tab'},
+    ['Notion'] = {nil, 'tab'}
 })
 
 hs.hotkey.bind(capslock, "Left", window:move("left"))
