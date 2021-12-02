@@ -24,10 +24,9 @@ app:launch(capslock, 'g', const.app.finder)
 app:launch(capslock, 't', const.app.iTerm)
 -- app:launch(capslockShift, 'e', 'Evernote')
 -- app:launch(capslock, 'w', 'Trello')
-app:launch(capslock, 'w', 'Notion')
-app:launch(capslock, 'e', 'Emacs')
--- app:launch(capslock, 'n', 'Notion')
-app:launch(capslockShift, 'w', 'Google Chrome')
+app:launch(capslockShift, 'w', 'Notion')
+app:launch(capslockShift, 'e', 'Emacs')
+-- app:launch(capslockShift, 'w', 'Google Chrome')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
 app:launch(capslockShift, 's', 'Slack')
@@ -174,7 +173,7 @@ key:bindUp(capslockCmd, 'o', function()
 end)
 
 key:event(capslock, 'q', {}, 'delete')
-key:event(capslockShift, 'e', {}, 'forwarddelete')
+key:event(capslock, 'e', {}, 'forwarddelete')
 
 function blockquoteFunc()
     bq = "<blockquote><cite></cite></blockquote>"
@@ -215,6 +214,11 @@ key:bindUp(capslock, 'd', capslock, 'd', {
     ['Google Chrome'] = codeFunc,
     ['Firefox'] = codeFunc
 })
+
+key:bindUp(capslock, 'w', capslock, 'w', {
+    ['Emacs'] = {'ctrl', 'w'},
+})
+
 
 key:bindDown(capslockShift, 'b', capslockShift, 'b', {
     ['PyCharm'] = {'cmd', 'F3'}, -- toggle bookmark
