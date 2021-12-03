@@ -143,12 +143,16 @@ key:event(capslockShift, 'l', {'shift'}, 'right')
 key:event(capslockCmdShift, 'l', {'option', 'shift'}, 'right')
 
 key:event(capslock, 'i', {}, 'up')
-key:event(capslockCmd, 'i', {'option'}, 'up')
+key:bindUp(capslockCmd, 'i', {'option'}, 'up', {
+    ['Code'] = {'cmd', 'up'}
+})
 key:event(capslockShift, 'i', {'shift'}, 'up')
 key:event(capslockCmdShift, 'l', {'option', 'shift'}, 'up')
 
 key:event(capslock, 'k', {}, 'down')
-key:event(capslockCmd, 'k', {'option'}, 'down')
+key:bindUp(capslockCmd, 'k', {'option'}, 'down', {
+    ['Code'] = {'cmd', 'down'}
+})
 key:event(capslockShift, 'k', {'shift'}, 'down')
 key:event(capslockCmdShift, 'k', {'option', 'shift'}, 'down')
 
@@ -226,9 +230,8 @@ key:bindUp(capslock, 'd', capslock, 'd', {
 })
 
 key:bindUp(capslock, 'w', capslock, 'w', {
-    ['Emacs'] = {'ctrl', 'w'},
+    ['Emacs'] = {'ctrl', 'w'}
 })
-
 
 key:bindDown(capslockShift, 'b', capslockShift, 'b', {
     ['PyCharm'] = {'cmd', 'F3'}, -- toggle bookmark
