@@ -225,6 +225,11 @@ key:bindUp(capslock, 'd', capslock, 'd', {
     ['Firefox'] = codeFunc
 })
 
+key:bindUp(capslock, 'w', capslock, 'w', {
+    ['Emacs'] = {'ctrl', 'w'},
+})
+
+
 key:bindDown(capslockShift, 'b', capslockShift, 'b', {
     ['PyCharm'] = {'cmd', 'F3'}, -- toggle bookmark
     ['Android Studio'] = {'cmd', 'F3'} -- toggle bookmark
