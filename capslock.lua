@@ -123,11 +123,11 @@ key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
 --     ]])
 
 key:bindUp(capslock, '[', 'cmd', '[', {
-    [const.app.visualStudioCode] = {'ctrl', '-'}
+    -- [const.app.visualStudioCode] = {'ctrl', '-'}
 })
 
 key:bindUp(capslock, ']', 'cmd', ']', {
-    [const.app.visualStudioCode] = {{'ctrl', 'shift'}, '-'}
+    -- [const.app.visualStudioCode] = {{'ctrl', 'shift'}, '-'}
     -- ['Code'] = {{'ctrl', 'shift'}, '-'}
     -- ['Code'] = {{'ctrl'}, '-'}
 })
@@ -187,7 +187,7 @@ function blockquoteFunc()
 end
 
 key:bindDown(capslock, 'b', capslock, 'b', {
-    ['Code'] = {nil, "F12"}, -- follow
+    -- ['Code'] = {nil, "F12"}, -- follow
     -- ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
     ['Android Studio'] = {nil, 'F3'} -- toggle bookmark
 })
