@@ -12,10 +12,10 @@ local capslockCmdShift = const.key.capslockCmdShift
 hs.hotkey.bind(capslock, 'r', function()
     hs.reload()
     hs.execute('espanso restart')
+    hs.alert.show("HS reloaded")
 end)
-hs.alert.show("HS reloaded")
 
--- TODO: 캡스락 키 제어
+-- TODO: 캡스락 키 제어  
 hs.hotkey.bind(capslock, 'y', function()
     hs.eventtap.event.newKeyEvent(nil, hs.keycodes.map.capslock, true):post()
 end)
@@ -144,14 +144,14 @@ key:event(capslockCmdShift, 'l', {'option', 'shift'}, 'right')
 
 key:event(capslock, 'i', {}, 'up')
 key:bindUp(capslockCmd, 'i', {'option'}, 'up', {
-    ['Code'] = {'cmd', 'up'}
+    -- ['Code'] = {'cmd', 'up'}
 })
 key:event(capslockShift, 'i', {'shift'}, 'up')
 key:event(capslockCmdShift, 'l', {'option', 'shift'}, 'up')
 
 key:event(capslock, 'k', {}, 'down')
 key:bindUp(capslockCmd, 'k', {'option'}, 'down', {
-    ['Code'] = {'cmd', 'down'}
+    -- ['Code'] = {'cmd', 'down'}
 })
 key:event(capslockShift, 'k', {'shift'}, 'down')
 key:event(capslockCmdShift, 'k', {'option', 'shift'}, 'down')
