@@ -190,11 +190,11 @@ function blockquoteFunc()
     left(26)
 end
 
-key:bindDown(capslock, 'b', capslock, 'b', {
+-- key:bindDown(capslock, 'b', capslock, 'b', {
     -- ['Code'] = {nil, "F12"}, -- follow
     -- ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
-    ['Android Studio'] = {nil, 'F3'} -- toggle bookmark
-})
+    -- ['Android Studio'] = {nil, 'F3'} -- toggle bookmark
+-- })
 
 key:bindUp(capslock, 'w', capslock, 'w', {
     ['Emacs'] = {'ctrl', "w"},
@@ -202,7 +202,8 @@ key:bindUp(capslock, 'w', capslock, 'w', {
 })
 
 key:bindUp(capslock, 'b', capslock, 'b', {
-    ['Code'] = {nil, "F12"},
+    -- ['Code'] = {'cmd', "b"},
+    ['Code'] = {nil, "F12"}, -- follow
     ['PyCharm'] = {'cmd', 'b'},
     ['Android Studio'] = {'cmd', 'b'},
     ['Google Chrome'] = blockquoteFunc
@@ -230,7 +231,10 @@ key:bindUp(capslock, 'd', capslock, 'd', {
 })
 
 key:bindUp(capslock, 'w', capslock, 'w', {
-    ['Emacs'] = {'ctrl', 'w'}
+    ['Emacs'] = {'ctrl', 'w'},
+    ['Code'] = function()
+        hs.eventtap.keyStrokes('ysiw')
+    end
 })
 
 key:bindDown(capslockShift, 'b', capslockShift, 'b', {
