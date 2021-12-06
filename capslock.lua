@@ -366,5 +366,5 @@ hs.hotkey.bind(capslock, "Up", window:move("up"))
 hs.hotkey.bind(capslock, "Down", window:move("down"))
 
 key:bindUp(capslock, "return", {}, "return", {
-    ['Code'] = {{'cmd', 'ctrl'}, 'f '}
+    ['Code'] = {{'cmd', 'ctrl'}, 'f'}
 })
