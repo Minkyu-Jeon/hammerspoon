@@ -191,9 +191,9 @@ function blockquoteFunc()
 end
 
 -- key:bindDown(capslock, 'b', capslock, 'b', {
-    -- ['Code'] = {nil, "F12"}, -- follow
-    -- ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
-    -- ['Android Studio'] = {nil, 'F3'} -- toggle bookmark
+-- ['Code'] = {nil, "F12"}, -- follow
+-- ['PyCharm'] = {nil, 'F3'},  -- toggle bookmark
+-- ['Android Studio'] = {nil, 'F3'} -- toggle bookmark
 -- })
 
 key:bindUp(capslock, 'w', capslock, 'w', {
@@ -365,3 +365,6 @@ hs.hotkey.bind(capslock, "Right", window:move("right"))
 hs.hotkey.bind(capslock, "Up", window:move("up"))
 hs.hotkey.bind(capslock, "Down", window:move("down"))
 
+key:bindUp(capslock, "return", {}, "return", {
+    ['Code'] = {{'cmd', 'ctrl'}, 'f '}
+})
