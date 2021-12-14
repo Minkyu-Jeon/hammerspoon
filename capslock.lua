@@ -124,12 +124,16 @@ key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
 
 key:bindUp(capslock, '[', 'cmd', '[', {
     -- [const.app.visualStudioCode] = {'ctrl', '-'}
+    ['iTerm'] = {{'cmd', 'option'}, 'left'},
+    ['Tabby'] = {{'cmd', 'option'}, 'left'}
 })
 
 key:bindUp(capslock, ']', 'cmd', ']', {
     -- [const.app.visualStudioCode] = {{'ctrl', 'shift'}, '-'}
     -- ['Code'] = {{'ctrl', 'shift'}, '-'}
     -- ['Code'] = {{'ctrl'}, '-'}
+    ['iTerm'] = {{'cmd', 'option'}, 'right'},
+    ['Tabby'] = {{'cmd', 'option'}, 'right'}
 })
 
 key:event(capslock, 'j', {}, 'left')
