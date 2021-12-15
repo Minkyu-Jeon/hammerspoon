@@ -112,7 +112,7 @@ key:bindDown(capslockShift, ',', {"shift"}, 'pagedown')
 key:bindUp(capslock, '1', {}, 'F1', {
     ['Evernote'] = {{'option', 'cmd'}, '1'}
 })
-key:bindDown(capslock, '2', {}, 'F2')
+-- key:bindDown(capslock, '2', {}, 'F2')
 key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
 -- key:bindUp(capslock, '4', {'cmd', 'shift'}, '4')
 -- key:appleScript(capslock, '5', [[
@@ -322,6 +322,7 @@ key:bindDown(capslock, '2', capslock, '2', {
     ['Code'] = {nil, 'F2'},
     ['PyCharm'] = {'shift', 'F6'},
     ['Google Chrome'] = dateFuncShort,
+    ['Firefox'] = dateFuncShort,
     ['Notion'] = dateFunc,
     ['XD'] = dateFunc
 })
