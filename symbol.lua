@@ -2,10 +2,10 @@ local key = require('modules.key')
 local inputEnglish = "com.apple.keylayout.ABC"
 
 key:bindUp({'shift'}, "9", function()
-    local inputSource = hs.keycodes.currentSourceID()
-    if not (inputSource == inputEnglish) then
-        hs.eventtap.keyStroke(nil, 'F14')
-    end
+    -- local inputSource = hs.keycodes.currentSourceID()
+    -- if not (inputSource == inputEnglish) then
+    --     hs.eventtap.keyStroke(nil, 'F14')
+    -- end
 
     hs.eventtap.keyStrokes('()')
     hs.eventtap.keyStroke(nil, 'left')
