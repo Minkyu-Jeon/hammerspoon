@@ -16,5 +16,7 @@ key:bindUp({'cmd'}, 'e', {'cmd'}, 'e', {
     ['Code'] = {{'shift', 'cmd'}, 'e'} -- Change Dark Theme Shortcut
 })
 
-
+key:bindUp({'cmd'}, 'j', {'cmd'}, 'j', {
+    ['PyCharm'] = {'option', 'F12'}
+})
 

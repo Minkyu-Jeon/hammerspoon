@@ -200,11 +200,6 @@ end
 -- ['Android Studio'] = {nil, 'F3'} -- toggle bookmark
 -- })
 
-key:bindUp(capslock, 'w', capslock, 'w', {
-    ['Emacs'] = {'ctrl', "w"},
-    ['Code'] = {'ctrl', "w"}
-})
-
 key:bindUp(capslock, 'b', capslock, 'b', {
     -- ['Code'] = {'cmd', "b"},
     ['Code'] = {nil, "F12"}, -- follow
