@@ -19,7 +19,7 @@ key:bindUp({'cmd'}, 'e', {'cmd'}, 'e', {
 })
 
 
--- intellij Cursive
+
 key:bindUp({'cmd'}, 'j', {'cmd'}, 'j', {
     ['PyCharm'] = {'option', 'F12'}
 })
