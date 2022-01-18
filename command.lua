@@ -20,6 +20,9 @@ key:bindUp({'cmd'}, 'e', {'cmd'}, 'e', {
 
 
 -- intellij Cursive
+key:bindUp({'cmd'}, 'j', {'cmd'}, 'j', {
+    ['PyCharm'] = {'option', 'F12'}
+})
 
 key:bindDown({'shift', 'cmd'}, 'j', {'shift', 'cmd'}, 'j', {
     -- ['IntelliJ IDEA'] = {{'shift', 'cmd'},'j'} 
