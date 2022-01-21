@@ -44,6 +44,9 @@ key:bindUp(capslock, 'x', 'cmd', 'x', {
 })
 key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
+key:bindUp(capslock, 'p', capslock, 'p', {
+    ['IntelliJ IDEA'] = {{'cmd', 'shift'}, 'p'}
+})
 
 -- 클립보드에서 앞 공백제거 후 붙여넣기
 key:bindUp(capslockShift, 'v', function()

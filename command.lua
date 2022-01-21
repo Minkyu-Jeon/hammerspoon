@@ -5,7 +5,8 @@ hs.hotkey.bind({'cmd'}, 'f13', function()
 end)
 
 key:bindUp('cmd', 'return', 'cmd', 'return', {
-    ['Chrome'] = {'ctrl', 'return'} -- Save dokuwiki
+    ['Chrome'] = {'ctrl', 'return'}, -- Save dokuwiki
+    ['IntelliJ IDEA'] = {{'shift', 'cmd'}, 'p'}
 })
 
 key:bindUp({'shift', 'cmd'}, 'a', {'shift', 'cmd'}, 'a', {
@@ -13,7 +14,8 @@ key:bindUp({'shift', 'cmd'}, 'a', {'shift', 'cmd'}, 'a', {
 })
 
 key:bindUp({'cmd'}, 'e', {'cmd'}, 'e', {
-    ['Code'] = {{'shift', 'cmd'}, 'e'} -- Change Dark Theme Shortcut
+    ['Code'] = {{'shift', 'cmd'}, 'e'}, -- Change Dark Theme Shortcut
+    ['IntelliJ IDEA'] = {{'shift', 'cmd'}, 'o'}
 })
 
 key:bindUp({'cmd'}, 'j', {'cmd'}, 'j', {
@@ -30,4 +32,11 @@ key:bindUp({'cmd'}, 'r', {'cmd'}, 'r', {
 
 key:bindUp({'cmd'}, 'd', {'cmd'}, 'd', {
     ['PyCharm'] = {'ctrl', 'd'} -- DEBUG
+})
+key:bindDown({'shift', 'cmd'}, 'j', {'shift', 'cmd'}, 'j', {
+    -- ['IntelliJ IDEA'] = {{'shift', 'cmd'},'j'} 
+})
+
+key:bindUp({'shift', 'cmd'}, 'l', {'shift', 'cmd'}, 'l', {
+    ['IntelliJ IDEA'] = {{'shift', 'cmd'}, 'k'}
 })

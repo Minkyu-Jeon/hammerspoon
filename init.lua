@@ -4,7 +4,7 @@ local capslockCmd = const.key.capslockCmd
 local capslockShift = const.key.capslockShift
 
 require('modules.inputsource_aurora')
-require('modules.caffein'):init(capslockShift, 'p')
+require('modules.caffein'):init(capslockCmd, 'p')
 
 require('capslock')
 require('command')
@@ -18,7 +18,7 @@ require('altMode')
 -- Spoons
 local ClipboardTool = hs.loadSpoon("ClipboardTool")
 ClipboardTool:start()
-hs.hotkey.bind(capslock, 'p', function()
+hs.hotkey.bind(capslockShift, 'p', function()
     ClipboardTool:toggleClipboard()
 end)
 

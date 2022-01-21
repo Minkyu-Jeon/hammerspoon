@@ -61,7 +61,8 @@ key:bindDown(nil, 'F5', nil, 'F5', {
     ['Google Chrome'] = {'cmd', 'r'},
     ['Firefox'] = {'cmd', 'r'},
     ['Code'] = {nil, 'F5'},
-    ['iTerm2'] = {'ctrl', 'f'}
+    ['iTerm2'] = {'ctrl', 'f'},
+    ['IntelliJ IDEA'] = {{'cmd', 'shift'}, 'p'},
 })
 
 key:bindDown(nil, 'F6', nil, 'F6', {
