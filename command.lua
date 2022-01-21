@@ -33,6 +33,7 @@ key:bindUp({'cmd'}, 'r', {'cmd'}, 'r', {
 key:bindUp({'cmd'}, 'd', {'cmd'}, 'd', {
     ['PyCharm'] = {'ctrl', 'd'} -- DEBUG
 })
+
 key:bindDown({'shift', 'cmd'}, 'j', {'shift', 'cmd'}, 'j', {
     -- ['IntelliJ IDEA'] = {{'shift', 'cmd'},'j'} 
 })
