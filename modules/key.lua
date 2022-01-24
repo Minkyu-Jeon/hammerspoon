@@ -15,7 +15,7 @@ function runByApps(apps, func)
         local name = frontmostApplication:name()
         local keycodes = apps[name]
 
-        print(name)
+        print(name, keycodes)
 
         if keycodes then
             if type(keycodes) == 'function' then
