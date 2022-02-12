@@ -2,6 +2,7 @@ local const = require('modules.const')
 local key = require('modules.key')
 local window = require('modules.window')
 local app = require('modules.app')
+local input = require('modules.input')
 
 local capslock = const.key.capslock
 local capslockCmd = const.key.capslockCmd
@@ -25,7 +26,7 @@ app:launch(capslock, 't', const.app.iTerm)
 -- app:launch(capslockShift, 'e', 'Evernote')
 -- app:launch(capslock, 'w', 'Trello')
 app:launch(capslockShift, 'w', 'Notion')
-app:launch(capslockShift, 'e', 'Emacs')
+app:launch(capslockShift, 'e', 'Logseq')
 key:event(capslock, 'e', {}, 'forwarddelete')
 -- app:launch(capslock, 'n', 'Notion')
 -- app:launch(capslockShift, 'w', 'Google Chrome')
@@ -250,7 +251,14 @@ key:bindDown(capslock, 'delete', function()
     hs.eventtap.keyStroke(nil, 'delete')
 end)
 
-key:bindDown(capslock, 'space', nil, 'F13') -- 한영전환
+
+
+key:bindUp(capslock, 'space', function()
+    input:toggleInput()
+end) -- 한영전환
+key:bindUp('shift', 'space', function()
+    input:toggleInput() 
+end) -- 한영전환
 
 -- key:bindUp(capslock, ',', capslock, ',', {
 --   ['Evernote'] = {"←"}

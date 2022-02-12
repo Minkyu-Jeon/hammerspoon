@@ -49,12 +49,34 @@ end
 --   ['Chrome'] = {nil, 'pageup'},
 -- })
 
-key:bindDown(nil, 'F4', nil, 'F4', {
-    ['Chrome'] = {nil, 'pagedown'},
-    ['Code'] = {nil, 'F12'},
-    ['PyCharm'] = {'cmd', 'b'},
-    ['Android Studio'] = {'cmd', 'b'}
-})
+-- set up your instance(s)
+-- expose = hs.expose.new(nil,{showThumbnails=false}) -- default windowfilter, no thumbnails
+-- expose_app = hs.expose.new(nil,{onlyActiveApplication=true}) -- show windows for the current application
+-- expose_space = hs.expose.new(nil,{includeOtherSpaces=false}) -- only windows in the current Mission Control Space
+-- expose_browsers = hs.expose.new{'Safari','Google Chrome'} -- specialized expose using a custom windowfilter
+-- for your dozens of browser windows :)
+
+-- then bind to a hotkey
+-- hs.hotkey.bind(nil, 'F3', 'App Expose',function()
+--     -- print('f3')
+--     -- expose_space:toggleShow()
+--     hs.osascript.applescript("tell application \"System Events\" to key code 123 using control down")
+-- end)
+-- hs.hotkey.bind('ctrl-cmd-shift','e','App Expose',function()expose_app:toggleShow()end)
+-- key:bindDown(nil, 'F3', 
+--     function()
+--         print('f3')
+--     end)
+-- hs.hotkey.bind(nil, "F3", function()
+--     print('f3')
+-- end)
+
+-- key:bindDown(nil, 'F4', nil, 'F4', {
+--     ['Chrome'] = {nil, 'pagedown'},
+--     ['Code'] = {nil, 'F12'},
+--     ['PyCharm'] = {'cmd', 'b'},
+--     ['Android Studio'] = {'cmd', 'b'}
+-- })
 
 key:bindDown(nil, 'F5', nil, 'F5', {
     ['PyCharm'] = {'ctrl', 'd'}, -- debug run
