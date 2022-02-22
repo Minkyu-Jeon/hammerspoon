@@ -22,9 +22,9 @@ key:bindUp({'cmd'}, 'j', {'cmd'}, 'j', {
     ['PyCharm'] = {'option', 'F12'}
 })
 
-key:bindUp({'cmd'}, 'p', {'cmd'}, 'p', {
-    ['PyCharm'] = {{'cmd', 'shift'}, 'o'}
-})
+-- key:bindUp({'cmd'}, 'p', {'cmd'}, 'p', {
+--     ['PyCharm'] = {{'cmd', 'shift'}, 'o'}
+-- })
 
 -- key:bindUp({'cmd'}, 'r', {'cmd'}, 'r', {
 --     ['PyCharm'] = {'ctrl', 'r'} -- RUN

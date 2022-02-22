@@ -351,13 +351,23 @@ key:bindDown(capslock, '6', capslock, '6', {
     ['PyCharm'] = {'shift', 'F6'}
 })
 
+key:bindDown(capslock, '7', capslock, '7', {
+    ['Code'] = {{'ctrl', 'alt', 'shift'}, 'left'},
+})
+
+key:bindDown(capslock, '8', capslock, '8', {
+    ['Code'] = {{'ctrl', 'alt', 'shift'}, 'right'},
+})
+
 key:bindDown(capslock, '9', capslock, '9', {
-    ['Chrome'] = {'←'}
+    ['Chrome'] = {'←'},
+    ['Code'] = {{'ctrl', 'alt', 'cmd'}, 'left'},
 })
 
 key:bindDown(capslock, '0', capslock, '0', {
     ['PyCharm'] = {'cmd', 'F3'}, -- show bookmark list
-    ['Chrome'] = {'→'}
+    ['Chrome'] = {'→'},
+    ['Code'] = {{'ctrl', 'alt', 'cmd'}, 'right'},
 })
 
 key:bindUp(capslock, '-', capslock, '-', {
