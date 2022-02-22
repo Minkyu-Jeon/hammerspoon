@@ -22,7 +22,8 @@ hs.hotkey.bind(capslock, 'y', function()
 end)
 
 app:launch(capslock, 'g', const.app.finder)
-app:launch(capslock, 't', const.app.iTerm)
+app:launch(capslock, 't', 'Tabby')
+
 -- app:launch(capslockShift, 'e', 'Evernote')
 -- app:launch(capslock, 'w', 'Trello')
 app:launch(capslockShift, 'w', 'Notion')
