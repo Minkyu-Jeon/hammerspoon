@@ -40,6 +40,26 @@ end
 -- Defalut function keys
 -----------------------------------------
 
+hs.hotkey.bind(capslock, "F1", function()
+    local bright = hs.brightness.get()
+    bright = bright - 10
+    if bright < 0 then
+        bright = 0
+    end
+    hs.alert.show(tonumber(string.format("%.1f", bright)))
+    hs.brightness.set(bright)
+end)
+
+hs.hotkey.bind(capslock, "F2", function()
+    local bright = hs.brightness.get()
+    bright = bright + 10
+    if bright > 100 then
+        bright = 100
+    end
+    hs.alert.show(tonumber(string.format("%.1f", bright)))2
+    hs.brightness.set(bright)
+end)
+
 -- key:bindDown(nil, 'F2', nil, 'F2', {
 --   ['PyCharm'] = {'shift', 'F6'},
 --   ['Code'] = {'cmd', 'F2'},
