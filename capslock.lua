@@ -234,8 +234,9 @@ key:bindUp(capslock, 'd', capslock, 'd', {
     ['Firefox'] = codeFunc
 })
 
-key:bindUp(capslockShift, 'd', capslockShift, 'd', {
-    ['Google Chrome'] = {{'cmd', 'shift'}, '2'},
+-- launch flameshot
+key:bindUp(capslockShift, 'd', {{'cmd', 'shift'}, 'X'}, {
+    -- ['Google Chrome'] = {{'cmd', 'shift'}, '2'},
 })
 
 key:bindUp(capslock, 'w', capslock, 'w', {
