@@ -235,7 +235,7 @@ key:bindUp(capslock, 'd', capslock, 'd', {
 })
 
 -- launch flameshot
-key:bindUp(capslockShift, 'd', {{'cmd', 'shift'}, 'X'}, {
+key:bindUp(capslockShift, 'd', {'cmd', 'shift'}, 'x', {
     -- ['Google Chrome'] = {{'cmd', 'shift'}, '2'},
 })
 
