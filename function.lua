@@ -42,7 +42,7 @@ end
 
 hs.hotkey.bind(capslock, "F1", function()
     local bright = hs.brightness.get()
-    bright = bright - 10
+    bright = bright - 5
     if bright < 0 then
         bright = 0
     end
@@ -52,7 +52,7 @@ end)
 
 hs.hotkey.bind(capslock, "F2", function()
     local bright = hs.brightness.get()
-    bright = bright + 10
+    bright = bright + 5
     if bright > 100 then
         bright = 100
     end
