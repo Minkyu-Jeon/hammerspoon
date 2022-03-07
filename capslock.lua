@@ -34,7 +34,7 @@ key:event(capslock, 'e', {}, 'forwarddelete')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
 app:launch(capslockShift, 's', 'Slack')
-app:launch(capslockCmd, 'p', 'Postman')
+-- app:launch(capslockCmd, 'p', 'Postman')
 app:launch(capslockCmd, '0', 'Postico')
 
 key:bindUp(capslock, 'a', 'cmd', 'a')
@@ -391,6 +391,6 @@ hs.hotkey.bind(capslock, "Right", window:move("right"))
 hs.hotkey.bind(capslock, "Up", window:move("up"))
 hs.hotkey.bind(capslock, "Down", window:move("down"))
 
-key:bindUp(capslockShift, "return", {}, "return", {
-    ['Code'] = {{'cmd', 'ctrl'}, 'f'}
-})
+-- key:bindUp(capslockShift, "return", {}, "return", {
+    -- ['Code'] = {{'alt', 'ctrl', 'shift'}, 'return'} -- eval from start of file to cursor
+-- })

@@ -56,7 +56,7 @@ hs.hotkey.bind(capslock, "F2", function()
     if bright > 100 then
         bright = 100
     end
-    hs.alert.show(tonumber(string.format("%.1f", bright)))2
+    hs.alert.show(tonumber(string.format("%.1f", bright)))
     hs.brightness.set(bright)
 end)
 
