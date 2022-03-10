@@ -42,10 +42,11 @@ obj._attribs = {
   format = "%H:%M:%S",
   textFont = "Impact",
   textSize = 135,
-  textColor = {hex="#1891C3"},
+  -- textColor = {hex="#1891C3"},
+  textColor = {hex="#077332"},
   width = 520,
   height = 230,
-  showDuration = 5,  -- seconds
+  showDuration = 3,  -- seconds
   hotkey = 'escape',
   hotkeyMods = {},
 }

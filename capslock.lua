@@ -46,9 +46,16 @@ key:bindUp(capslock, 'x', 'cmd', 'x', {
 })
 key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
+
+
 key:bindUp(capslock, 'p', capslock, 'p', {
     ['IntelliJ IDEA'] = {{'cmd', 'shift'}, 'p'}
 })
+local ClipboardTool = hs.loadSpoon("ClipboardTool")
+ClipboardTool:start()
+hs.hotkey.bind(capslockShift, 'p', function()
+    ClipboardTool:toggleClipboard()
+end)
 
 -- 클립보드에서 앞 공백제거 후 붙여넣기
 key:bindUp(capslockShift, 'v', function()
@@ -374,6 +381,10 @@ key:bindDown(capslock, '0', capslock, '0', {
     ['Chrome'] = {'→'},
     ['Code'] = {{'ctrl', 'alt', 'cmd'}, 'right'},
 })
+local aclock = hs.loadSpoon('AClock')
+hs.hotkey.bind(capslockShift, "0", function()
+    aclock:toggleShow()
+end)
 
 key:bindUp(capslock, '-', capslock, '-', {
     ['PyCharm'] = {'shift', 'F2'}, -- show bookmark list
