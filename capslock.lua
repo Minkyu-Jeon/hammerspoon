@@ -395,3 +395,7 @@ hs.hotkey.bind(capslock, "Down", window:move("down"))
 -- key:bindUp(capslockShift, "return", {}, "return", {
     -- ['Code'] = {{'alt', 'ctrl', 'shift'}, 'return'} -- eval from start of file to cursor
 -- })
+
+hs.hotkey.bind(capslock, '\\', function()
+    hs.urlevent.openURL("https://calendar.google.com/calendar/u/0/r/week?sf=true")
+end)
