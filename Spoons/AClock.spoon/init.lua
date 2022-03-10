@@ -101,6 +101,7 @@ end
 --- Returns:
 ---  * The AClock object
 function obj:show()
+  self.canvas[1].text = os.date(self.format)
   self.canvas:show()
   self.tick_timer = self:tick_timer_fn()
   if self.hotkey then

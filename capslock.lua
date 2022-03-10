@@ -401,9 +401,9 @@ key:bindUp(capslock, '=', capslock, '=', {
 hs.hotkey.bind(capslock, "Left", window:move("left"))
 hs.hotkey.bind(capslock, "4", window:move("left"))
 hs.hotkey.bind(capslock, "Right", window:move("right"))
-hs.hotkey.bind(capslock, "6", window:move("left"))
+hs.hotkey.bind(capslock, "6", window:move("right"))
 hs.hotkey.bind(capslock, "Up", window:move("up"))
-hs.hotkey.bind(capslock, "5", window:move("left"))
+hs.hotkey.bind(capslock, "5", window:move("up"))
 hs.hotkey.bind(capslock, "Down", window:move("down"))
 
 -- key:bindUp(capslockShift, "return", {}, "return", {
@@ -412,4 +412,8 @@ hs.hotkey.bind(capslock, "Down", window:move("down"))
 
 hs.hotkey.bind(capslock, '\\', function()
     hs.urlevent.openURL("https://calendar.google.com/calendar/u/0/r/week?sf=true")
+end)
+
+hs.hotkey.bind(capslock, 'F13', function()
+    aclock:toggleShow()
 end)
