@@ -247,10 +247,10 @@ key:bindUp(capslockShift, 'd', {'cmd', 'shift'}, 'x', {
 })
 
 key:bindUp(capslock, 'w', capslock, 'w', {
-    ['Emacs'] = {'ctrl', 'w'},
-    ['Code'] = function()
-        hs.eventtap.keyStrokes('ysiw')
-    end
+    ['Emacs'] = {'ctrl', 'w'}
+    -- ['Code'] = function()
+    --     hs.eventtap.keyStrokes('ysiw')
+    -- end
 })
 
 key:bindDown(capslockShift, 'b', capslockShift, 'b', {
@@ -410,10 +410,12 @@ hs.hotkey.bind(capslock, "Down", window:move("down"))
     -- ['Code'] = {{'alt', 'ctrl', 'shift'}, 'return'} -- eval from start of file to cursor
 -- })
 
-hs.hotkey.bind(capslock, '\\', function()
-    hs.urlevent.openURL("https://calendar.google.com/calendar/u/0/r/week?sf=true")
-end)
+app:launch(capslock, 'F13', 'calendar')
 
-hs.hotkey.bind(capslock, 'F13', function()
+-- hs.hotkey.bind(capslock, '\\', function()
+--     hs.urlevent.openURL("https://calendar.google.com/calendar/u/0/r/week?sf=true")
+-- end)
+
+hs.hotkey.bind(capslock, '\\', function()
     aclock:toggleShow()
 end)

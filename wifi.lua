@@ -8,7 +8,7 @@ function ssidChangedCallback()
     if string.find(SSID, 'buzzni') then
         hs.audiodevice.defaultOutputDevice():setVolume(0)
     end
-    wifiMenu:setTitle("(WIFI:" .. SSID .. ")" )
+    wifiMenu:setTitle("📡" .. SSID )
 end
 wifiWatcher = hs.wifi.watcher.new(ssidChangedCallback)
 wifiWatcher:start()

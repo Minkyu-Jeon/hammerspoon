@@ -105,11 +105,13 @@ key:bindDown(nil, 'F5', nil, 'F5', {
     ['Code'] = {nil, 'F5'},
     ['iTerm2'] = {'ctrl', 'f'},
     ['IntelliJ IDEA'] = {{'cmd', 'shift'}, 'p'},
+    ['Notion'] = {'cmd', '['}
 })
 
 key:bindDown(nil, 'F6', nil, 'F6', {
     ['PyCharm'] = {'ctrl', 'r'}, -- run
-    ['iTerm2'] = {'ctrl', 'r'}
+    ['iTerm2'] = {'ctrl', 'r'},
+    ['Notion'] = {'cmd', ']'}
 })
 
 key:bindDown(nil, 'F7', nil, 'F7', {
