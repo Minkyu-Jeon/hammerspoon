@@ -121,9 +121,19 @@ key:bindDown(capslockShift, 'm', {"shift"}, 'pageup')
 key:bindDown(capslock, ',', {}, 'pagedown')
 key:bindDown(capslockShift, ',', {"shift"}, 'pagedown')
 
-key:bindUp(capslock, '1', {}, 'F1', {
-    ['Evernote'] = {{'option', 'cmd'}, '1'}
-})
+
+hs.hotkey.bind(capslock, '1', function()
+    clipboard = hs.pasteboard.getContents()
+    text = clipboard:match "^%s*(.-)%s*$"
+    result = "image::" .. text .. "[]"
+    hs.pasteboard.setContents(result)
+    hs.eventtap.keyStroke('cmd', 'v') 
+end)
+
+
+-- key:bindUp(capslock, '1', {}, 'F1', {
+--     ['Evernote'] = {{'option', 'cmd'}, '1'},
+-- })
 -- key:bindDown(capslock, '2', {}, 'F2')
 key:appleScript(capslock, '3', 'tell application "Mission Control" to launch')
 -- key:bindUp(capslock, '4', {'cmd', 'shift'}, '4')
@@ -419,3 +429,7 @@ app:launch(capslock, 'F13', 'calendar')
 hs.hotkey.bind(capslock, '\\', function()
     aclock:toggleShow()
 end)
+
+
+
+
