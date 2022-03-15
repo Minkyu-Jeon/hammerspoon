@@ -16,9 +16,11 @@ hs.hotkey.bind(capslock, 'r', function()
     hs.alert.show("HS reloaded")
 end)
 
--- TODO: 캡스락 키 제어  
+-- 캡스락 키 제어  
 hs.hotkey.bind(capslock, 'y', function()
-    hs.eventtap.event.newKeyEvent(nil, hs.keycodes.map.capslock, true):post()
+    -- hs.eventtap.event.newKeyEvent(nil, hs.keycodes.map.capslock, true):post()
+    hs.hid.capslock.toggle()
+    hs.hid.led.set('caps', true)  -- https://www.hammerspoon.org/docs/hs.hid.led.html
 end)
 
 app:launch(capslock, 'g', const.app.finder)

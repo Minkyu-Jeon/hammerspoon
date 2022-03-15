@@ -43,6 +43,9 @@ hs.alert.defaultStyle.fillColor = {
 }
 hs.alert.defaultStyle.radius = 10
 
+-- https://www.hammerspoon.org/docs/hs.hid.led.html
+hs.hid.led.set('caps', false)
+
 function applicationWatcher(appName, eventType, appObject)
     if (eventType == hs.application.watcher.activated) then
         if (appName == "Finder") then
