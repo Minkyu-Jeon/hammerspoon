@@ -98,14 +98,15 @@ end)
 --     ['Android Studio'] = {'cmd', 'b'}
 -- })
 
-key:bindDown(nil, 'F5', nil, 'F5', {
+key:bindUp(nil, 'F5', nil, 'F5', {
     ['PyCharm'] = {'ctrl', 'd'}, -- debug run
     ['Google Chrome'] = {'cmd', 'r'},
     ['Firefox'] = {'cmd', 'r'},
     ['Code'] = {nil, 'F5'},
     ['iTerm2'] = {'ctrl', 'f'},
     ['IntelliJ IDEA'] = {{'cmd', 'shift'}, 'p'},
-    ['Notion'] = {'cmd', '['}
+    ['Notion'] = {'cmd', '['},
+    ['DBeaver'] = {nil, 'F5'},
 })
 
 key:bindDown(nil, 'F6', nil, 'F6', {

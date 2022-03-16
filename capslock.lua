@@ -124,13 +124,30 @@ key:bindDown(capslock, ',', {}, 'pagedown')
 key:bindDown(capslockShift, ',', {"shift"}, 'pagedown')
 
 
-hs.hotkey.bind(capslock, '1', function()
+
+function asciidocImage()
     clipboard = hs.pasteboard.getContents()
     text = clipboard:match "^%s*(.-)%s*$"
     result = "image::" .. text .. "[]"
     hs.pasteboard.setContents(result)
     hs.eventtap.keyStroke('cmd', 'v') 
-end)
+end
+
+function markdownImage()
+    clipboard = hs.pasteboard.getContents()
+    text = clipboard:match "^%s*(.-)%s*$"
+    result = "![](" .. text .. ")"
+    hs.pasteboard.setContents(result)
+    hs.eventtap.keyStroke('cmd', 'v') 
+end
+
+
+key:bindUp(capslock, '1', nil, '1', {
+    [const.app.logseq] = markdownImage,
+    [const.app.visualStudioCode] = asciidocImage,
+    [const.app.chrome] = markdownImage
+    
+})
 
 
 -- key:bindUp(capslock, '1', {}, 'F1', {
