@@ -28,7 +28,8 @@ app:launch(capslock, 't', 'Tabby')
 
 -- app:launch(capslockShift, 'e', 'Evernote')
 -- app:launch(capslock, 'w', 'Trello')
-app:launch(capslockShift, 'w', 'Notion')
+app:launch(capslockShift, 'n', 'Notion')
+app:launch(capslockShift, 'w', const.app.chrome)
 app:launch(capslockShift, 'e', 'Logseq')
 key:event(capslock, 'e', {}, 'forwarddelete')
 -- app:launch(capslock, 'n', 'Notion')
@@ -36,6 +37,7 @@ key:event(capslock, 'e', {}, 'forwarddelete')
 app:launch(capslockShift, 'a', 'Android Studio')
 app:launch(capslockShift, 'c', 'Visual Studio Code')
 app:launch(capslockShift, 's', 'Slack')
+app:launch(capslockShift, 'x', 'PostMan')
 -- app:launch(capslockCmd, 'p', 'Postman')
 app:launch(capslockCmd, '0', 'Postico')
 
@@ -46,6 +48,7 @@ key:bindUp(capslock, 'z', 'cmd', 'z')
 key:bindUp(capslock, 'x', 'cmd', 'x', {
     ['Emacs'] = {'cmd', 'delete'}
 })
+
 key:bindUp(capslock, 's', 'cmd', 's')
 key:bindUp(capslock, 'f', 'cmd', 'f')
 

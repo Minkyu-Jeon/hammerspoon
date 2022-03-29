@@ -148,14 +148,6 @@ hs.hotkey.bind(capslock, "F10", function()
     hs.audiodevice.defaultOutputDevice():setVolume(0)
 end)
 
-hs.hotkey.bind(capslock, "F11", function()
-    volumeChange(false)
-end)
-
-hs.hotkey.bind(capslock, "F12", function()
-    volumeChange(true)
-end)
-
 key:bindUp(nil, "F10", nil, 'F10', {
     ['Logseq'] = {'cmd', '['}
 })
@@ -168,6 +160,16 @@ key:bindUp(nil, "F10", nil, 'F10', {
 key:bindUp(nil, "F11", nil, 'F11', {
     ['Logseq'] = {'cmd', '['}
 })
+
+
+hs.hotkey.bind(capslock, "F11", function()
+    volumeChange(false)
+end)
+
+hs.hotkey.bind(capslock, "F12", function()
+    volumeChange(true)
+end)
+
 
 key:bindUp(nil, "F12", nil, 'F12', {
     ['Logseq'] = {'cmd', ']'}
