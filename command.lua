@@ -9,6 +9,11 @@ key:bindUp('cmd', 'return', 'cmd', 'return', {
     ['IntelliJ IDEA'] = {{'shift', 'cmd'}, 'p'}
 })
 
+key:bindUp('shift', 'return', 'shift', 'return', {
+    ['Postman'] = {'cmd', 'return'}, -- Postman RUN    
+})
+
+
 key:bindUp({'shift', 'cmd'}, 'a', {'shift', 'cmd'}, 'a', {
     ['Chrome'] = {{'shift', 'option'}, 'a'} -- Change Dark Theme Shortcut
 })

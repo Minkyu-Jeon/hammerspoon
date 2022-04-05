@@ -136,6 +136,19 @@ key:bindDown(capslock, "F9", capslock, 'F9', {
     ['Android Studio'] = {{'option', 'cmd'}, 'r'}
 })
 
+key:bindUp(nil, "F7", nil, 'F7', {
+    [const.app.chrome] = {nil, 'left'}
+})
+
+key:bindUp(nil, "F8", nil, 'F8', {
+    [const.app.chrome] = {nil, 'space'}
+})
+
+key:bindUp(nil, "F9", nil, 'F9', {
+    [const.app.chrome] = {nil, 'right'}
+})
+
+
 -- hs.hotkey.bind('cmd', "F10", nil, function()  
 --   for i=1, 10 do -- 기본 증가치는 1이 된다
 --     hs.eventtap.keyStroke(nil, "end")      
