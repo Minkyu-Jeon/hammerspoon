@@ -6,11 +6,14 @@ end)
 
 key:bindUp('cmd', 'return', 'cmd', 'return', {
     ['Chrome'] = {'ctrl', 'return'}, -- Save dokuwiki
-    ['IntelliJ IDEA'] = {{'shift', 'cmd'}, 'p'}
+    ['IntelliJ IDEA'] = {{'shift', 'cmd'}, 'p'},
+    ['DBeaver'] = {'ctrl', 'return'}
 })
+
 
 key:bindUp('shift', 'return', 'shift', 'return', {
     ['Postman'] = {'cmd', 'return'}, -- Postman RUN    
+    ['DBeaver'] = {'ctrl', 'return'}
 })
 
 
