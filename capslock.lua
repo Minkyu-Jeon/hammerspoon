@@ -442,11 +442,21 @@ hs.hotkey.bind(capslock, "Down", window:move("down"))
     -- ['Code'] = {{'alt', 'ctrl', 'shift'}, 'return'} -- eval from start of file to cursor
 -- })
 
-app:launch(capslock, 'F13', 'calendar')
+-- app:launch({'F13'}, 'F16', 'calendar')
+
 
 -- hs.hotkey.bind(capslock, '\\', function()
 --     hs.urlevent.openURL("https://calendar.google.com/calendar/u/0/r/week?sf=true")
 -- end)
+
+-- app:launch(capslock, 'F13', 'calendar')
+-- hs.hotkey.bind(capslock, 'F16', function()
+--     aclock:toggleShow()
+-- end)
+hs.hotkey.bind(capslock, 'F13', function()
+    hs.caffeinate.lockScreen()
+end)
+
 
 hs.hotkey.bind(capslock, '\\', function()
     aclock:toggleShow()

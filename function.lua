@@ -1,6 +1,6 @@
 local const = require('modules.const')
 local key = require('modules.key')
-
+local app = require('modules.app')
 local capslock = const.key.capslock
 local capslockShift = const.key.capslockShift
 
@@ -187,6 +187,14 @@ end)
 key:bindUp(nil, "F12", nil, 'F12', {
     ['Logseq'] = {'cmd', ']'}
 })
+
+-- hs.hotkey.bind({'cmd'}, 'f13', function()
+--     hs.caffeinate.lockScreen()
+-- end)
+
+app:launch({'cmd'}, 'F13', 'calendar')
+
+
 
 key:bindDown(nil, 'end', 'cmd', 'right', {})
 key:bindDown('shift', 'end', {'cmd', 'shift'}, 'right', {})
