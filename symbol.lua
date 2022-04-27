@@ -20,7 +20,7 @@ key:bindUp(nil, '[', nil, '[', {
     ['Google Chrome'] = symbolDouble,
     ['Firefox'] = symbolDouble,
     ['Notion'] = symbolDouble,
-    ['Logseq'] = symbolDouble
+    -- ['Logseq'] = symbolDouble
 })
 
 key:bindUp('shift', '[', function()
