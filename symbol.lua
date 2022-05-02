@@ -1,6 +1,9 @@
 local key = require('modules.key')
 local inputEnglish = "com.apple.keylayout.ABC"
 
+
+
+
 key:bindUp({'shift'}, "9", function()
     -- local inputSource = hs.keycodes.currentSourceID()
     -- if not (inputSource == inputEnglish) then
@@ -11,23 +14,52 @@ key:bindUp({'shift'}, "9", function()
     hs.eventtap.keyStroke(nil, 'left')
 end)
 
-function symbolDouble()
+
+
+-- function createBracket()
+--     hs.eventtap.keyStrokes('()')
+--     hs.eventtap.keyStroke(nil, 'left')
+-- end
+
+-- key:bindUp({"shift"}, "9", {"shift"}, "9", {
+--     ['Google Chrome'] = createBracket,
+--     ['Firefox'] = createBracket,
+--     ['Notion'] = createBracket,    
+-- })
+
+function squareBrackets()
     hs.eventtap.keyStrokes('[]')
     hs.eventtap.keyStroke(nil, 'left')
 end
 
 key:bindUp(nil, '[', nil, '[', {
-    ['Google Chrome'] = symbolDouble,
-    ['Firefox'] = symbolDouble,
-    ['Notion'] = symbolDouble,
-    -- ['Logseq'] = symbolDouble
+    ['Google Chrome'] = squareBrackets,
+    ['Firefox'] = squareBrackets,
+    ['Notion'] = squareBrackets,
+    -- ['Logseq'] =sSquar Brackets
 })
+  
+ 
+
+-- key:bindUp({"shift"}, "'", nil, "'", {})
+-- key:bindUp(nil, "\'" , nil, '"', {}) 
 
 key:bindUp('shift', '[', function()
     -- hs.eventtap.keyStroke(nil, 'F19')  
     hs.eventtap.keyStrokes('{}')
     hs.eventtap.keyStroke(nil, 'left')
 end)
+
+function curlyBrackets() 
+    hs.eventtap.keyStrokes('{}')
+    hs.eventtap.keyStroke(nil, 'left') 
+end
+
+-- key:bindUp(nil, ']', nil, ']', {
+--     ['Logseq'] = curlyBrackets
+-- })
+
+
 
 -- hs.eventtap.keyStroke(nil, 'left')
 -- hs.eventtap.keyStroke(nil, 'right')
