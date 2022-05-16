@@ -228,6 +228,11 @@ key:bindUp(capslockCmd, 'o', function()
     hs.eventtap.keyStroke(nil, 'delete')
 end)
 
+key:bindUp(capslockShift, 'o', function()
+    hs.urlevent.openURL("https://green-labs.atlassian.net/jira/software/c/projects/ARCH/boards/75")
+end)
+
+
 key:bindUp(capslock, 'q', {}, 'delete', {
     ['Code'] = {nil, 'escape'}
 })
@@ -446,7 +451,7 @@ hs.hotkey.bind(capslock, "Down", window:move("down"))
 
 
 -- hs.hotkey.bind(capslock, '\\', function()
---     hs.urlevent.openURL("https://calendar.google.com/calendar/u/0/r/week?sf=true")
+    -- hs.urlevent.openURL("https://calendar.google.com/calendar/u/0/r/week?sf=true")
 -- end)
 
 -- app:launch(capslock, 'F13', 'calendar')

@@ -36,10 +36,9 @@ key:bindUp(nil, '[', nil, '[', {
     ['Google Chrome'] = squareBrackets,
     ['Firefox'] = squareBrackets,
     ['Notion'] = squareBrackets,
+    ['DBeaver'] = squareBrackets,
     -- ['Logseq'] =sSquar Brackets
 })
-  
- 
 
 -- key:bindUp({"shift"}, "'", nil, "'", {})
 -- key:bindUp(nil, "\'" , nil, '"', {}) 
