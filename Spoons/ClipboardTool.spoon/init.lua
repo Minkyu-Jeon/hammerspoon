@@ -364,7 +364,7 @@ function obj:checkAndStorePasteboard()
          --        end
          --    end
             -- hs.alert.show("Copied " .. size .. " chars")
-            hs.notify.new({title="Copied" .. size .. " chars", informativeText=current_clipboard}):send()
+            -- hs.notify.new({title="Copied" .. size .. " chars", informativeText=current_clipboard}):send()
             self.logger.df("Adding %s to clipboard history", current_clipboard)
             self:pasteboardToClipboard(current_clipboard)
          else
