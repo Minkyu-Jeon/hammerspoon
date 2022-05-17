@@ -70,6 +70,15 @@ key:bindUp(capslockShift, 'v', function()
     isFirst = true
     exceptFirst = false
 
+    -- 한 줄이면,
+    -- '-'를 삽입한 문자열로 반환
+    local _, count = clipboard:gsub("[\n]", "") 
+    if count == 0 then
+        print(count)        
+        clipboard = clipboard:gsub('^%s*(.-)%s*$', '%1')
+        clipboard = clipboard:gsub("%s+", "-")
+    end
+
     for t in clipboard:gmatch("[^\r\n]+") do
         w, s = string.match(t, "(%s*)(.*)")
         wLen = string.len(w)
