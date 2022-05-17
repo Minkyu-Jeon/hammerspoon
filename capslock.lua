@@ -231,15 +231,19 @@ key:bindUp(capslockCmd, 'u', function()
     hs.eventtap.keyStroke({'shift', 'option'}, 'left')
     hs.eventtap.keyStroke(nil, 'delete')
 end)
+key:bindUp(capslockShift, 'u', function()
+    hs.urlevent.openURL("https://green-labs.atlassian.net/jira/software/c/projects/ARCH/boards/75")
+end)
+
 key:event(capslock, 'o', {}, 'forwarddelete')
 key:bindUp(capslockCmd, 'o', function()
     hs.eventtap.keyStroke({'shift', 'option'}, 'right')
     hs.eventtap.keyStroke(nil, 'delete')
 end)
-
 key:bindUp(capslockShift, 'o', function()
-    hs.urlevent.openURL("https://green-labs.atlassian.net/jira/software/c/projects/ARCH/boards/75")
+    hs.urlevent.openURL("https://jace.link/open/")
 end)
+
 
 
 key:bindUp(capslock, 'q', {}, 'delete', {

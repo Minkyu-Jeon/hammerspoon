@@ -37,9 +37,9 @@ key:bindUp({'cmd'}, 'j', {'cmd'}, 'j', {
 --     ['PyCharm'] = {'ctrl', 'r'} -- RUN
 -- })
 
-key:bindUp({'cmd'}, 'd', {'cmd'}, 'd', {
-    ['PyCharm'] = {'ctrl', 'd'} -- DEBUG
-})
+-- key:bindUp({'cmd'}, 'd', {'cmd'}, 'd', {
+--     ['PyCharm'] = {'ctrl', 'd'} -- DEBUG
+-- })
 
 key:bindDown({'shift', 'cmd'}, 'j', {'shift', 'cmd'}, 'j', {
     -- ['IntelliJ IDEA'] = {{'shift', 'cmd'},'j'} 
