@@ -76,7 +76,7 @@ key:bindUp(capslockShift, 'v', function()
     if count == 0 then
         print(count)        
         clipboard = clipboard:gsub('^%s*(.-)%s*$', '%1')
-        clipboard = clipboard:gsub("%s+", "-")
+        clipboard = clipboard:gsub("[^%w%d#_가-힣]+", "-")
     end
 
     for t in clipboard:gmatch("[^\r\n]+") do
