@@ -37,7 +37,7 @@ key:bindUp(nil, '[', nil, '[', {
     ['Firefox'] = squareBrackets,
     ['Notion'] = squareBrackets,
     ['DBeaver'] = squareBrackets,
-    -- ['Logseq'] =sSquar Brackets
+    -- ['Logseq'] = squareBrackets
 })
 
 -- key:bindUp({"shift"}, "'", nil, "'", {})

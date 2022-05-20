@@ -2,7 +2,7 @@ local obj = {}
 
 
 obj.type = 0
-obj.sizeList = { 1/2, 1/3, 2/3 }
+obj.sizeList = { 3/4, 2/3, 1/2, 1/3, 1/4 }
 
 function obj:move(direction)  
   return function()
@@ -14,7 +14,7 @@ function obj:move(direction)
       local max      = screen:frame()
       
       if obj.direction == direction then        
-        obj.type = (obj.type + 1) % 3      
+        obj.type = (obj.type + 1) % 5      
       else
         obj.type = 0
       end
